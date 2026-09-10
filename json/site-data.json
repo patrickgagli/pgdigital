@@ -1,0 +1,108 @@
+{
+    "facts": [
+        { "icon": "bi-display", "value": 5, "label": "Années d'activité" },
+        { "icon": "bi-headset", "value": 1, "label": "Membre" },
+        { "icon": "bi-patch-check", "value": 3, "label": "Certifications" },
+        { "icon": "bi-mortarboard", "value": 1, "label": "Diplôme" }
+    ],
+    "services": [
+        {
+            "icon": "bi-code-slash",
+            "title": "Développement Web",
+            "description": "Développement d'applications web avec le framework Django et les librairies Alpine.js et HTMX"
+        },
+        {
+            "icon": "bi-plug",
+            "title": "Intégration d'API",
+            "description": "Intégration d'API REST et GraphQL avec les technologies FastAPI et Graphene"
+        },
+        {
+            "icon": "bi-gear-wide-connected",
+            "title": "Conception de Microservices",
+            "description": "Conception de microservices avec Spring Boot et Node.js pour applications web, desktop et mobiles"
+        },
+        {
+            "icon": "bi-tools",
+            "title": "Maintenance et Support",
+            "description": "Maintenance et support d'applications existantes, correction de bugs et mises à jour"
+        },
+        {
+            "icon": "bi-briefcase",
+            "title": "Consulting IT",
+            "description": "Conseil en architecture logicielle, choix technologiques et bonnes pratiques de sécurité"
+        }
+    ],
+    "skills": [
+        {
+            "name": "Git",
+            "image": "img/competences/git.png",
+            "description": "Logiciel de gestion de versions décentralisé, permettant de suivre les modifications apportées à un projet et de coordonner le travail de plusieurs personnes"
+        },
+        {
+            "name": "Python",
+            "image": "img/competences/python.png",
+            "description": "Langage de programmation de haut niveau, orienté objet, typé dynamiquement et collecté par la mémoire avec l'utilisation d'une indentation importante"
+        },
+        {
+            "name": "Java",
+            "image": "img/competences/java.png",
+            "description": "Langage de programmation de haut niveau, basé sur les classes et orienté objet, conçu pour avoir le moins de dépendances et d'implémentation possible"
+        },
+        {
+            "name": "JavaScript",
+            "image": "img/competences/javascript.png",
+            "description": "Langage de programmation de scripts, orienté objet, employé dans les pages web interactives et à ce titre une partie essentielle des applications web"
+        },
+        {
+            "name": "SQL",
+            "image": "img/competences/sql.png",
+            "description": "Langage de requête structurée, permettant de communiquer avec une base de données relationnelle pour y stocker, modifier et récupérer des données"
+        },
+        {
+            "name": "Bash",
+            "image": "img/competences/bash.png",
+            "description": "Langage de script utilisé dans les systèmes Unix, permettant d'automatiser des tâches répétitives et de gérer des fichiers et des processus"
+        }
+    ],
+    "tools": [
+        {
+            "name": "GitLab",
+            "image": "img/tools/gitlab.png",
+            "description": "Outil de gestion de dépôts de code source et de CI/CD"
+        },
+        {
+            "name": "Kubernetes",
+            "image": "img/tools/kubernetes.png",
+            "description": "Outil de gestion de conteneurs et d'orchestration"
+        },
+        {
+            "name": "Spring",
+            "image": "img/tools/spring.png",
+            "description": "Framework Java pour le développement d'applications"
+        },
+        {
+            "name": "Docker",
+            "image": "img/tools/docker.png",
+            "description": "Outil de virtualisation et de déploiement de logiciels"
+        },
+        {
+            "name": "Django",
+            "image": "img/tools/django.png",
+            "description": "Framework web Python pour le développement d'applications"
+        },
+        {
+            "name": "PostgreSQL",
+            "image": "img/tools/postgres.png",
+            "description": "Système de gestion de base de données relationnelle open source"
+        }
+    ],
+    "contact": {
+        "name": "GAGLI Patrick",
+        "email": "patrickgagli@yahoo.co.uk"
+    },
+    "social": [
+        { "label": "Twitter", "icon": "bi-twitter", "url": "https://twitter.com" },
+        { "label": "Reddit", "icon": "bi-reddit", "url": "https://reddit.com" },
+        { "label": "Github", "icon": "bi-github", "url": "https://github.com" }
+    ]
+}

@@ -737,6 +737,9 @@ a#logo {
 .input-field {
   margin-bottom:15px;
 }
+.hp-field {
+  display: none;
+}
 .form-control {
   height: 50px;
   color:#fff;

@@ -1,0 +1,19 @@
+{
+    "endpoint": "https://api.web3forms.com/submit",
+    "accessKey": "4020d931-2ace-4ea5-98d9-c6918187a631",
+    "recipient": "patrickgagli@yahoo.co.uk",
+    "subjectPrefix": "Demande de contact de",
+    "storage": {
+        "draftKey": "pgdigital:contact:draft",
+        "outboxKey": "pgdigital:contact:outbox",
+        "maxQueued": 10
+    },
+    "messages": {
+        "sending": "Envoi en cours…",
+        "success": "Merci ! Votre message a bien été envoyé, une réponse vous parviendra rapidement.",
+        "queued": "Envoi impossible pour le moment. Votre message est conservé et sera renvoyé automatiquement dès le retour de la connexion.",
+        "flushed": "Vos messages en attente viennent d'être envoyés.",
+        "draftRestored": "Un brouillon de message a été restauré.",
+        "mailto": "Ouverture de votre application de messagerie…"
+    }
+}

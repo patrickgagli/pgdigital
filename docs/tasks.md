@@ -8,7 +8,7 @@ owners:
   - Product
   - Engineering
   - Design
-last_updated: 2026-09-10
+last_updated: 2026-09-11
 tags:
   [
     tâches,
@@ -46,10 +46,16 @@ Ce document suit l'état observable du dépôt. Une case terminée correspond à
 - [x] Empiler les champs de contact et masquer les liens sociaux latéraux sous 768 px.
 - [x] Vérifier les six ancres et le menu mobile à 320 x 568 et 390 x 844.
 - [x] Aligner la documentation canonique sur le code au 2026-09-10.
+- [x] Externaliser le contenu des sections dans `json/site-data.json` et le rendre via `js/data.js`.
+- [x] Externaliser la configuration du formulaire dans `json/contact-form.json`.
+- [x] Envoyer le formulaire de contact en `POST` JSON vers un endpoint configurable, avec repli `mailto:`.
+- [x] Conserver le brouillon du formulaire et les envois échoués dans `localStorage`, puis les réémettre automatiquement.
+- [x] Ajouter un champ piège anti-spam au formulaire de contact.
+- [x] Corriger les noms accessibles des trois liens sociaux et l'espace de fin signalés par `html-validate`.
 
 ## Prochaines priorités
 
-- [ ] Corriger les noms accessibles des trois liens sociaux et l'espace de fin signalés par `html-validate`.
+- [ ] Renseigner la clé d'accès du service de formulaire dans `json/contact-form.json` pour activer l'envoi réel en production.
 - [ ] Remplacer les pages d'accueil des plateformes sociales par des profils réels ou retirer les liens.
 - [ ] Passer l'attribut `lang` du document à `fr` pour refléter le contenu de l'interface.
 - [x] Retirer le chargement réseau de HTMX, qui n'est pas utilisé par la page.
@@ -57,11 +63,12 @@ Ce document suit l'état observable du dépôt. Une case terminée correspond à
 - [ ] Intégrer, tester et documenter le consentement de `js/cookie_consent.js`.
 - [ ] Ajouter les métadonnées de partage Open Graph et Twitter Card.
 - [ ] Évaluer l'ajout de données structurées, d'un sitemap et d'un fichier `robots.txt`.
-- [ ] Évaluer un canal de contact ne dépendant pas d'une application de messagerie locale.
+- [x] Évaluer un canal de contact ne dépendant pas d'une application de messagerie locale.
 
 ## Contrôles récurrents
 
 - [ ] Exécuter `node --check js/custom.js` après une modification du comportement actif.
+- [ ] Exécuter `node --check js/data.js` et valider les fichiers `json/` après une modification des données.
 - [ ] Exécuter les contrôles de syntaxe sur `js/scripts.js` et `js/cookie_consent.js` lorsqu'ils sont modifiés.
 - [ ] Exécuter `npx --yes html-validate@latest index.html` après une modification du balisage.
 - [ ] Vérifier l'absence d'erreur console et de ressource locale introuvable.
@@ -69,6 +76,8 @@ Ce document suit l'état observable du dépôt. Une case terminée correspond à
 - [ ] Tester l'ouverture, la fermeture et `aria-expanded` du menu mobile.
 - [ ] Tester les carrousels, les icônes Bootstrap et le titre Alpine.js.
 - [ ] Tester les champs requis, le format email et l'email prérempli du formulaire.
+- [ ] Tester le rendu depuis `json/` en HTTP et le repli statique en `file://`.
+- [ ] Tester la restauration du brouillon, la mise en file d'un envoi échoué et son réenvoi automatique.
 - [ ] Tester la section Contact à 390 x 844 sans débordement, titre tronqué ni chevauchement du pied de page.
 
 ## Règle de mise à jour

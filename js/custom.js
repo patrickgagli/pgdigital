@@ -46,6 +46,7 @@
                 });
             });
         });
+        var initComponents = function(formConfig) {
         if ($('.facts-list').length) {
             $('.facts-list').owlCarousel({
                 loop: true,
@@ -216,18 +217,240 @@
             $('body').removeClass('sidemenu-open');
         });
 
-        $('#contactForm').on('submit', function(event) {
+        initContactForm(formConfig);
+        };
+
+        var dataReady = (window.PGDigital && window.PGDigital.ready) || Promise.resolve(null);
+        dataReady.then(function(data) {
+            initComponents(data && data.form);
+        }, function() {
+            initComponents(null);
+        });
+    });
+
+    var defaultFormConfig = {
+        endpoint: '',
+        accessKey: '',
+        recipient: 'patrickgagli@yahoo.co.uk',
+        subjectPrefix: 'Demande de contact de',
+        storage: {
+            draftKey: 'pgdigital:contact:draft',
+            outboxKey: 'pgdigital:contact:outbox',
+            maxQueued: 10
+        },
+        messages: {
+            sending: 'Envoi en cours…',
+            success: 'Merci ! Votre message a bien été envoyé.',
+            queued: 'Envoi impossible pour le moment. Votre message est conservé et sera renvoyé automatiquement.',
+            flushed: 'Vos messages en attente viennent d\'être envoyés.',
+            draftRestored: 'Un brouillon de message a été restauré.',
+            mailto: 'Ouverture de votre application de messagerie…'
+        }
+    };
+
+    var storage = {
+        read: function(key, fallback) {
+            try {
+                var raw = window.localStorage.getItem(key);
+                return raw ? JSON.parse(raw) : fallback;
+            } catch (error) {
+                return fallback;
+            }
+        },
+        write: function(key, value) {
+            try {
+                window.localStorage.setItem(key, JSON.stringify(value));
+            } catch (error) {
+                /* stockage indisponible ou saturé */
+            }
+        },
+        remove: function(key) {
+            try {
+                window.localStorage.removeItem(key);
+            } catch (error) {
+                /* stockage indisponible */
+            }
+        }
+    };
+
+    function initContactForm(config) {
+        var $form = $('#contactForm');
+        if (!$form.length) {
+            return;
+        }
+
+        var settings = $.extend(true, {}, defaultFormConfig, config || {});
+        var $status = $('#form-messages');
+        var $submit = $('#contactBtn');
+        var submitLabel = $submit.text();
+        var fields = ['last_name', 'first_name', 'email', 'message'];
+
+        function setStatus(text, state) {
+            $status.removeClass('text-success text-danger');
+            if (state) {
+                $status.addClass(state === 'success' ? 'text-success' : 'text-danger');
+            }
+            $status.text(text);
+        }
+
+        function setBusy(isBusy) {
+            $submit.prop('disabled', isBusy).text(isBusy ? settings.messages.sending : submitLabel);
+        }
+
+        function collect() {
+            var values = {};
+            fields.forEach(function(name) {
+                values[name] = $.trim($form.find('[name="' + name + '"]').val() || '');
+            });
+            return values;
+        }
+
+        function fill(values) {
+            fields.forEach(function(name) {
+                if (values && typeof values[name] === 'string') {
+                    $form.find('[name="' + name + '"]').val(values[name]);
+                }
+            });
+        }
+
+        function hasContent(values) {
+            return fields.some(function(name) {
+                return values[name];
+            });
+        }
+
+        function buildPayload(values) {
+            return {
+                access_key: settings.accessKey,
+                subject: settings.subjectPrefix + ' ' + values.first_name + ' ' + values.last_name,
+                from_name: values.first_name + ' ' + values.last_name,
+                name: values.first_name + ' ' + values.last_name,
+                email: values.email,
+                message: values.message,
+                savedAt: new Date().toISOString()
+            };
+        }
+
+        function post(payload) {
+            if (typeof window.fetch !== 'function') {
+                return Promise.reject(new Error('fetch indisponible'));
+            }
+            return window.fetch(settings.endpoint, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify(payload)
+            }).then(function(response) {
+                if (!response.ok) {
+                    throw new Error('Réponse ' + response.status);
+                }
+                return response;
+            });
+        }
+
+        function queue(payload) {
+            var outbox = storage.read(settings.storage.outboxKey, []);
+            if (!Array.isArray(outbox)) {
+                outbox = [];
+            }
+            outbox.push(payload);
+            storage.write(settings.storage.outboxKey, outbox.slice(-settings.storage.maxQueued));
+        }
+
+        function flushOutbox(notify) {
+            var outbox = storage.read(settings.storage.outboxKey, []);
+            if (!isConfigured() || !Array.isArray(outbox) || !outbox.length) {
+                return;
+            }
+            var remaining = outbox.slice();
+            var sendNext = function() {
+                if (!remaining.length) {
+                    storage.remove(settings.storage.outboxKey);
+                    if (notify) {
+                        setStatus(settings.messages.flushed, 'success');
+                    }
+                    return;
+                }
+                var payload = remaining[0];
+                return post(payload).then(function() {
+                    remaining.shift();
+                    storage.write(settings.storage.outboxKey, remaining);
+                    return sendNext();
+                }, function() {
+                    /* la file est conservée pour une prochaine tentative */
+                });
+            };
+            sendNext();
+        }
+
+        function isConfigured() {
+            return Boolean(settings.endpoint && settings.accessKey);
+        }
+
+        function sendByMail(values) {
+            var subject = settings.subjectPrefix + ' ' + values.first_name + ' ' + values.last_name;
+            var body = values.message + '\n\nAdresse de réponse : ' + values.email;
+            setStatus(settings.messages.mailto);
+            window.location.href = 'mailto:' + settings.recipient + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+        }
+
+        var draft = storage.read(settings.storage.draftKey, null);
+        if (draft && hasContent(draft)) {
+            fill(draft);
+            setStatus(settings.messages.draftRestored);
+        }
+
+        $form.on('input change', 'input, textarea', function() {
+            var values = collect();
+            if (hasContent(values)) {
+                storage.write(settings.storage.draftKey, values);
+            } else {
+                storage.remove(settings.storage.draftKey);
+            }
+        });
+
+        $form.on('submit', function(event) {
             event.preventDefault();
+
+            // Champ piège invisible : rempli uniquement par les robots.
+            if ($.trim($form.find('[name="company"]').val() || '')) {
+                setStatus(settings.messages.success, 'success');
+                return;
+            }
 
             if (!this.checkValidity()) {
                 this.reportValidity();
                 return;
             }
 
-            var subject = 'Demande de contact de ' + $('#first_name').val() + ' ' + $('#last_name').val();
-            var body = $('#message').val() + '\n\nAdresse de réponse : ' + $('#email').val();
-            $('#form-messages').text('Ouverture de votre application de messagerie...');
-            window.location.href = 'mailto:patrickgagli@yahoo.co.uk?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+            var values = collect();
+
+            if (!isConfigured()) {
+                sendByMail(values);
+                storage.remove(settings.storage.draftKey);
+                return;
+            }
+
+            var payload = buildPayload(values);
+            setBusy(true);
+            setStatus(settings.messages.sending);
+            post(payload).then(function() {
+                $form[0].reset();
+                storage.remove(settings.storage.draftKey);
+                setStatus(settings.messages.success, 'success');
+            }, function() {
+                queue(payload);
+                setStatus(settings.messages.queued, 'error');
+            }).then(function() {
+                setBusy(false);
+            });
         });
-    });
+
+        $(window).on('online', function() {
+            flushOutbox(true);
+        });
+        flushOutbox(false);
+    }
 })(jQuery, window, document);

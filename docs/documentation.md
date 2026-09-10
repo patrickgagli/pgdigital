@@ -18,7 +18,22 @@ tags: [documentation, projet, pgdigital]
 
 PGDigital est un portfolio statique composé d'une page unique. Le site est déployable tel quel sur GitHub Pages : il n'utilise ni compilation, ni gestionnaire de paquets, ni serveur applicatif.
 
-`index.html` contient le contenu et charge les feuilles de style, les bibliothèques du navigateur et `js/custom.js`. Les interactions sont entièrement exécutées côté client.
+`index.html` contient le contenu et charge les feuilles de style, les bibliothèques du navigateur, `js/data.js` puis `js/custom.js`. Les interactions sont entièrement exécutées côté client.
+
+## Données
+
+Le contenu variable est décrit dans deux fichiers JSON servis avec le site :
+
+| Fichier                  | Contenu                                                                          |
+| ------------------------ | -------------------------------------------------------------------------------- |
+| `json/site-data.json`    | Faits, services, compétences, outils, coordonnées de contact et liens sociaux      |
+| `json/contact-form.json` | Endpoint, clé d'accès, destinataire, clés de stockage local et messages de statut |
+
+`js/data.js` récupère ces fichiers, reconstruit le contenu des conteneurs `.facts-list`, `.services-list`, `.testimonials-slider`, `.gallery-list`, `.contact-box` et `.social-icons`, puis expose la promesse `window.PGDigital.ready`. `js/custom.js` attend cette promesse avant d'initialiser les carrousels et fullPage.js, afin que les éléments rendus soient pris en compte.
+
+Les valeurs textuelles sont insérées via `textContent` et les URL sont restreintes aux schémas `http`, `https` et `mailto`.
+
+Les navigateurs bloquant `fetch` en `file://`, le contenu statique présent dans `index.html` sert de repli : il reste affiché lorsque les fichiers JSON ne peuvent pas être lus. Toute modification de contenu doit donc être reportée dans les deux emplacements.
 
 ## Sections et navigation
 
@@ -64,12 +79,21 @@ Le bouton `#dark-mode-toggle` du header alterne les thèmes clair et sombre. Le 
 
 ### Formulaire de contact
 
-Le formulaire ne transmet aucune donnée à un serveur. À la soumission :
+Le formulaire envoie les messages à l'endpoint décrit dans `json/contact-form.json`. À la soumission :
 
-1. la validation HTML native vérifie les champs obligatoires et l'adresse email ;
-2. le sujet et le corps du message sont encodés ;
-3. un lien `mailto:` ouvre l'application de messagerie du visiteur ;
-4. la zone `#form-messages`, déclarée comme région de statut, annonce l'ouverture de l'application.
+1. un champ piège invisible `company` interrompt silencieusement les envois automatisés ;
+2. la validation HTML native vérifie les champs obligatoires et l'adresse email ;
+3. si `endpoint` et `accessKey` sont renseignés, un `POST` JSON est envoyé, le bouton est désactivé pendant l'envoi et le formulaire est réinitialisé en cas de succès ;
+4. sinon, le comportement de repli encode le sujet et le corps du message dans un lien `mailto:` ;
+5. la zone `#form-messages`, déclarée comme région de statut, annonce le résultat.
+
+Persistance locale associée :
+
+- la saisie en cours est enregistrée dans `localStorage` sous la clé `pgdigital:contact:draft` et restaurée au chargement suivant ;
+- un envoi échoué est placé dans une file `pgdigital:contact:outbox` limitée à `maxQueued` messages ;
+- la file est réémise au chargement de la page et lors de l'événement `online`, puis vidée après succès.
+
+Aucune clé d'accès n'est fournie par défaut : tant que `accessKey` est vide, le formulaire conserve le comportement `mailto:`.
 
 ## Dépendances
 
@@ -85,6 +109,7 @@ Le formulaire ne transmet aucune donnée à un serveur. À la soumission :
 | Alpine.js 3.x        | CDN unpkg       | Animation de saisie du titre d'accueil     |
 | Raleway              | Google Fonts    | Typographie principale                     |
 | `js/scripts.js`       | Fichier local   | Préférence et bascule du thème             |
+| `js/data.js`          | Fichier local   | Chargement des JSON et rendu du contenu    |
 
 `js/cookie_consent.js` est conservé dans le dépôt, mais n'est pas chargé par `index.html`. Le mode sombre de `js/scripts.js` est actif : le bouton du header bascule le thème, met à jour son état ARIA et conserve le choix dans `localStorage` sous la clé `dark-mode`.
 
@@ -108,12 +133,13 @@ Exécuter les contrôles disponibles après toute modification :
 
 ```powershell
 node --check js/custom.js
+node --check js/data.js
 node --check js/scripts.js
 node --check js/cookie_consent.js
 npx --yes html-validate@latest index.html
 ```
 
-État vérifié au 2026-09-11 : les contrôles de syntaxe JavaScript réussissent et le mode sombre a été vérifié dans un navigateur, y compris sa persistance après rechargement. La validation HTML signale trois liens sociaux sans nom accessible (`wcag/h30`) et une ligne contenant des espaces de fin (`no-trailing-whitespace`).
+État vérifié au 2026-09-11 : les contrôles de syntaxe JavaScript et la validation HTML réussissent. Le rendu piloté par les fichiers JSON, la restauration du brouillon, la mise en file d'un envoi échoué et son réenvoi automatique ont été vérifiés dans un navigateur via un serveur HTTP local ; le repli statique a été vérifié par ouverture directe en `file://`.
 
 Compléter ces contrôles par un test manuel sur ordinateur, à 390 x 844 et à 320 x 568 :
 
@@ -121,7 +147,7 @@ Compléter ces contrôles par un test manuel sur ordinateur, à 390 x 844 et à 
 - activation correcte des six ancres ;
 - ouverture, fermeture et état accessible du menu mobile ;
 - rendu du titre Alpine.js, des icônes et des carrousels ;
-- validation du formulaire et ouverture d'un email prérempli ;
+- validation du formulaire, restauration du brouillon et envoi d'un message ;
 - absence de débordement ou de chevauchement dans la section Contact.
 
 ## Règles de maintenance

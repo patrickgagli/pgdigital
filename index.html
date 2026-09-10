@@ -409,6 +409,10 @@
                                                 <div class="input-field">
                                                     <textarea class="form-control" name="message" id="message" required placeholder="Votre Message" aria-label="Votre message"></textarea>
                                                 </div>
+                                                <div class="hp-field">
+                                                    <label for="company">Ne pas remplir ce champ</label>
+                                                    <input type="text" name="company" id="company" tabindex="-1" autocomplete="off">
+                                                </div>
                                                 <button class="btn" id="contactBtn" type="submit">Envoyer</button>
                                             </form>
                                             <div id="form-messages" class="mt-3" role="status" aria-live="polite"></div>
@@ -426,13 +430,13 @@
             <div id="social-icons">
                 <div class="text-right">
                     <ul class="social-icons">
-                        <li><a href="https://twitter.com" target="_blank" rel="noopener noreferrer" title="Twitter"><i class="bi bi-twitter"></i></a></li>
-                        <li><a href="https://reddit.com" target="_blank" rel="noopener noreferrer" title="Reddit"><i class="bi bi-reddit"></i></a></li>
-                        <li><a href="https://github.com" target="_blank" rel="noopener noreferrer" title="Github"><i class="bi bi-github"></i></a></li>
+                        <li><a href="https://twitter.com" target="_blank" rel="noopener noreferrer" title="Twitter" aria-label="Twitter"><i class="bi bi-twitter" aria-hidden="true"></i></a></li>
+                        <li><a href="https://reddit.com" target="_blank" rel="noopener noreferrer" title="Reddit" aria-label="Reddit"><i class="bi bi-reddit" aria-hidden="true"></i></a></li>
+                        <li><a href="https://github.com" target="_blank" rel="noopener noreferrer" title="Github" aria-label="Github"><i class="bi bi-github" aria-hidden="true"></i></a></li>
                     </ul>
                 </div>
             </div><!-- /Side Socials Icons -->
-        
+
         <footer class="fixed-bottom mt-5">
             <div class="container">
                 <p>&copy;  2026  |  <span class="text-uppercase">PGDigital</span> Design</p>
@@ -449,6 +453,7 @@
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/jquery.inview.min.js"></script>
     <script src="js/scripts.js"></script>
+    <script src="js/data.js"></script>
     <script src="js/custom.js"></script>
 
 </body>

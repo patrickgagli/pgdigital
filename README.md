@@ -20,7 +20,8 @@ The project has no build step, package manifest, backend, or test runner. Runtim
 - Responsive carousels for facts, services, skills, and tools
 - Mobile navigation with an accessible expanded state
 - Scroll-triggered animations and animated fact counters
-- Client-side contact form using native validation and a prefilled `mailto:` link
+- Content data (facts, services, skills, tools, contact details, social links) loaded from `json/site-data.json`, with the static markup in `index.html` as fallback
+- Contact form posting JSON to a configurable endpoint, with honeypot spam trap, native validation, localStorage draft autosave, an offline outbox retried automatically, and a `mailto:` fallback when no endpoint is configured
 - Bootstrap Icons for navigation and social interface icons
 - Persistent light/dark theme toggle in the header
 - Responsive contact layout and normal-flow footer below 768 px
@@ -36,10 +37,21 @@ The project has no build step, package manifest, backend, or test runner. Runtim
 
 2. Open `index.html` directly in a browser. No server or dependency installation is required.
 
+   Browsers block `fetch` on `file://`, so the JSON files are only read when the page is served over HTTP. Opening the file directly falls back to the static markup. To exercise the JSON path locally:
+
+   ```powershell
+   npx --yes http-server . -p 8099 -c-1
+   ```
+
+## Contact Form Configuration
+
+Edit `json/contact-form.json` and set `accessKey` to a [Web3Forms](https://web3forms.com/) access key (public by design). While `accessKey` is empty the form keeps the previous `mailto:` behaviour. Any endpoint accepting a JSON `POST` can be used through the `endpoint` field.
+
 ## Validation
 
 ```powershell
 node --check js/custom.js
+node --check js/data.js
 node --check js/scripts.js
 node --check js/cookie_consent.js
 npx --yes html-validate@latest index.html
@@ -56,7 +68,8 @@ Also smoke-test desktop and mobile layouts, especially the six navigation anchor
 
 ## Current Limitations
 
-- Contact submission depends on the visitor having a configured email client.
+- Contact submission falls back to the visitor's email client until a form endpoint access key is configured.
+- Content changes must be mirrored in `json/site-data.json` and in the static fallback markup.
 - Social links are placeholders.
 - `js/cookie_consent.js` is present but is not loaded by `index.html`.
 - The page has basic metadata but no Open Graph, Twitter Card, structured data, sitemap, or `robots.txt` support.

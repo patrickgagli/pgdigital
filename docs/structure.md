@@ -8,7 +8,7 @@ owners:
   - Product
   - Engineering
   - Design
-last_updated: 2026-09-10
+last_updated: 2026-09-11
 tags: [structure organisationnelle, conception, architecture, planification]
 ---
 
@@ -27,9 +27,13 @@ pgdigital/
 │   └── bibliothèques CSS locales
 ├── js/
 │   ├── custom.js
+│   ├── data.js
 │   ├── scripts.js
 │   ├── cookie_consent.js
 │   └── bibliothèques JavaScript locales
+├── json/
+│   ├── site-data.json
+│   └── contact-form.json
 ├── img/
 │   ├── competences/
 │   ├── tools/
@@ -50,6 +54,9 @@ pgdigital/
 | `css/style.css`         | Identité visuelle, typographie, mise en page et styles des composants                                |
 | `css/responsive.css`    | Surcharges liées aux dimensions de l'écran et comportement mobile                                    |
 | `js/custom.js`          | fullPage.js, carrousels, animations, compteurs, menu mobile et formulaire de contact                 |
+| `js/data.js`            | Chargement des fichiers `json/` et rendu des sections pilotées par les données                       |
+| `json/site-data.json`   | Données de contenu : faits, services, compétences, outils, coordonnées et liens sociaux              |
+| `json/contact-form.json`| Configuration du formulaire : endpoint, clé d'accès, clés de stockage local et messages              |
 | `img/competences/`      | Illustrations de la section Compétences                                                              |
 | `img/tools/`            | Illustrations de la section Outils                                                                   |
 | `docs/documentation.md` | Référence fonctionnelle et technique canonique                                                       |
@@ -66,13 +73,16 @@ Bootstrap Icons, Alpine.js et Google Fonts sont chargés depuis des CDN. Une ouv
 
 1. Le navigateur charge les styles depuis `index.html`.
 2. Alpine.js est différé ; les autres scripts sont chargés en fin de document.
-3. jQuery charge les bibliothèques locales avant `js/custom.js`.
-4. `js/custom.js` initialise les carrousels, fullPage.js et les gestionnaires d'événements lorsque le DOM est prêt.
-5. Après le chargement complet de la fenêtre, le préchargeur disparaît et les animations de visibilité sont armées.
+3. jQuery charge les bibliothèques locales avant `js/data.js` puis `js/custom.js`.
+4. `js/data.js` récupère `json/site-data.json` et `json/contact-form.json`, remplace le contenu des sections pilotées par les données et expose la promesse `window.PGDigital.ready`.
+5. `js/custom.js` attend cette promesse, puis initialise les carrousels, fullPage.js, les gestionnaires d'événements et le formulaire de contact.
+6. Après le chargement complet de la fenêtre, le préchargeur disparaît et les animations de visibilité sont armées.
 
 ## Invariants d'architecture
 
 - Le site doit rester statique et fonctionnel par ouverture directe de `index.html`.
+- Le contenu statique de `index.html` sert de repli : il reste affiché si les fichiers `json/` ne peuvent pas être chargés, notamment en `file://`.
+- Toute modification du contenu piloté par les données doit être appliquée à la fois dans `json/site-data.json` et dans le repli statique de `index.html`.
 - Les six ancres `slide01` à `slide06` doivent rester identiques dans le HTML et la configuration fullPage.js.
 - Le comportement actif appartient à `js/custom.js`.
 - Les corrections de présentation spécifiques aux viewports appartiennent à `css/responsive.css`.
