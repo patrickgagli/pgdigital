@@ -52,9 +52,9 @@ Ce document suit l'état observable du dépôt. Une case terminée correspond à
 - [ ] Corriger les noms accessibles des trois liens sociaux et l'espace de fin signalés par `html-validate`.
 - [ ] Remplacer les pages d'accueil des plateformes sociales par des profils réels ou retirer les liens.
 - [ ] Passer l'attribut `lang` du document à `fr` pour refléter le contenu de l'interface.
-- [ ] Décider si HTMX doit être utilisé ; sinon, retirer son chargement réseau.
-- [ ] Décider si le mode sombre de `js/scripts.js` doit être intégré, testé et documenté, ou supprimé.
-- [ ] Décider si le consentement de `js/cookie_consent.js` doit être intégré, testé et documenté, ou supprimé.
+- [x] Retirer le chargement réseau de HTMX, qui n'est pas utilisé par la page.
+- [ ] Intégrer, tester et documenter le mode sombre de `js/scripts.js`.
+- [ ] Intégrer, tester et documenter le consentement de `js/cookie_consent.js`.
 - [ ] Ajouter les métadonnées de partage Open Graph et Twitter Card.
 - [ ] Évaluer l'ajout de données structurées, d'un sitemap et d'un fichier `robots.txt`.
 - [ ] Évaluer un canal de contact ne dépendant pas d'une application de messagerie locale.

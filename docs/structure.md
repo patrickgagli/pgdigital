@@ -60,7 +60,7 @@ pgdigital/
 
 Les fichiers Bootstrap, fullPage.js, Owl Carousel, jQuery, jquery.inview, scrolloverflow et Animate.css sont des dépendances du navigateur conservées dans le dépôt. Les fichiers minifiés ne doivent pas être modifiés directement.
 
-Bootstrap Icons, Alpine.js, HTMX et Google Fonts sont chargés depuis des CDN. Une ouverture hors ligne peut donc afficher la page sans ces ressources externes.
+Bootstrap Icons, Alpine.js et Google Fonts sont chargés depuis des CDN. Une ouverture hors ligne peut donc afficher la page sans ces ressources externes.
 
 ## Flux d'exécution
 

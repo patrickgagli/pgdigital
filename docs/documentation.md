@@ -79,7 +79,6 @@ Le formulaire ne transmet aucune donnée à un serveur. À la soumission :
 | jquery.inview        | Fichier local   | Détection de visibilité                    |
 | Animate.css          | Fichier local   | Effets d'apparition                        |
 | Alpine.js 3.x        | CDN unpkg       | Animation de saisie du titre d'accueil     |
-| HTMX 1.9.10          | CDN unpkg       | Chargé, mais non utilisé actuellement      |
 | Raleway              | Google Fonts    | Typographie principale                     |
 
 `js/scripts.js` et `js/cookie_consent.js` sont conservés dans le dépôt, mais aucun des deux n'est chargé par `index.html`. Le mode sombre et le bandeau de consentement présents dans ces fichiers ne font donc pas partie de l'expérience active.

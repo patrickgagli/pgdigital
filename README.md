@@ -9,7 +9,6 @@ PGDigital is a static, single-page developer portfolio deployed on GitHub Pages.
 - jQuery, fullPage.js, Owl Carousel, and jquery.inview
 - Alpine.js for the hero typing effect
 - Animate.css for viewport-triggered animations
-- HTMX is loaded but is not currently used by the page
 - Google Fonts (Raleway)
 
 The project has no build step, package manifest, backend, or test runner. Runtime libraries are loaded from local vendored files or public CDNs.
