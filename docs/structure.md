@@ -79,9 +79,9 @@ Bootstrap Icons, Alpine.js et Google Fonts sont chargés depuis des CDN. Une ouv
 - Les nouvelles ressources locales doivent être placées sous `img/` et leur présence doit être vérifiée.
 - Une bibliothèque existante doit être réutilisée sans charger de version en double.
 
-## Fichiers présents mais inactifs
+## Fichiers présents mais non intégrés
 
-- `js/scripts.js` contient une logique de mode sombre, mais n'est pas référencé par `index.html`.
+- `js/scripts.js` est chargé par `index.html` et gère le mode sombre ainsi que sa préférence locale.
 - `js/cookie_consent.js` et `css/cookie_consent.css` concernent un bandeau de consentement, mais ne sont pas référencés par `index.html`.
 
 Ces fichiers ne doivent pas être décrits comme des fonctionnalités livrées tant qu'ils ne sont pas intégrés et testés.

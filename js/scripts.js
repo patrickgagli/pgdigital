@@ -1,29 +1,44 @@
 /* Global Scripts */
 
 
-// Check and apply dark mode preference from local storage
-function applyDarkModePreference() {
-
-    // get the dark mode preference value from localStorage. default to light if no value is found
-    const darkModePreference = localStorage.getItem('dark-mode') || 'light';
-    document.documentElement.setAttribute('data-bs-theme', darkModePreference);
+/* Theme preference */
+function getDarkModePreference() {
+    const preference = localStorage.getItem('dark-mode');
+    return preference === 'dark' ? 'dark' : 'light';
 }
 
-// Toggle dark mode and update local storage
+function updateDarkModeToggle(theme) {
+    const darkModeToggle = document.getElementById('dark-mode-toggle');
+    if (!darkModeToggle) {
+        return;
+    }
+
+    const isDark = theme === 'dark';
+    darkModeToggle.setAttribute('aria-pressed', String(isDark));
+    darkModeToggle.setAttribute('aria-label', isDark ? 'Activer le mode clair' : 'Activer le mode sombre');
+    darkModeToggle.setAttribute('title', isDark ? 'Activer le mode clair' : 'Activer le mode sombre');
+    darkModeToggle.innerHTML = `<i class="bi ${isDark ? 'bi-sun' : 'bi-moon-stars'}" aria-hidden="true"></i>`;
+}
+
+function applyDarkModePreference() {
+    const theme = getDarkModePreference();
+    document.documentElement.setAttribute('data-bs-theme', theme);
+    updateDarkModeToggle(theme);
+}
+
 function toggleDarkMode() {
     const currentTheme = document.documentElement.getAttribute('data-bs-theme');
     const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
 
     document.documentElement.setAttribute('data-bs-theme', newTheme);
-    localStorage.setItem('dark-mode', newTheme === 'dark' ? 'dark' : 'light');
+    localStorage.setItem('dark-mode', newTheme);
+    updateDarkModeToggle(newTheme);
 }
 
-// Apply dark mode preference on page load
 window.addEventListener('load', function() {
     applyDarkModePreference();
     const darkModeToggle = document.getElementById('dark-mode-toggle');
     if (darkModeToggle) {
-        darkModeToggle.onclick = toggleDarkMode;
+        darkModeToggle.addEventListener('click', toggleDarkMode);
     }
-    console.log('loaded')
 });

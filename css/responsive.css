@@ -421,6 +421,30 @@
 		margin-top: 50px;
 	}
 }
+
+@media only screen and (max-width: 767px) {
+	.theme-toggle {
+		position: absolute;
+		right: 48px;
+		top: 50%;
+		margin: 0;
+		transform: translateY(-50%);
+	}
+	[data-bs-theme="dark"] #header {
+		background-color: rgba(16, 23, 34, 0.94);
+	}
+	[data-bs-theme="dark"] #navigation button i,
+	[data-bs-theme="dark"] #logo,
+	[data-bs-theme="dark"] .navigation-menu > li > a {
+		color: #fff;
+	}
+	[data-bs-theme="dark"] .nav-box {
+		background: #172131;
+	}
+	[data-bs-theme="dark"] .navbar-nav {
+		background: rgba(8, 15, 25, 0.25);
+	}
+}
 @media only screen and (max-width: 575px) {
 	.fp-responsive .section .section-inner {
 		padding-right: 16px;

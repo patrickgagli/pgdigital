@@ -22,6 +22,7 @@ The project has no build step, package manifest, backend, or test runner. Runtim
 - Scroll-triggered animations and animated fact counters
 - Client-side contact form using native validation and a prefilled `mailto:` link
 - Bootstrap Icons for navigation and social interface icons
+- Persistent light/dark theme toggle in the header
 - Responsive contact layout and normal-flow footer below 768 px
 
 ## Run Locally
@@ -57,7 +58,7 @@ Also smoke-test desktop and mobile layouts, especially the six navigation anchor
 
 - Contact submission depends on the visitor having a configured email client.
 - Social links are placeholders.
-- `js/scripts.js` and `js/cookie_consent.js` are present but are not loaded by `index.html`.
+- `js/cookie_consent.js` is present but is not loaded by `index.html`.
 - The page has basic metadata but no Open Graph, Twitter Card, structured data, sitemap, or `robots.txt` support.
 
 ## Contributing and License

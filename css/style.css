@@ -353,6 +353,50 @@ a#logo {
 .collapse:not(.show) {
   display:block;
 }
+.theme-toggle {
+  margin-left: 24px;
+  padding: 4px 8px;
+  border: 1px solid rgba(255,255,255,0.55);
+  border-radius: 50%;
+  background: transparent;
+  color: #fff;
+  font-size: 18px;
+  line-height: 1.4;
+  cursor: pointer;
+}
+.theme-toggle:hover,
+.theme-toggle:focus-visible {
+  background: rgba(255,255,255,0.15);
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+
+[data-bs-theme="dark"] body {
+  background: #101722;
+}
+[data-bs-theme="dark"] #video:after {
+  background: linear-gradient(to bottom, #172a46 0%, #101722 100%);
+  opacity: 0.94;
+}
+[data-bs-theme="dark"] .theme-toggle {
+  border-color: rgba(164, 213, 255, 0.7);
+  color: #a4d5ff;
+}
+[data-bs-theme="dark"] .form-control {
+  background: rgba(8, 15, 25, 0.5);
+  border-color: rgba(164, 213, 255, 0.55);
+}
+[data-bs-theme="dark"] .form-control:focus {
+  background: rgba(8, 15, 25, 0.75);
+  border-color: #a4d5ff;
+}
+[data-bs-theme="dark"] .contact-row,
+[data-bs-theme="dark"] .testimonials-section .item {
+  background: rgba(8, 15, 25, 0.45);
+}
+[data-bs-theme="dark"] .skills-row span {
+  background-color: #a4d5ff;
+}
 
 /*==============================================
 03. SOCIAL ICONS CSS

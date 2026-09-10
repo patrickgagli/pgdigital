@@ -53,7 +53,7 @@ Ce document suit l'état observable du dépôt. Une case terminée correspond à
 - [ ] Remplacer les pages d'accueil des plateformes sociales par des profils réels ou retirer les liens.
 - [ ] Passer l'attribut `lang` du document à `fr` pour refléter le contenu de l'interface.
 - [x] Retirer le chargement réseau de HTMX, qui n'est pas utilisé par la page.
-- [ ] Intégrer, tester et documenter le mode sombre de `js/scripts.js`.
+- [x] Intégrer, tester et documenter le mode sombre de `js/scripts.js`.
 - [ ] Intégrer, tester et documenter le consentement de `js/cookie_consent.js`.
 - [ ] Ajouter les métadonnées de partage Open Graph et Twitter Card.
 - [ ] Évaluer l'ajout de données structurées, d'un sitemap et d'un fichier `robots.txt`.

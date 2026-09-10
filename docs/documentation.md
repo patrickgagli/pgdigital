@@ -58,6 +58,10 @@ Owl Carousel gère quatre groupes : faits, services, compétences et outils. Les
 
 Sous 768 px, le bouton de navigation affiche ou masque le menu avec jQuery. La valeur `aria-expanded` est mise à jour à chaque action et le menu se referme après la sélection d'un lien.
 
+### Mode sombre
+
+Le bouton `#dark-mode-toggle` du header alterne les thèmes clair et sombre. Le thème courant est exposé par `data-bs-theme` sur l'élément `html`, l'état du bouton est annoncé par `aria-pressed` et le choix est conservé dans `localStorage` sous la clé `dark-mode`. Le thème sombre adapte aussi le fond, les surfaces, les champs de formulaire et le header mobile.
+
 ### Formulaire de contact
 
 Le formulaire ne transmet aucune donnée à un serveur. À la soumission :
@@ -80,8 +84,9 @@ Le formulaire ne transmet aucune donnée à un serveur. À la soumission :
 | Animate.css          | Fichier local   | Effets d'apparition                        |
 | Alpine.js 3.x        | CDN unpkg       | Animation de saisie du titre d'accueil     |
 | Raleway              | Google Fonts    | Typographie principale                     |
+| `js/scripts.js`       | Fichier local   | Préférence et bascule du thème             |
 
-`js/scripts.js` et `js/cookie_consent.js` sont conservés dans le dépôt, mais aucun des deux n'est chargé par `index.html`. Le mode sombre et le bandeau de consentement présents dans ces fichiers ne font donc pas partie de l'expérience active.
+`js/cookie_consent.js` est conservé dans le dépôt, mais n'est pas chargé par `index.html`. Le mode sombre de `js/scripts.js` est actif : le bouton du header bascule le thème, met à jour son état ARIA et conserve le choix dans `localStorage` sous la clé `dark-mode`.
 
 ## Responsive et accessibilité
 
@@ -108,7 +113,7 @@ node --check js/cookie_consent.js
 npx --yes html-validate@latest index.html
 ```
 
-État vérifié au 2026-09-10 : les trois contrôles de syntaxe JavaScript réussissent. La validation HTML signale trois liens sociaux sans nom accessible (`wcag/h30`) et une ligne contenant des espaces de fin (`no-trailing-whitespace`).
+État vérifié au 2026-09-11 : les contrôles de syntaxe JavaScript réussissent et le mode sombre a été vérifié dans un navigateur, y compris sa persistance après rechargement. La validation HTML signale trois liens sociaux sans nom accessible (`wcag/h30`) et une ligne contenant des espaces de fin (`no-trailing-whitespace`).
 
 Compléter ces contrôles par un test manuel sur ordinateur, à 390 x 844 et à 320 x 568 :
 
