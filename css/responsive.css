@@ -221,6 +221,11 @@
 	}
 	.fp-responsive .section[data-section="slide01"] .section-inner {
 		justify-content: center;
+		padding-top: 90px;
+		transition: padding-top 0.3s ease;
+	}
+	body.mobile-menu-open .fp-responsive .section[data-section="slide01"] .section-inner {
+		padding-top: 105px;
 	}
 	.fp-responsive .section[data-section="slide06"],
 	.fp-responsive .section[data-section="slide06"] .fp-tableCell {
