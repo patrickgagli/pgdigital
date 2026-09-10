@@ -42,6 +42,7 @@ Ce document suit l'état observable du dépôt. Une case terminée correspond à
 - [x] Ajouter les libellés accessibles, l'autocomplétion et le statut du formulaire.
 - [x] Corriger le flux mobile de la section Contact et du pied de page.
 - [x] Adapter la hauteur des sections au contenu et empêcher le header fixe de les recouvrir sur mobile.
+- [x] Uniformiser l'espace supérieur des sections mobiles sous le header fixe.
 - [x] Empiler les champs de contact et masquer les liens sociaux latéraux sous 768 px.
 - [x] Vérifier les six ancres et le menu mobile à 320 x 568 et 390 x 844.
 - [x] Aligner la documentation canonique sur le code au 2026-09-10.
