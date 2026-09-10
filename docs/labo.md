@@ -39,6 +39,14 @@ This file is the working area for experiments, roadmap planning, prompt trials, 
 - **Prompt 4**: enhance the security measures for user data
 - **Prompt 5**: improve the accessibility of the application for users with disabilities
 - **Prompt 6**: enhance the user interface for better user experience
+- **Prompt 7**: implement comprehensive logging and monitoring for the application
+- **Prompt 8**: USE the following resources to edit and enhance the hero section for modern UI design, advanced animations and engaging user experience:
+  - ASCII → retro terminal-style text overlay
+  - ICONSTACK → open-source icons via lucide-vue-next
+  - UNSPLASH → royalty-free hero imagery
+  - EFFECTS → glassmorphism, glow, parallax-style hover, gradient effects
+  - FRAMEGEN → AI-generated visual showcase area
+  - LUMNI → premium visual-asset-inspired layout and lighting
 
 
 
