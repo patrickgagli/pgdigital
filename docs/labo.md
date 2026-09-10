@@ -34,6 +34,11 @@ This file is the working area for experiments, roadmap planning, prompt trials, 
 
 ## Prompt Trials
 - **Prompt 1**: align canonical documentation with the current state of the project
+- **Prompt 2**: improve the responsiveness on mobile devices
+- **Prompt 3**: optimize the loading performance of the application
+- **Prompt 4**: enhance the security measures for user data
+- **Prompt 5**: improve the accessibility of the application for users with disabilities
+- **Prompt 6**: enhance the user interface for better user experience
 
 
 
