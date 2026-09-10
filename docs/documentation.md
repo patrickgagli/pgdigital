@@ -52,7 +52,7 @@ fullPage.js active la navigation verticale et les points latéraux. Sous 768 px 
 
 ### Carrousels
 
-Owl Carousel gère quatre groupes : faits, services, compétences et outils. Les listes affichent une carte sur mobile, deux à partir de 576 px lorsque la configuration le prévoit, puis trois à partir de 992 px. Les carrousels Compétences et Outils utilisent la lecture automatique.
+Owl Carousel gère quatre groupes : faits, services, compétences et outils. Les listes affichent une carte sur mobile, deux à partir de 576 px lorsque la configuration le prévoit, puis trois à partir de 992 px. Les cinq cartes Services conservent une hauteur uniforme, disposent de boutons précédent/suivant accessibles et le carrousel est recalculé au chargement et lors d'un redimensionnement. Les carrousels Compétences et Outils utilisent la lecture automatique.
 
 ### Menu mobile
 
@@ -88,7 +88,9 @@ Le formulaire ne transmet aucune donnée à un serveur. À la soumission :
 
 Les styles généraux sont définis dans `css/style.css`. Les adaptations de largeur et de hauteur se trouvent dans `css/responsive.css`, avec des paliers principaux à 1440, 1199, 991 et 767 px.
 
-Sur mobile, l'en-tête devient fixe, la navigation est repliée, la section Contact reprend une hauteur automatique minimale et le pied de page revient dans le flux normal. La vue Contact à 390 x 844 doit rester sans débordement horizontal, titre tronqué ou chevauchement entre le formulaire et le pied de page.
+Sur mobile, l'en-tête devient fixe et la navigation est repliée dans un menu dont les cibles tactiles mesurent au moins 44 px. Les sections utilisent une hauteur minimale égale à la hauteur visible de l'écran et s'agrandissent lorsque leur contenu l'exige. Un espace supérieur protège le contenu du header fixe.
+
+Sous 768 px, les liens sociaux latéraux sont masqués pour ne pas recouvrir le contenu. Sous 576 px, les champs Nom et Prénom sont empilés, les composants utilisent des espacements plus compacts et les cartes Compétences sont réduites. Le pied de page reste dans le flux normal. Les vues à 320 x 568 et 390 x 844 doivent rester sans débordement horizontal, titre tronqué ou chevauchement.
 
 L'interface actuelle comprend notamment des textes alternatifs pour les images, des libellés ARIA sur les champs du formulaire, un état `aria-expanded` sur le menu mobile, des indications `autocomplete` et une région `aria-live` pour le retour du formulaire.
 
@@ -107,9 +109,9 @@ node --check js/cookie_consent.js
 npx --yes html-validate@latest index.html
 ```
 
-État vérifié au 2026-09-10 : les trois contrôles de syntaxe JavaScript et la validation HTML réussissent.
+État vérifié au 2026-09-10 : les trois contrôles de syntaxe JavaScript réussissent. La validation HTML signale trois liens sociaux sans nom accessible (`wcag/h30`) et une ligne contenant des espaces de fin (`no-trailing-whitespace`).
 
-Compléter ces contrôles par un test manuel sur ordinateur et à 390 x 844 :
+Compléter ces contrôles par un test manuel sur ordinateur, à 390 x 844 et à 320 x 568 :
 
 - absence d'erreur dans la console et de ressource locale introuvable ;
 - activation correcte des six ancres ;

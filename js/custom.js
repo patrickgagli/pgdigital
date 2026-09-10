@@ -77,9 +77,14 @@
             });
         }
         if ($('.services-list').length) {
-            $('.services-list').owlCarousel({
+            var $servicesList = $('.services-list');
+            $servicesList.owlCarousel({
                 loop: true,
-                nav: false,
+                nav: true,
+                navText: [
+                    '<i class="bi bi-chevron-left" aria-hidden="true"></i><span class="sr-only">Service précédent</span>',
+                    '<i class="bi bi-chevron-right" aria-hidden="true"></i><span class="sr-only">Service suivant</span>'
+                ],
                 dots: true,
                 items: 3,
                 margin: 30,
@@ -104,6 +109,9 @@
                         margin: 30
                     }
                 }
+            });
+            $(window).on('load resize', function() {
+                $servicesList.trigger('refresh.owl.carousel');
             });
         }
         if ($('.gallery-list').length) {

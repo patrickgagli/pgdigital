@@ -33,6 +33,7 @@ Ce document suit l'état observable du dépôt. Une case terminée correspond à
 - [x] Synchroniser la navigation et les ancres `slide01` à `slide06`.
 - [x] Configurer fullPage.js et son mode responsive sous 768 px.
 - [x] Ajouter les carrousels responsives avec Owl Carousel.
+- [x] Uniformiser, recentrer et rendre les cinq cartes Services accessibles par des contrôles explicites.
 - [x] Déclencher les animations Animate.css avec jquery.inview.
 - [x] Animer les compteurs de la section À propos une seule fois.
 - [x] Ajouter l'effet de saisie du titre avec Alpine.js.
@@ -40,11 +41,14 @@ Ce document suit l'état observable du dépôt. Une case terminée correspond à
 - [x] Ajouter la validation native et l'envoi `mailto:` du formulaire de contact.
 - [x] Ajouter les libellés accessibles, l'autocomplétion et le statut du formulaire.
 - [x] Corriger le flux mobile de la section Contact et du pied de page.
+- [x] Adapter la hauteur des sections au contenu et empêcher le header fixe de les recouvrir sur mobile.
+- [x] Empiler les champs de contact et masquer les liens sociaux latéraux sous 768 px.
+- [x] Vérifier les six ancres et le menu mobile à 320 x 568 et 390 x 844.
 - [x] Aligner la documentation canonique sur le code au 2026-09-10.
-- [x] Corriger les noms accessibles des liens sociaux et les espaces de fin signalés par `html-validate`.
 
 ## Prochaines priorités
 
+- [ ] Corriger les noms accessibles des trois liens sociaux et l'espace de fin signalés par `html-validate`.
 - [ ] Remplacer les pages d'accueil des plateformes sociales par des profils réels ou retirer les liens.
 - [ ] Passer l'attribut `lang` du document à `fr` pour refléter le contenu de l'interface.
 - [ ] Décider si HTMX doit être utilisé ; sinon, retirer son chargement réseau.
