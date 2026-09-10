@@ -1,46 +1,68 @@
 # PGDIGITAL — Developer Portfolio
 
+PGDigital is a static, single-page developer portfolio deployed on GitHub Pages. It presents services, skills, tools, and contact information across six full-page sections.
 
-This is the source code for my developer portfolio website. 
-It showcases my skills, projects, and contact information in a clean and modern design.
+## Technology Stack
 
-## Technologies Used
-- HTML5
-- CSS3
+- HTML5 and CSS3
 - Bootstrap and Bootstrap Icons
-- Alpine.js for interactivity
-- jQuery, fullPage.js, and Owl Carousel
-- GitHub Pages for hosting
-- Google Fonts for typography
-- Animate.css for animations
+- jQuery, fullPage.js, Owl Carousel, and jquery.inview
+- Alpine.js for the hero typing effect
+- Animate.css for viewport-triggered animations
+- HTMX is loaded but is not currently used by the page
+- Google Fonts (Raleway)
+
+The project has no build step, package manifest, backend, or test runner. Runtime libraries are loaded from local vendored files or public CDNs.
 
 ## Features
-- Responsive design for optimal viewing on all devices
-- Interactive elements powered by Alpine.js
-- Full-page navigation and responsive carousels
-- Scroll-triggered animations using Animate.css
-- Showcase of projects and skills
-- Contact form for inquiries
-- Social media integration with Font Awesome icons
-- Clean and modern UI/UX design
-- SEO optimized for better visibility
-- Fast loading times
-- Cross-browser compatibility
-- Easy to customize and extend
 
-## Getting Started
-To run this project locally, follow these steps:
+- Six synchronized navigation anchors: `slide01` through `slide06`
+- Full-page desktop navigation with responsive normal scrolling
+- Responsive carousels for facts, services, skills, and tools
+- Mobile navigation with an accessible expanded state
+- Scroll-triggered animations and animated fact counters
+- Client-side contact form using native validation and a prefilled `mailto:` link
+- Bootstrap Icons for navigation and social interface icons
+- Responsive contact layout and normal-flow footer below 768 px
+
+## Run Locally
+
 1. Clone the repository:
+
    ```bash
    git clone https://github.com/patrickgagli/pgdigital.git
    cd pgdigital
    ```
-2. Open `index.html` in your preferred web browser.
 
-## Contributing
-This is a private portfolio project and is not open to external contributions.
+2. Open `index.html` directly in a browser. No server or dependency installation is required.
 
-## License
-Private — Not open for external contributions. Owned by the author.
+## Validation
 
-[PGDIGITAL](https://patrickgagli.github.io/pgdigital/).
+```powershell
+node --check js/custom.js
+node --check js/scripts.js
+node --check js/cookie_consent.js
+npx --yes html-validate@latest index.html
+```
+
+Also smoke-test desktop and mobile layouts, especially the six navigation anchors, mobile menu, carousels, contact form, external CDN resources, and the Contact view at 390 x 844.
+
+## Documentation
+
+- [Technical documentation](docs/documentation.md)
+- [Project structure](docs/structure.md)
+- [Project tasks](docs/tasks.md)
+- [Experiment log](docs/labo.md)
+
+## Current Limitations
+
+- Contact submission depends on the visitor having a configured email client.
+- Social links are placeholders.
+- `js/scripts.js` and `js/cookie_consent.js` are present but are not loaded by `index.html`.
+- The page has basic metadata but no Open Graph, Twitter Card, structured data, sitemap, or `robots.txt` support.
+
+## Contributing and License
+
+This is a private portfolio project and is not open to external contributions. All rights are reserved by the author.
+
+[View PGDigital](https://patrickgagli.github.io/pgdigital/)
