@@ -41,11 +41,11 @@ Ce document suit l'état observable du dépôt. Une case terminée correspond à
 - [x] Ajouter les libellés accessibles, l'autocomplétion et le statut du formulaire.
 - [x] Corriger le flux mobile de la section Contact et du pied de page.
 - [x] Aligner la documentation canonique sur le code au 2026-09-10.
+- [x] Corriger les noms accessibles des liens sociaux et les espaces de fin signalés par `html-validate`.
 
 ## Prochaines priorités
 
-- [ ] Corriger les quatre erreurs `html-validate` actuelles : nom accessible des trois liens sociaux et espace de fin dans `index.html`.
-- [ ] Remplacer les cibles `#` des liens sociaux par des profils réels ou retirer les liens.
+- [ ] Remplacer les pages d'accueil des plateformes sociales par des profils réels ou retirer les liens.
 - [ ] Passer l'attribut `lang` du document à `fr` pour refléter le contenu de l'interface.
 - [ ] Décider si HTMX doit être utilisé ; sinon, retirer son chargement réseau.
 - [ ] Décider si le mode sombre de `js/scripts.js` doit être intégré, testé et documenté, ou supprimé.

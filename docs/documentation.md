@@ -107,7 +107,7 @@ node --check js/cookie_consent.js
 npx --yes html-validate@latest index.html
 ```
 
-État vérifié au 2026-09-10 : les trois contrôles de syntaxe JavaScript réussissent. La validation HTML signale encore quatre erreurs dans `index.html` : les trois liens sociaux n'ont pas de texte accessible (`wcag/h30`) et une ligne contient des espaces de fin (`no-trailing-whitespace`). Ces écarts sont suivis dans `docs/tasks.md`.
+État vérifié au 2026-09-10 : les trois contrôles de syntaxe JavaScript et la validation HTML réussissent.
 
 Compléter ces contrôles par un test manuel sur ordinateur et à 390 x 844 :
 
