@@ -197,6 +197,21 @@
 		z-index: 6666;
 		background-color: rgba(250,250,250,0.9);
 	}
+	.fp-responsive .section[data-section="slide06"],
+	.fp-responsive .section[data-section="slide06"] .fp-tableCell {
+		height: auto !important;
+		min-height: 100vh;
+	}
+	.fp-responsive .section[data-section="slide06"] .fp-tableCell {
+		vertical-align: top;
+	}
+	.fp-responsive .section[data-section="slide06"] .section-inner {
+		padding-top: 90px;
+		padding-bottom: 70px;
+	}
+	footer.fixed-bottom {
+		position: static !important;
+	}
 	#navigation button i {
 		color: #1e1e1e;
 	}

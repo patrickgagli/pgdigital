@@ -7,17 +7,18 @@ It showcases my skills, projects, and contact information in a clean and modern 
 ## Technologies Used
 - HTML5
 - CSS3
+- Bootstrap and Bootstrap Icons
 - Alpine.js for interactivity
+- jQuery, fullPage.js, and Owl Carousel
 - GitHub Pages for hosting
-- Font Awesome for icons
 - Google Fonts for typography
 - Animate.css for animations
-- AOS (Animate On Scroll) Library for scroll animations
 
 ## Features
 - Responsive design for optimal viewing on all devices
 - Interactive elements powered by Alpine.js
-- Smooth scrolling and animations using AOS and Animate.css
+- Full-page navigation and responsive carousels
+- Scroll-triggered animations using Animate.css
 - Showcase of projects and skills
 - Contact form for inquiries
 - Social media integration with Font Awesome icons
@@ -37,7 +38,7 @@ To run this project locally, follow these steps:
 2. Open `index.html` in your preferred web browser.
 
 ## Contributing
-Contributions are welcome! If you have suggestions or improvements, please feel free to fork the repository and submit a pull request.
+This is a private portfolio project and is not open to external contributions.
 
 ## License
 Private — Not open for external contributions. Owned by the author.

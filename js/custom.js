@@ -153,9 +153,9 @@
             });
         }
         if ($('.fullpage-default').length) {
-            var myFullpage = new fullpage('.fullpage-default', {
-                licenseKey: ' C7F41B00-5E824594-9A5EFB99-B556A3D5',
-                anchors: ['slide01', 'slide02', 'slide03', 'slide04', 'slide05', 'slide06', 'slide07'],
+            new fullpage('.fullpage-default', {
+                licenseKey: 'C7F41B00-5E824594-9A5EFB99-B556A3D5',
+                anchors: ['slide01', 'slide02', 'slide03', 'slide04', 'slide05', 'slide06'],
                 menu: '#nav',
                 lazyLoad: true,
                 navigation: true,
@@ -168,26 +168,35 @@
         }
         $(document).on('click', '.navbar-toggle', function() {
             $('.navbar-collapse').slideToggle(300);
+            $(this).attr('aria-expanded', $(this).attr('aria-expanded') !== 'true');
             return false;
         }).on('click', '.navigation-menu > li > a', function() {
             $('.navbar-collapse').slideUp(300);
+            $('.navbar-toggle').attr('aria-expanded', 'false');
         }).on('click', '.next-section', function() {
             fullpage_api.moveSectionDown();
         });
-        $('.facts-row').on('inview', function(event, isInView) {
-            $('.count-number').each(function() {
-                $(this).prop('Counter', 0).animate({
-                    Counter: $(this).text()
+        $('.facts-list').on('inview', function(event, isInView) {
+            var $factsList = $(this);
+            if (!isInView || $factsList.data('counted')) {
+                return;
+            }
+            $factsList.data('counted', true);
+            $factsList.find('.count-number').each(function() {
+                var $counter = $(this);
+                var target = Number($counter.text());
+                $counter.prop('Counter', 0).animate({
+                    Counter: target
                 }, {
                     duration: 1000,
                     easing: 'swing',
                     step: function(now) {
-                        $(this).text(Math.ceil(now));
+                        $counter.text(Math.ceil(now));
+                    },
+                    complete: function() {
+                        $counter.text(target).removeClass('count-number').addClass('counted');
                     }
                 });
-                setTimeout(function() {
-                    $('.count-number').removeClass('count-number').addClass('counted');
-                }, 1000);
             });
         });
         $('.skills-row').on('inview', function(event, isInView) {
@@ -198,63 +207,19 @@
         }).on('click', '.side-menu .navbar-nav li a', function() {
             $('body').removeClass('sidemenu-open');
         });
+
+        $('#contactForm').on('submit', function(event) {
+            event.preventDefault();
+
+            if (!this.checkValidity()) {
+                this.reportValidity();
+                return;
+            }
+
+            var subject = 'Demande de contact de ' + $('#first_name').val() + ' ' + $('#last_name').val();
+            var body = $('#message').val() + '\n\nAdresse de réponse : ' + $('#email').val();
+            $('#form-messages').text('Ouverture de votre application de messagerie...');
+            window.location.href = 'mailto:patrickgagli@yahoo.co.uk?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+        });
     });
 })(jQuery, window, document);
-
-// Alpine.js function to load services from JSON
-function servicesData() {
-    return {
-        services: [],
-        async init() {
-            try {
-                const response = await fetch('json/services.json');
-                const data = await response.json();
-                this.services = data.results;
-                
-                // Initialize Owl Carousel after services are loaded and DOM is ready
-                setTimeout(() => {
-                    const $carousel = jQuery('.services-list');
-                    if ($carousel.length) {
-                        // Destroy existing carousel if it exists
-                        if ($carousel.data('owl.carousel')) {
-                            $carousel.data('owl.carousel').destroy();
-                        }
-                        // Initialize new carousel
-                        $carousel.owlCarousel({
-                            loop: true,
-                            nav: false,
-                            dots: true,
-                            items: 3,
-                            margin: 30,
-                            autoplay: false,
-                            smartSpeed: 700,
-                            autoplayTimeout: 6000,
-                            responsive: {
-                                0: {
-                                    items: 1,
-                                    margin: 0
-                                },
-                                460: {
-                                    items: 1,
-                                    margin: 0
-                                },
-                                576: {
-                                    items: 2,
-                                    margin: 20
-                                },
-                                992: {
-                                    items: 3,
-                                    margin: 30
-                                }
-                            }
-                        });
-                        // Trigger refresh to ensure proper display
-                        $carousel.trigger('refresh.owl.carousel');
-                    }
-                }, 150);
-            } catch (error) {
-                console.error('Error loading services:', error);
-            }
-        }
-    };
-}
