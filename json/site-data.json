@@ -100,9 +100,5 @@
         "name": "GAGLI Patrick",
         "email": "patrickgagli@yahoo.co.uk"
     },
-    "social": [
-        { "label": "Twitter", "icon": "bi-twitter", "url": "https://twitter.com" },
-        { "label": "Reddit", "icon": "bi-reddit", "url": "https://reddit.com" },
-        { "label": "Github", "icon": "bi-github", "url": "https://github.com" }
-    ]
+    "social": []
 }

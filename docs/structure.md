@@ -23,13 +23,13 @@ pgdigital/
 ├── css/
 │   ├── style.css
 │   ├── responsive.css
-│   ├── cookie_consent.css
+│   ├── cookie_consent.css (non intégré)
 │   └── bibliothèques CSS locales
 ├── js/
 │   ├── custom.js
 │   ├── data.js
 │   ├── scripts.js
-│   ├── cookie_consent.js
+│   ├── cookie_consent.js (non intégré)
 │   └── bibliothèques JavaScript locales
 ├── json/
 │   ├── site-data.json
@@ -55,7 +55,7 @@ pgdigital/
 | `css/responsive.css`    | Surcharges liées aux dimensions de l'écran et comportement mobile                                    |
 | `js/custom.js`          | fullPage.js, carrousels, animations, compteurs, menu mobile et formulaire de contact                 |
 | `js/data.js`            | Chargement des fichiers `json/` et rendu des sections pilotées par les données                       |
-| `json/site-data.json`   | Données de contenu : faits, services, compétences, outils, coordonnées et liens sociaux              |
+| `json/site-data.json`   | Données de contenu : faits, services, compétences, outils et coordonnées                              |
 | `json/contact-form.json`| Configuration du formulaire : endpoint, clé d'accès, clés de stockage local et messages              |
 | `img/competences/`      | Illustrations de la section Compétences                                                              |
 | `img/tools/`            | Illustrations de la section Outils                                                                   |
@@ -92,6 +92,6 @@ Bootstrap Icons, Alpine.js et Google Fonts sont chargés depuis des CDN. Une ouv
 ## Fichiers présents mais non intégrés
 
 - `js/scripts.js` est chargé par `index.html` et gère le mode sombre ainsi que sa préférence locale.
-- `js/cookie_consent.js` et `css/cookie_consent.css` concernent un bandeau de consentement, mais ne sont pas référencés par `index.html`.
+- `js/cookie_consent.js` et `css/cookie_consent.css` concernent un bandeau de consentement, mais ne sont pas référencés par `index.html`. Le script dépend aussi d'une API serveur `/api/cookie-consent/` absente de ce dépôt.
 
 Ces fichiers ne doivent pas être décrits comme des fonctionnalités livrées tant qu'ils ne sont pas intégrés et testés.

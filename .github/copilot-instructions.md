@@ -6,8 +6,11 @@
 - `index.html` is the application entry point and contains all page sections and content.
 - `css/style.css` owns the base visual design. `css/responsive.css` owns viewport-specific overrides.
 - `js/custom.js` owns active page behavior: fullPage navigation, Owl Carousel setup, animation triggers, the mobile menu, and contact-form handling.
+- `js/data.js` loads JSON content and form configuration before `js/custom.js` initializes the page.
+- `js/scripts.js` owns the persistent light/dark theme toggle.
 - Files such as `bootstrap.min.*`, `fullpage.min.js`, `owl.carousel.min.js`, and `jquery.js` are vendored dependencies. Do not edit minified vendor files.
-- Alpine.js is used for the hero typing effect. The contact form is intentionally client-only and opens a prefilled `mailto:` URL.
+- Alpine.js is used for the hero typing effect. The contact form posts JSON to the configured endpoint and falls back to a prefilled `mailto:` URL when no endpoint is configured.
+- `js/cookie_consent.js` and `css/cookie_consent.css` are deferred experiments, not active features; do not document them as integrated without adding the required markup and server API.
 
 ## Editing conventions
 
@@ -25,6 +28,7 @@ There is no automated test suite. Run the available checks after changes:
 
 ```powershell
 node --check js/custom.js
+node --check js/data.js
 node --check js/scripts.js
 node --check js/cookie_consent.js
 npx --yes html-validate@latest index.html
@@ -38,3 +42,4 @@ Open `index.html` directly in a browser and smoke-test at desktop and mobile wid
 - carousels, Bootstrap Icons, and hero typing render;
 - Contact form required/email validation works and valid submission opens a prefilled email;
 - the 390x844 Contact view has no horizontal overflow, clipped heading, or footer/form overlap.
+- the JSON-backed page works through HTTP and the static fallback works from `file://`.

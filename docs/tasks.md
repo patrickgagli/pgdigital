@@ -56,21 +56,21 @@ Ce document suit l'état observable du dépôt. Une case terminée correspond à
 ## Prochaines priorités
 
 - [ ] Renseigner la clé d'accès du service de formulaire dans `json/contact-form.json` pour activer l'envoi réel en production.
-- [ ] Remplacer les pages d'accueil des plateformes sociales par des profils réels ou retirer les liens.
-- [ ] Passer l'attribut `lang` du document à `fr` pour refléter le contenu de l'interface.
+- [x] Retirer les liens sociaux génériques tant que les profils réels ne sont pas configurés.
+- [x] Passer l'attribut `lang` du document à `fr` pour refléter le contenu de l'interface.
 - [x] Retirer le chargement réseau de HTMX, qui n'est pas utilisé par la page.
 - [x] Intégrer, tester et documenter le mode sombre de `js/scripts.js`.
-- [ ] Intégrer, tester et documenter le consentement de `js/cookie_consent.js`.
+- [ ] Intégrer, tester et documenter le consentement de `js/cookie_consent.js` avec un bandeau HTML et une API serveur compatibles.
 - [ ] Ajouter les métadonnées de partage Open Graph et Twitter Card.
 - [ ] Évaluer l'ajout de données structurées, d'un sitemap et d'un fichier `robots.txt`.
 - [x] Évaluer un canal de contact ne dépendant pas d'une application de messagerie locale.
 
 ## Contrôles récurrents
 
-- [ ] Exécuter `node --check js/custom.js` après une modification du comportement actif.
-- [ ] Exécuter `node --check js/data.js` et valider les fichiers `json/` après une modification des données.
-- [ ] Exécuter les contrôles de syntaxe sur `js/scripts.js` et `js/cookie_consent.js` lorsqu'ils sont modifiés.
-- [ ] Exécuter `npx --yes html-validate@latest index.html` après une modification du balisage.
+- [x] Exécuter `node --check js/custom.js` après une modification du comportement actif.
+- [x] Exécuter `node --check js/data.js` et valider les fichiers `json/` après une modification des données.
+- [x] Exécuter les contrôles de syntaxe sur `js/scripts.js` et `js/cookie_consent.js` lorsqu'ils sont modifiés.
+- [x] Exécuter `npx --yes html-validate@latest index.html` après une modification du balisage.
 - [ ] Vérifier l'absence d'erreur console et de ressource locale introuvable.
 - [ ] Tester les six ancres et l'état actif de la navigation.
 - [ ] Tester l'ouverture, la fermeture et `aria-expanded` du menu mobile.

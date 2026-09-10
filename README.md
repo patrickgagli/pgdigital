@@ -20,9 +20,9 @@ The project has no build step, package manifest, backend, or test runner. Runtim
 - Responsive carousels for facts, services, skills, and tools
 - Mobile navigation with an accessible expanded state
 - Scroll-triggered animations and animated fact counters
-- Content data (facts, services, skills, tools, contact details, social links) loaded from `json/site-data.json`, with the static markup in `index.html` as fallback
+- Content data (facts, services, skills, tools, and contact details) loaded from `json/site-data.json`, with the static markup in `index.html` as fallback
 - Contact form posting JSON to a configurable endpoint, with honeypot spam trap, native validation, localStorage draft autosave, an offline outbox retried automatically, and a `mailto:` fallback when no endpoint is configured
-- Bootstrap Icons for navigation and social interface icons
+- Bootstrap Icons for navigation and interface controls
 - Persistent light/dark theme toggle in the header
 - Responsive contact layout and normal-flow footer below 768 px
 
@@ -45,7 +45,7 @@ The project has no build step, package manifest, backend, or test runner. Runtim
 
 ## Contact Form Configuration
 
-Edit `json/contact-form.json` and set `accessKey` to a [Web3Forms](https://web3forms.com/) access key (public by design). While `accessKey` is empty the form keeps the previous `mailto:` behaviour. Any endpoint accepting a JSON `POST` can be used through the `endpoint` field.
+Edit `json/contact-form.json` to configure the [Web3Forms](https://web3forms.com/) endpoint and public access key. The current configuration uses Web3Forms; if either `endpoint` or `accessKey` is empty, the form falls back to `mailto:`. Any endpoint accepting a JSON `POST` can be used through the `endpoint` field.
 
 ## Validation
 
@@ -70,8 +70,8 @@ Also smoke-test desktop and mobile layouts, especially the six navigation anchor
 
 - Contact submission falls back to the visitor's email client until a form endpoint access key is configured.
 - Content changes must be mirrored in `json/site-data.json` and in the static fallback markup.
-- Social links are placeholders.
-- `js/cookie_consent.js` is present but is not loaded by `index.html`.
+- Social links are intentionally omitted until real profile URLs are available.
+- `js/cookie_consent.js` and `css/cookie_consent.css` are present but are not integrated or loaded by `index.html`; the script also expects a server API that this static site does not provide.
 - The page has basic metadata but no Open Graph, Twitter Card, structured data, sitemap, or `robots.txt` support.
 
 ## Contributing and License

@@ -8,7 +8,7 @@ owners:
   - Product
   - Engineering
   - Design
-last_updated: 2026-09-10
+last_updated: 2026-09-11
 tags: [documentation, projet, pgdigital]
 ---
 
@@ -26,10 +26,10 @@ Le contenu variable est décrit dans deux fichiers JSON servis avec le site :
 
 | Fichier                  | Contenu                                                                          |
 | ------------------------ | -------------------------------------------------------------------------------- |
-| `json/site-data.json`    | Faits, services, compétences, outils, coordonnées de contact et liens sociaux      |
+| `json/site-data.json`    | Faits, services, compétences, outils et coordonnées de contact                     |
 | `json/contact-form.json` | Endpoint, clé d'accès, destinataire, clés de stockage local et messages de statut |
 
-`js/data.js` récupère ces fichiers, reconstruit le contenu des conteneurs `.facts-list`, `.services-list`, `.testimonials-slider`, `.gallery-list`, `.contact-box` et `.social-icons`, puis expose la promesse `window.PGDigital.ready`. `js/custom.js` attend cette promesse avant d'initialiser les carrousels et fullPage.js, afin que les éléments rendus soient pris en compte.
+`js/data.js` récupère ces fichiers, reconstruit le contenu des conteneurs `.facts-list`, `.services-list`, `.testimonials-slider`, `.gallery-list` et `.contact-box`, puis expose la promesse `window.PGDigital.ready`. `js/custom.js` attend cette promesse avant d'initialiser les carrousels et fullPage.js, afin que les éléments rendus soient pris en compte.
 
 Les valeurs textuelles sont insérées via `textContent` et les URL sont restreintes aux schémas `http`, `https` et `mailto`.
 
@@ -111,7 +111,7 @@ Aucune clé d'accès n'est fournie par défaut : tant que `accessKey` est vide, 
 | `js/scripts.js`       | Fichier local   | Préférence et bascule du thème             |
 | `js/data.js`          | Fichier local   | Chargement des JSON et rendu du contenu    |
 
-`js/cookie_consent.js` est conservé dans le dépôt, mais n'est pas chargé par `index.html`. Le mode sombre de `js/scripts.js` est actif : le bouton du header bascule le thème, met à jour son état ARIA et conserve le choix dans `localStorage` sous la clé `dark-mode`.
+`js/cookie_consent.js` et `css/cookie_consent.css` sont conservés dans le dépôt comme expérimentation non intégrée. Ils ne sont pas chargés par `index.html` et le script attend une API serveur `/api/cookie-consent/` absente de ce dépôt. Le mode sombre de `js/scripts.js` est actif : le bouton du header bascule le thème, met à jour son état ARIA et conserve le choix dans `localStorage` sous la clé `dark-mode`.
 
 ## Responsive et accessibilité
 
@@ -139,7 +139,7 @@ node --check js/cookie_consent.js
 npx --yes html-validate@latest index.html
 ```
 
-État vérifié au 2026-09-11 : les contrôles de syntaxe JavaScript et la validation HTML réussissent. Le rendu piloté par les fichiers JSON, la restauration du brouillon, la mise en file d'un envoi échoué et son réenvoi automatique ont été vérifiés dans un navigateur via un serveur HTTP local ; le repli statique a été vérifié par ouverture directe en `file://`.
+État vérifié au 2026-09-11 : les contrôles de syntaxe JavaScript et la validation HTML réussissent. Le rendu piloté par les fichiers JSON, les six sections, le menu mobile et l'absence de débordement horizontal à 390 x 844 ont été vérifiés dans un navigateur via un serveur HTTP local. La restauration du brouillon, la mise en file d'un envoi échoué et le repli statique `file://` restent des contrôles manuels à compléter.
 
 Compléter ces contrôles par un test manuel sur ordinateur, à 390 x 844 et à 320 x 568 :
 
