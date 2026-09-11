@@ -139,7 +139,10 @@
             return;
         }
         var nodes = [element('div', 'contact-row', contact.name)];
-        var mail = safeUrl('mailto:' + contact.email);
+        if (contact.address) {
+            nodes.push(element('div', 'contact-row', contact.address));
+        }
+        var mail = contact.email ? safeUrl('mailto:' + contact.email) : '';
         if (mail) {
             var row = element('div', 'contact-row');
             var link = element('a', null, contact.email);

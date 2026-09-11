@@ -1,7 +1,7 @@
 {
     "endpoint": "https://api.web3forms.com/submit",
     "accessKey": "4020d931-2ace-4ea5-98d9-c6918187a631",
-    "recipient": "patrickgagli@yahoo.co.uk",
+    "recipient": "patrickgagli@gmail.com",
     "subjectPrefix": "Demande de contact de",
     "storage": {
         "draftKey": "pgdigital:contact:draft",
