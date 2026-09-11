@@ -226,16 +226,18 @@
 	.fp-responsive .section[data-section="slide01"],
 	.fp-responsive .section[data-section="slide01"] .fp-tableCell,
 	.fp-responsive .section[data-section="slide01"] .section-inner {
-		min-height: 100vh;
-		min-height: 100svh;
+		min-height: 0;
 	}
 	.fp-responsive .section[data-section="slide01"] .section-inner {
-		justify-content: center;
-		padding: 82px 20px 88px;
+		justify-content: flex-start;
+		padding: 62px 20px 0;
 		transition: padding-top 0.3s ease;
 	}
 	body.mobile-menu-open .fp-responsive .section[data-section="slide01"] .section-inner {
-		padding-top: 70px;
+		padding-top: 62px;
+	}
+	.fp-responsive .section[data-section="slide01"] .next-section {
+		display: none;
 	}
 	.fp-responsive .section[data-section="slide06"],
 	.fp-responsive .section[data-section="slide06"] .fp-tableCell {
@@ -619,22 +621,12 @@
 }
 @media only screen and (max-width: 767px) and (max-height: 700px) {
 	.fp-responsive .section[data-section="slide01"] .section-inner {
-		padding-top: 74px;
-		padding-bottom: 76px;
+		padding-top: 62px;
+		padding-bottom: 0;
 	}
 	.welcome-box p {
 		margin-bottom: 12px;
 		line-height: 1.45;
-	}
-	.next-section {
-		bottom: 12px;
-	}
-	.next-section img {
-		max-height: 28px;
-	}
-	.next-section span {
-		margin-top: 6px;
-		font-size: 11px;
 	}
 }
 @media only screen and (min-width: 768px) and (max-height: 600px) {
