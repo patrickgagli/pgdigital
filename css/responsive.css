@@ -236,9 +236,12 @@
 	.fp-responsive .section[data-section="slide06"] .fp-tableCell {
 		vertical-align: top;
 	}
+	.fp-responsive .section[data-section="slide06"] {
+		margin-bottom: 0 !important;
+	}
 	.fp-responsive .section[data-section="slide06"] .section-inner {
-		padding-top: 105px;
-		padding-bottom: 48px;
+		padding-top: 90px;
+		padding-bottom: 24px;
 		justify-content: flex-start;
 	}
 	footer.fixed-bottom {
