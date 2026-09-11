@@ -66,9 +66,9 @@
     ],
     "tools": [
         {
-            "name": "GitLab",
-            "image": "img/tools/gitlab.png",
-            "description": "Outil de gestion de dépôts de code source et de CI/CD"
+            "name": "Vue.js",
+            "image": "img/tools/vue_js.png",
+            "description": "Framework JavaScript pour la construction d'interfaces utilisateur"
         },
         {
             "name": "Kubernetes",
