@@ -26,6 +26,24 @@
             }
         }
     };
+
+    var alignResponsiveSection = function(sectionName) {
+        sectionName = sectionName || window.location.hash.slice(1);
+        var section = sectionName && document.querySelector('[data-section="' + sectionName + '"]');
+        if (section && document.body.classList.contains('fp-responsive')) {
+            var header = document.getElementById('header');
+            var headerHeight = header ? header.offsetHeight : 0;
+            var sectionTop = section.getBoundingClientRect().top + window.pageYOffset;
+            window.scrollTo(0, Math.max(0, sectionTop - headerHeight));
+        }
+    };
+
+    var refreshResponsiveCarousels = function() {
+        if (document.body.classList.contains('fp-responsive')) {
+            $('.owl-carousel').trigger('refresh.owl.carousel');
+        }
+    };
+
     $(document).ready(function() {
         $(window).on('load', function() {
             $('.preloader').fadeOut();
@@ -45,6 +63,7 @@
                     });
                 });
             });
+            setTimeout(alignResponsiveSection, 1500);
         });
         var initComponents = function(formConfig) {
         if ($('.facts-list').length) {
@@ -172,8 +191,21 @@
                 scrollOverflow: true,
                 responsiveWidth: 768,
                 responsiveHeight: 600,
-                responsiveSlides: true
+                responsiveSlides: true,
+                afterLoad: function(origin, destination) {
+                    if (destination && destination.anchor) {
+                        setTimeout(function() {
+                            alignResponsiveSection(destination.anchor);
+                        }, 0);
+                    }
+                },
+                afterResponsive: function(isResponsive) {
+                    if (isResponsive) {
+                        setTimeout(refreshResponsiveCarousels, 0);
+                    }
+                }
             });
+            refreshResponsiveCarousels();
         }
         $(document).on('click', '.navbar-toggle', function() {
             $('.navbar-collapse').slideToggle(300);
