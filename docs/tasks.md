@@ -55,7 +55,7 @@ Ce document suit l'état observable du dépôt. Une case terminée correspond à
 
 ## Prochaines priorités
 
-- [ ] Renseigner la clé d'accès du service de formulaire dans `json/contact-form.json` pour activer l'envoi réel en production.
+- [x] Renseigner la clé d'accès du service de formulaire dans `json/contact-form.json` pour activer l'envoi réel en production.
 - [x] Retirer les liens sociaux génériques tant que les profils réels ne sont pas configurés.
 - [x] Passer l'attribut `lang` du document à `fr` pour refléter le contenu de l'interface.
 - [x] Retirer le chargement réseau de HTMX, qui n'est pas utilisé par la page.
