@@ -24,11 +24,9 @@ tags:
 ---
 
 # Tâches
-
 Ce document suit l'état observable du dépôt. Une case terminée correspond à une fonctionnalité présente dans le code actuel, pas nécessairement à une validation sur tous les navigateurs.
 
 ## Livré
-
 - [x] Créer les six sections Accueil, À propos, Services, Compétences, Outils et Contact.
 - [x] Synchroniser la navigation et les ancres `slide01` à `slide06`.
 - [x] Configurer fullPage.js et son mode responsive sous 768 px.
@@ -54,7 +52,6 @@ Ce document suit l'état observable du dépôt. Une case terminée correspond à
 - [x] Corriger les noms accessibles des trois liens sociaux et l'espace de fin signalés par `html-validate`.
 
 ## Prochaines priorités
-
 - [x] Renseigner la clé d'accès du service de formulaire dans `json/contact-form.json` pour activer l'envoi réel en production.
 - [x] Retirer les liens sociaux génériques tant que les profils réels ne sont pas configurés.
 - [x] Passer l'attribut `lang` du document à `fr` pour refléter le contenu de l'interface.
@@ -66,7 +63,6 @@ Ce document suit l'état observable du dépôt. Une case terminée correspond à
 - [x] Évaluer un canal de contact ne dépendant pas d'une application de messagerie locale.
 
 ## Contrôles récurrents
-
 - [x] Exécuter `node --check js/custom.js` après une modification du comportement actif.
 - [x] Exécuter `node --check js/data.js` et valider les fichiers `json/` après une modification des données.
 - [x] Exécuter les contrôles de syntaxe sur `js/scripts.js` et `js/cookie_consent.js` lorsqu'ils sont modifiés.
@@ -81,10 +77,34 @@ Ce document suit l'état observable du dépôt. Une case terminée correspond à
 - [ ] Tester la section Contact à 390 x 844 sans débordement, titre tronqué ni chevauchement du pied de page.
 
 ## Règle de mise à jour
-
 Lorsqu'une fonctionnalité est ajoutée ou retirée, mettre à jour dans la même modification :
 
 - la documentation technique si le comportement ou une dépendance change ;
 - la structure si la responsabilité d'un fichier change ;
 - ce suivi si l'état d'une tâche change ;
 - le README si l'installation, les fonctionnalités publiques ou les limitations changent.
+
+
+## Production Checklist
+- [ ] Ensure all code is reviewed and approved.
+- [ ] Run all tests and verify they pass.
+- [ ] Update documentation to reflect any changes.
+- [ ] Verify that all dependencies are up-to-date.
+- [ ] Check for any security vulnerabilities.
+- [ ] Favicon generation and verification.
+- [ ] Sitemap generation and verification.
+- [ ] Meta tags and SEO optimization.
+- [ ] Compress images and other static assets for optimized performance.
+- [ ] RGPD compliance check.
+- [ ] CGU compliance check. 
+- [ ] Force HTTPS for all communications.
+- [ ] Cookies banner and consent management.
+- [ ] Data backup and recovery plan verification.
+- [ ] Performance and load testing.
+- [ ] Logging and monitoring setup verification.
+- [ ] Disaster recovery plan verification.
+- [ ] User access and permissions review.
+- [ ] Compliance with data protection regulations.
+- [ ] Ensure proper logging and error reporting mechanisms are in place.
+- [ ] Conduct a final security audit before deployment.
+- [ ] Verify that all third-party services and integrations are functioning correctly.
