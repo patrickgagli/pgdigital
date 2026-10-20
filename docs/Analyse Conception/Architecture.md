@@ -1,234 +1,201 @@
-# Architecture — [Nom du projet]
+# Architecture — PGDigital
 
 ## 1. Identification
 
-| Information | À compléter |
+| Information | Valeur |
 | --- | --- |
-| Nom du projet | [Nom du projet] |
-| Client / commanditaire | [Nom, organisation] |
-| Architecte(s) / auteur(s) | [Noms] |
-| Date | [AAAA-MM-JJ] |
-| Version | [Version] |
-| Documents de référence | [Analyse des besoins, modélisation, autres] |
+| Nom du projet | PGDigital — portfolio |
+| Propriétaire / commanditaire | Patrick G. |
+| Responsables | Product, Engineering et Design (noms à confirmer) |
+| Date de référence | 2026-09-11 |
+| Version | 1.0 |
 
 ## 2. Contexte et objectifs d’architecture
 
-### Contexte du système
+PGDigital est un site de portfolio statique à page unique, exécuté dans le navigateur et déployable tel quel sur GitHub Pages. L’architecture privilégie une maintenance simple, l’absence de compilation et de serveur applicatif, le chargement de contenu structuré depuis des fichiers JSON et un repli utilisable lorsque `fetch` ne fonctionne pas en `file://`.
 
-[Résumé du besoin, des utilisateurs et du périmètre couvert par cette architecture.]
-
-### Objectifs et contraintes
-
-| Objectif ou contrainte | Description | Priorité / impact |
-| --- | --- | --- |
-| [Performance, disponibilité, sécurité, coût, délai, conformité…] | [Cible ou contrainte] | [Priorité / impact] |
+Les objectifs de performance, disponibilité, budget, volume de trafic et conservation des données ne sont pas quantifiés dans la documentation de référence.
 
 ## 3. Architecture de solution
 
-Cette vue d’ensemble montre comment les composants du système et les acteurs collaborent.
+### 3.1 Vue d’ensemble et composants applicatifs
 
-### 3.1 Composants applicatifs
-
-| Application / interface | Utilisateurs | Rôle et fonctionnalités principales |
+| Composant | Utilisateurs / consommateurs | Responsabilité |
 | --- | --- | --- |
-| [Application web, mobile, back-office, reporting…] | [Profils] | [Rôle] |
+| Navigateur et `index.html` | Visiteurs | Fournir la page unique, les sections et le contenu HTML de repli. |
+| `js/data.js` | Page et scripts d’interface | Charger les fichiers JSON, construire les contenus dynamiques et exposer `window.PGDigital.ready`. |
+| `js/custom.js` | Page | Attendre le chargement des données puis initialiser fullPage.js, Owl Carousel, animations, menu mobile et formulaire. |
+| `js/scripts.js` | Page | Gérer le thème clair/sombre et sa persistance. |
+| `json/site-data.json` | `js/data.js` | Fournir les faits, services, compétences, outils et coordonnées. |
+| `json/contact-form.json` | `js/data.js` / formulaire | Fournir les paramètres du formulaire, dont l’endpoint, la clé éventuelle, les clés de stockage et messages de statut. |
+| GitHub Pages | Visiteurs | Héberger et servir les fichiers statiques du site. |
+| Endpoint de formulaire configuré | Formulaire | Recevoir les soumissions JSON lorsque l’endpoint et la clé sont renseignés. Le fournisseur n’est pas précisé. |
 
-### 3.2 Composants des données
+### 3.2 Données et persistance
 
-| Donnée / ensemble de données | Type | Stockage prévu | Utilisation / sensibilité |
+| Données | Stockage / origine | Utilisation |
+| --- | --- | --- |
+| Contenus du portfolio | `json/site-data.json`; copie statique dans `index.html` | Construction des listes et coordonnées affichées. |
+| Configuration du formulaire | `json/contact-form.json` | Configuration de l’envoi, de la file et des messages de statut. |
+| Préférence de thème | `localStorage`, clé `dark-mode` | Restaurer le thème choisi. |
+| Brouillon de contact | `localStorage`, clé `pgdigital:contact:draft` | Restaurer la saisie au prochain chargement. |
+| File d’envois échoués | `localStorage`, clé `pgdigital:contact:outbox` | Réessayer les envois, dans la limite de `maxQueued`. |
+
+Aucune base de données ou persistance serveur propre au site n’est décrite. La durée de conservation, l’effacement et les règles de confidentialité des données stockées localement restent à définir.
+
+### 3.3 Flux et intégrations
+
+| Émetteur | Destinataire | Mécanisme | Comportement |
 | --- | --- | --- | --- |
-| [Donnée] | [Structurée / non structurée / temps réel] | [Base de données, fichiers, cache, entrepôt…] | [Usage et niveau de sensibilité] |
+| Navigateur | Fichiers JSON du site | `fetch` HTTP | `js/data.js` charge les données avant l’initialisation de l’interface. |
+| Navigateur en `file://` ou après échec de chargement | Contenu HTML statique | Repli local | Le contenu statique de `index.html` reste affiché lorsque les JSON ne peuvent pas être chargés. |
+| Formulaire du navigateur | Endpoint configuré | Requête `POST` JSON | Utilisée uniquement si `endpoint` et `accessKey` sont renseignés; bouton désactivé pendant l’envoi. |
+| Formulaire du navigateur | Application de messagerie du visiteur | Lien `mailto:` | Repli utilisé en l’absence d’endpoint ou de clé configurés. |
+| Formulaire du navigateur | `localStorage` | Stockage local | Conservation du brouillon et mise en file des envois échoués; réémission au chargement et à l’événement `online`. |
 
-### 3.3 Composants d’intégration
+Le texte JSON est inséré via `textContent`; les URL sont limitées aux schémas `http`, `https` et `mailto`.
 
-| Système / composant source | Système / composant cible | Méthode | Données échangées / déclencheur |
-| --- | --- | --- | --- |
-| [Source] | [Cible] | [API, file de messages, base partagée, webhook…] | [Échange] |
+### 3.4 Infrastructure et déploiement
 
-### 3.4 Composants d’infrastructure
-
-| Élément | Choix envisagé | Rôle / justification |
+| Élément | Choix documenté | Rôle |
 | --- | --- | --- |
-| Hébergement | [Sur site / cloud / hybride] | [Justification] |
-| Serveurs / calcul | [À préciser] | [Rôle] |
-| Réseau | [À préciser] | [Rôle / besoins de connectivité] |
-| Stockage et sauvegardes | [À préciser] | [Données couvertes et approche] |
+| Hébergement | GitHub Pages | Servir les fichiers statiques. |
+| Calcul applicatif | Navigateur du visiteur | Exécuter les scripts et interactions côté client. |
+| Serveur applicatif / base de données | Aucun dans le périmètre documenté | Non nécessaires au fonctionnement principal du site statique. |
+| Stockage client | `localStorage` | Préférence de thème, brouillon et file de messages. |
+| Sauvegarde | Non documentée | Politique et responsabilité à confirmer. |
 
-### 3.5 Composants de sécurité
+### 3.5 Sécurité et limites
 
-| Domaine | Mesure prévue | Risque ou besoin couvert |
-| --- | --- | --- |
-| Authentification et accès | [À préciser] | [Besoin] |
-| Protection / chiffrement des données | [À préciser] | [Besoin] |
-| Réseau et filtrage | [À préciser] | [Besoin] |
-| Sauvegardes et reprise | [À préciser] | [Besoin] |
-| Conformité | [Règles applicables] | [Besoin] |
+- Le rendu des textes utilise `textContent` et les URL acceptées sont limitées à `http`, `https` et `mailto`.
+- Aucune clé d’accès n’est fournie par défaut. Si une clé est configurée dans les fichiers servis au navigateur, elle est accessible côté client; la configuration doit tenir compte des capacités et recommandations du fournisseur de formulaire.
+- Le formulaire comporte un champ piège `company` et une validation HTML native; le service externe reste responsable de ses propres contrôles côté serveur.
+- Le contenu de formulaire peut rester dans le `localStorage` du navigateur après un échec. La durée de conservation et le traitement des données personnelles ne sont pas spécifiés.
+- Les expérimentations de consentement aux cookies ne sont pas intégrées : elles ne sont pas chargées par `index.html` et leur API serveur `/api/cookie-consent/` est absente.
 
 ### 3.6 Composants humains et opérationnels
 
-| Profil / équipe | Interaction avec le système | Responsabilité opérationnelle |
-| --- | --- | --- |
-| [Utilisateur, support, maintenance…] | [Interaction] | [Responsabilité] |
+| Profil | Responsabilité |
+| --- | --- |
+| Propriétaire du portfolio | Valider les contenus et la configuration de contact. |
+| Mainteneurs Product, Engineering et Design | Maintenir les fichiers, vérifier la cohérence JSON/repli et valider le rendu. |
+| Fournisseur de formulaire | Fournir l’endpoint et les modalités de configuration si un envoi distant est activé. |
 
-### 3.7 Schéma d’architecture de solution
+Les noms des responsables et les modalités de support opérationnel sont à confirmer.
 
-[Insérer ou joindre un schéma lisible par une personne non technique. Montrer les utilisateurs, les blocs principaux, les flux de données et les services cloud. Garder le schéma simple (environ 7 blocs maximum) et ajouter une légende.]
+### 3.7 Schéma logique
+
+```text
+Visiteur
+   |
+   v
+Navigateur : index.html + CSS + scripts locaux
+   |                         |
+   | fetch                   | POST JSON (optionnel)
+   v                         v
+Fichiers JSON             Endpoint de formulaire
+   |
+   +--> js/data.js --> rendu des contenus
+                         |
+                         +--> js/custom.js (navigation, carrousels, formulaire)
+                         +--> js/scripts.js (thème)
+                         +--> localStorage (thème, brouillon, file)
+
+Si les fichiers JSON ne sont pas accessibles : contenu statique de index.html.
+```
 
 ## 4. Architecture logicielle
 
-Décrire les composants logiciels principaux, leurs responsabilités, leurs communications, le stockage des données et la gestion de la charge.
+### 4.1 Modules et dépendances
 
-### 4.1 Composants logiciels
+| Module / dépendance | Responsabilité |
+| --- | --- |
+| `index.html` | Structure de la page, six sections, contenu statique de repli et chargement des ressources. |
+| `js/data.js` | Chargement des deux JSON et rendu du contenu dynamique. |
+| `js/custom.js` | Initialisation après `window.PGDigital.ready`; navigation, carrousels, animations, menu et contact. |
+| `js/scripts.js` | Thème clair/sombre et préférence persistée. |
+| `css/style.css` et `css/responsive.css` | Styles généraux et adaptations de largeur/hauteur. |
+| Bootstrap, jQuery, fullPage.js, Owl Carousel, jquery.inview, Animate.css | Bibliothèques locales utilisées par l’interface. |
+| Bootstrap Icons 1.11, Alpine.js 3.x, Raleway | Ressources externes chargées respectivement depuis jsDelivr, unpkg et Google Fonts. |
 
-| Composant / module | Responsabilité | Interfaces / dépendances |
+`js/cookie_consent.js` et `css/cookie_consent.css` sont des fichiers non intégrés et ne font pas partie du chemin d’exécution actif.
+
+### 4.2 Ordonnancement et comportement des composants
+
+1. `index.html` charge la page, les bibliothèques et les scripts.
+2. `js/data.js` récupère les JSON et reconstruit les conteneurs de faits, services, témoignages, galerie et contact.
+3. `js/data.js` expose `window.PGDigital.ready`; `js/custom.js` attend cette promesse avant l’initialisation des carrousels et de fullPage.js.
+4. Si `fetch` échoue, le contenu statique du document demeure le repli.
+5. Le formulaire choisit l’envoi distant uniquement lorsque l’endpoint et la clé sont présents; sinon il construit un lien `mailto:`.
+
+### 4.3 Charge et évolution
+
+Le site ne documente ni volume de trafic, ni objectif de disponibilité, ni mesure de charge. Il n’y a pas de composants applicatifs côté serveur à mettre à l’échelle. L’hébergement statique et l’exécution côté navigateur constituent le modèle actuel. Les exigences de montée en charge doivent être réévaluées si un backend, une authentification ou une persistance serveur est ajouté.
+
+### 4.4 Type d’architecture logicielle
+
+| Option | Adéquation au projet |
+| --- | --- |
+| Application statique côté client, page unique | Choix actuel : adapté au portfolio, au faible périmètre fonctionnel et au déploiement sans serveur applicatif. |
+| Architecture en couches avec backend | Non mise en œuvre; ajouterait des services et opérations non requis par le périmètre documenté. |
+| Microservices | Non adaptés au périmètre actuel; aucun service applicatif interne n’est documenté. |
+
+**Architecture constatée :** site statique à page unique avec composants et scripts côté client.
+**Compromis :** simplicité de déploiement et de maintenance contre dépendance au navigateur pour les interactions; envoi de contact distant délégué à un endpoint externe optionnel.
+
+## 5. Hébergement et services cloud
+
+| Sujet | État documenté |
+| --- | --- |
+| Modèle de déploiement | Fichiers statiques sur GitHub Pages. |
+| Région / localisation | Non précisée. |
+| Modèle de service | Hébergement statique géré; la documentation ne qualifie pas formellement le service comme IaaS, PaaS ou SaaS. |
+| Autres services externes | CDN jsDelivr, unpkg et Google Fonts pour certaines dépendances; endpoint de formulaire optionnel non identifié. |
+| Environnements | Aucun environnement distinct de développement, test ou production n’est décrit. |
+
+## 6. Décisions architecturales constatées
+
+Les éléments suivants décrivent l’implémentation documentée et ne constituent pas des décisions formellement approuvées dans un registre ADR.
+
+| ID | Décision / état constaté | Motif documenté ou compromis |
 | --- | --- | --- |
-| [Composant] | [Responsabilité unique et claire] | [Composants ou API utilisés] |
+| ADR-01 | Utiliser un site statique à page unique hébergé sur GitHub Pages. | Pas de compilation, de gestionnaire de paquets ni de serveur applicatif. |
+| ADR-02 | Stocker les contenus variables dans des fichiers JSON tout en gardant une copie HTML statique. | Chargement structuré en HTTP et repli en cas d’échec de `fetch`, notamment `file://`. |
+| ADR-03 | N’activer l’envoi distant du formulaire que si endpoint et clé sont configurés; sinon utiliser `mailto:`. | L’envoi distant n’est pas obligatoire pour le fonctionnement par défaut. |
+| ADR-04 | Conserver thème, brouillon et file d’envoi dans `localStorage`. | Préférence et reprise de saisie côté navigateur, sans persistance serveur. |
 
-### 4.2 Communication entre composants
+Les dates d’adoption, participants, alternatives formelles et approbations sont à confirmer.
 
-| Émetteur | Destinataire | Protocole / mécanisme | Échange et comportement en cas d’échec |
+## 7. Critères d’architecture et vérifications
+
+| Critère | État / vérification documentée |
+| --- | --- |
+| Performance | Aucun objectif chiffré documenté; mesurer avant toute exigence de seuil. |
+| Scalabilité | Site statique; aucun besoin de mise à l’échelle applicative documenté. |
+| Disponibilité | Dépend de l’hébergement statique et des services externes; aucune cible définie. |
+| Sécurité | Rendu textuel via `textContent`, schémas d’URL restreints; configuration et traitement du formulaire externe à confirmer. |
+| Coût | Aucun budget ni coût d’hébergement documenté. |
+| Maintenabilité | Fichiers sans compilation; règles de maintenance définies dans la documentation technique. |
+| Conformité | Obligations et règles de conservation non précisées. |
+
+## 8. Déploiement et exploitation
+
+- **Pré-requis :** les fichiers du site, JSON, scripts, styles et ressources doivent être présents et cohérents.
+- **Hébergement :** publier les fichiers statiques via GitHub Pages. La procédure exacte de publication n’est pas documentée.
+- **Vérifications :** exécuter les contrôles JavaScript et HTML décrits dans la documentation technique; vérifier le chargement JSON en HTTP et le repli `file://`.
+- **Contrôles navigateur :** tester les six ancres, menu mobile, carrousels, thème, formulaire et vues 390 × 844 et 320 × 568.
+- **Incidents et retour arrière :** procédure, contacts, sauvegarde et restauration à définir par les responsables du dépôt.
+
+## 9. Validation
+
+La validation architecturale et les responsables d’exploitation ne sont pas renseignés.
+
+| Validateur | Rôle | Date | Décision |
 | --- | --- | --- | --- |
-| [Composant] | [Composant] | [Appel local, API, message…] | [Données échangées / gestion d’erreur] |
-
-### 4.3 Données et persistance
-
-| Données | Composant responsable | Stockage | Règles d’accès / cohérence |
-| --- | --- | --- | --- |
-| [Données] | [Composant] | [Base, stockage de fichiers…] | [Règles] |
-
-### 4.4 Charge et évolution
-
-- **Charge attendue / pics :** [Utilisateurs, requêtes, périodes de pointe]
-- **Éléments susceptibles de changer d’échelle :** [Composants]
-- **Réponse prévue :** [Augmenter les ressources d’un serveur / ajouter des instances / autre]
-- **Disponibilité attendue :** [Cible et moyens prévus]
-
-### 4.5 Type d’architecture logicielle
-
-Comparer les options pertinentes pour le projet. Évaluer leurs avantages et inconvénients dans ce contexte précis.
-
-| Option | Avantages pour ce projet | Inconvénients / risques | Adéquation |
-| --- | --- | --- | --- |
-| Monolithique | [À compléter] | [Évolution, déploiement, collaboration…] | [Faible / moyenne / forte] |
-| En couches (présentation, métier, données) | [À compléter] | [Complexité, latence, rigidité…] | [Faible / moyenne / forte] |
-| Microservices | [Autonomie, évolutivité, résilience…] | [Gestion, réseau, cohérence, tests, coûts…] | [Faible / moyenne / forte] |
-
-**Architecture retenue :** [Monolithique / en couches / microservices / combinaison]  
-**Justification et compromis acceptés :** [Pourquoi ce choix est adapté à la taille, à l’équipe, aux besoins et à l’évolution prévue.]
-
-### 4.6 Schéma d’architecture logicielle
-
-[Insérer ou joindre un schéma des composants logiciels et de leurs communications. Indiquer les zones de stockage des données et les flux principaux.]
-
-## 5. Hébergement et cloud
-
-### 5.1 Modèle de déploiement
-
-| Option | Avantages pour le projet | Inconvénients / contraintes | Évaluation |
-| --- | --- | --- | --- |
-| Sur site (on-premise) | [Contrôle, localisation…] | [Coûts, maintenance, expertise…] | [À compléter] |
-| Cloud public | [Élasticité, services disponibles…] | [Dépendance, localisation, coûts récurrents…] | [À compléter] |
-| Cloud privé | [Contrôle, personnalisation…] | [Coûts, capacité, compétences…] | [À compléter] |
-| Cloud hybride | [Répartition des charges et des données…] | [Complexité d’intégration et de sécurité…] | [À compléter] |
-
-**Modèle retenu :** [Sur site / cloud public / cloud privé / hybride]  
-**Région ou localisation souhaitée :** [À préciser]  
-**Justification :** [À compléter]
-
-### 5.2 Modèle de service cloud
-
-| Modèle | Fournisseur gère | Client gère | Service envisagé / justification |
-| --- | --- | --- | --- |
-| IaaS | Infrastructure physique et ressources virtualisées | Système d’exploitation, applications, données et configuration | [À compléter] |
-| PaaS | Infrastructure et plateforme d’exécution | Applications et données | [À compléter] |
-| SaaS | Application et infrastructure du service | Comptes, configuration et usage des données | [À compléter] |
-
-**Modèle(s) retenu(s) et justification :** [À compléter]
-
-## 6. Décisions architecturales
-
-### 6.1 Registre des décisions
-
-| ID | Décision | Date | Statut | Participants |
-| --- | --- | --- | --- | --- |
-| ADR-01 | [Intitulé bref] | [AAAA-MM-JJ] | [Proposée / acceptée / rejetée / remplacée] | [Noms ou rôles] |
-
-### 6.2 Fiche de décision
-
-**ID et titre :** [ADR-XX — Titre]  
-**Date :** [AAAA-MM-JJ]  
-**Statut :** [Proposée / acceptée / rejetée / remplacée]  
-**Participants :** [Noms ou rôles]
-
-**Contexte / problème :** [Pourquoi une décision est nécessaire.]
-
-**Décision :** [Choix explicite retenu.]
-
-**Alternatives considérées :**
-
-- [Option et raison de l’avoir considérée]
-
-**Conséquences positives et négatives :**
-
-- **Positives :** [Conséquences]
-- **Négatives / risques :** [Conséquences]
-- **Mesures de réduction des risques :** [Actions]
-
-## 7. Critères de décision et compromis
-
-Évaluer les choix d’architecture selon les sept critères du cours. Indiquer les priorités, contraintes et décision associée.
-
-| Critère | Priorité | Exigence / contrainte | Choix ou compromis retenu |
-| --- | --- | --- | --- |
-| Performance | [1–5] | [Cible] | [Décision] |
-| Scalabilité | [1–5] | [Cible] | [Décision] |
-| Disponibilité | [1–5] | [Cible] | [Décision] |
-| Sécurité | [1–5] | [Cible] | [Décision] |
-| Coût | [1–5] | [Limite] | [Décision] |
-| Maintenabilité | [1–5] | [Cible] | [Décision] |
-| Conformité | [1–5] | [Règle applicable] | [Décision] |
-
-## 8. Guide de déploiement et d’exploitation
-
-### Environnements et hébergement
-
-- **Environnements prévus :** [Développement, test, production…]
-- **Lieu d’hébergement :** [Fournisseur, région, site…]
-- **Dépendances à configurer :** [Services, intégrations, données…]
-
-### Déploiement
-
-1. [Préparation et prérequis]
-2. [Étapes de déploiement]
-3. [Vérifications après déploiement]
-
-### Gestion des incidents et contacts
-
-- **Procédure en cas de problème :** [Étapes de diagnostic, retour arrière ou reprise]
-- **Contacts d’urgence :** [Nom / rôle / moyen de contact]
-- **Sauvegardes et restauration :** [Fréquence, rétention et procédure]
-
-## 9. Synthèse et validation
-
-### Synthèse des choix
-
-[Résumer la solution, le type d’architecture logicielle, l’hébergement retenu et les compromis principaux.]
-
-### Vérifications avant validation
-
-- [ ] Le schéma de solution montre les utilisateurs, composants, flux et services externes.
-- [ ] Le schéma logiciel montre les composants, leurs communications et le stockage des données.
-- [ ] Les choix d’architecture sont comparés et justifiés par rapport au contexte du projet.
-- [ ] Les sept critères de décision sont évalués.
-- [ ] Les décisions importantes, alternatives et conséquences sont documentées.
-- [ ] Le guide de déploiement indique l’hébergement, les étapes, la gestion des incidents et les contacts.
-
-| Validateur | Rôle | Date | Remarques / approbation |
-| --- | --- | --- | --- |
-| [Nom] | [Client / responsable technique / autre] | [AAAA-MM-JJ] | [À compléter] |
+| À confirmer | Propriétaire / responsable technique | À confirmer | À confirmer |
 
 ## 10. Historique des versions
 
 | Version | Date | Auteur | Modifications |
 | --- | --- | --- | --- |
-| 0.1 | [AAAA-MM-JJ] | [Nom] | Création du document |
+| 1.0 | 2026-09-11 | Patrick G. |  |
