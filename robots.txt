@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://patrickgagli.github.io/pgdigital/sitemap.xml

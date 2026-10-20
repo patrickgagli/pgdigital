@@ -25,6 +25,7 @@ The project has no build step, package manifest, backend, or test runner. Runtim
 - Bootstrap Icons for navigation and interface controls
 - Persistent light/dark theme toggle in the header
 - Responsive contact layout and normal-flow footer below 768 px
+- Canonical URL, static Schema.org JSON-LD (`Person`, `WebSite`, `WebPage`), XML sitemap, and a `robots.txt` file (see the GitHub Pages limitation below)
 
 ## Run Locally
 
@@ -59,6 +60,19 @@ npx --yes html-validate@latest index.html
 
 Also smoke-test desktop and mobile layouts, especially the six navigation anchors, mobile menu, carousels, contact form, external CDN resources, and the Contact view at 390 x 844.
 
+## Search Engine Indexing
+
+- The canonical URL is `https://patrickgagli.github.io/pgdigital/`.
+- [index.html](index.html) embeds a Schema.org JSON-LD graph describing Patrick Gagli, the website, and its single page. It is available without JavaScript execution or JSON fetching, including in the static fallback.
+- [sitemap.xml](sitemap.xml) lists only the canonical page. The six section fragments are navigation targets, not separate indexable pages. No speculative modification dates or ranking hints are included.
+- [robots.txt](robots.txt) allows crawling and declares the absolute sitemap URL.
+
+**GitHub Pages project-site limitation:** this repository publishes the file at `https://patrickgagli.github.io/pgdigital/robots.txt`, but crawlers only discover robots rules at `https://patrickgagli.github.io/robots.txt`. To activate these rules, the owner must publish them at the origin root through the `patrickgagli.github.io` repository, preserving any rules for other projects. Alternatively, deploy this site at the root of a custom domain. Submit `https://patrickgagli.github.io/pgdigital/sitemap.xml` directly in Google Search Console regardless.
+
+When changing the production URL, update the canonical link and all JSON-LD URLs/identifiers in `index.html`, the URL in `sitemap.xml`, and the sitemap declaration in `robots.txt`. Keep the JSON-LD name, description, and author consistent with the visible content and metadata.
+
+After deployment, check that the canonical page and sitemap return HTTP 200, validate the JSON-LD with the [Schema Markup Validator](https://validator.schema.org/), and verify the origin-root `robots.txt` if configured. Structured data helps describe the page; it does not guarantee indexing or rich search results.
+
 ## Documentation
 
 - [Technical documentation](docs/documentation.md)
@@ -72,7 +86,8 @@ Also smoke-test desktop and mobile layouts, especially the six navigation anchor
 - Content changes must be mirrored in `json/site-data.json` and in the static fallback markup.
 - Social links are intentionally omitted until real profile URLs are available.
 - `js/cookie_consent.js` and `css/cookie_consent.css` are present but are not integrated or loaded by `index.html`; the script also expects a server API that this static site does not provide.
-- The page has basic metadata but no Open Graph, Twitter Card, structured data, sitemap, or `robots.txt` support.
+- Open Graph and Twitter Card metadata are not yet implemented.
+- The project-level `robots.txt` is not discovered automatically by crawlers on the current GitHub Pages subpath; origin-root configuration is required as described above.
 
 ## Contributing and License
 

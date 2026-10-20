@@ -65,6 +65,10 @@ Le texte JSON est inséré via `textContent`; les URL sont limitées aux schéma
 | Stockage client | `localStorage` | Préférence de thème, brouillon et file de messages. |
 | Sauvegarde | Non documentée | Politique et responsabilité à confirmer. |
 
+Le référencement utilise l’URL canonique `https://patrickgagli.github.io/pgdigital/`, déclarée dans `index.html`. Un graphe JSON-LD Schema.org statique décrit la personne, le site et la page (`Person`, `WebSite`, `WebPage`), sans dépendre de `js/data.js`. Le fichier `sitemap.xml` expose uniquement cette page, sans les fragments de navigation.
+
+Le fichier `robots.txt` autorise l’exploration et référence le sitemap par son URL absolue. Sur GitHub Pages, il est servi sous `/pgdigital/robots.txt`, alors que les robots consultent `/robots.txt` à la racine du domaine. Son activation nécessite donc une publication à la racine via le dépôt `patrickgagli.github.io`, en préservant les règles des autres projets, ou un domaine personnalisé servant ce site à sa racine. Le sitemap peut être soumis directement dans Google Search Console. Tout changement d’URL publique doit être répercuté dans la canonique, le JSON-LD, le sitemap et la directive `Sitemap`.
+
 ### 3.5 Sécurité et limites
 
 - Le rendu des textes utilise `textContent` et les URL acceptées sont limitées à `http`, `https` et `mailto`.

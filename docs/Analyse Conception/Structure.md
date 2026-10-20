@@ -90,7 +90,9 @@ Le dépôt distingue les documents de conception, de planification et les docume
 
 | Chemin | Responsabilité |
 | --- | --- |
-| `index.html` | Point d’entrée, contenu des six sections, navigation, formulaire et chargement des ressources. |
+| `index.html` | Point d’entrée, contenu des six sections, navigation, formulaire, URL canonique, données structurées JSON-LD et chargement des ressources. |
+| `sitemap.xml` | URL canonique de l’unique page indexable, sans fragments de navigation. |
+| `robots.txt` | Règles d’exploration et URL absolue du sitemap; nécessite une publication à la racine du domaine pour être pris en compte par les robots. |
 | `css/style.css` | Identité visuelle, typographie, mise en page et styles des composants. |
 | `css/responsive.css` | Surcharges selon les dimensions d’écran et comportement mobile. |
 | `js/custom.js` | fullPage.js, carrousels, animations, compteurs, menu mobile et formulaire. |
@@ -124,6 +126,8 @@ Arborescence représentative du dépôt. Les bibliothèques locales et ressource
 ```text
 pgdigital/
 ├── index.html
+├── sitemap.xml
+├── robots.txt
 ├── README.md
 ├── css/
 │   ├── style.css
