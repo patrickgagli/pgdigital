@@ -46,7 +46,7 @@ Ce document suit l'état observable du dépôt. Une case terminée correspond à
 - [x] Intégrer, tester et documenter le mode sombre de `js/scripts.js`.
 - [ ] Intégrer, tester et documenter le consentement de `js/cookie_consent.js` avec un bandeau HTML et une API serveur compatibles.
 - [ ] Ajouter les métadonnées de partage Open Graph et Twitter Card.
-- [ ] Évaluer l'ajout de données structurées, d'un sitemap et d'un fichier `robots.txt`.
+- [ ] Implémenter l'ajout de données structurées, d'un sitemap et d'un fichier `robots.txt`.
 - [x] Évaluer un canal de contact ne dépendant pas d'une application de messagerie locale.
 
 ## Contrôles récurrents
