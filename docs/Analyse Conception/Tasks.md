@@ -55,14 +55,14 @@ Ce document suit l'état observable du dépôt. Une case terminée correspond à
 - [x] Exécuter `node --check js/data.js` et valider les fichiers `json/` après une modification des données.
 - [x] Exécuter les contrôles de syntaxe sur `js/scripts.js` et `js/cookie_consent.js` lorsqu'ils sont modifiés.
 - [x] Exécuter `npx --yes html-validate@latest index.html` après une modification du balisage.
-- [ ] Vérifier l'absence d'erreur console et de ressource locale introuvable.
-- [ ] Tester les six ancres et l'état actif de la navigation.
-- [ ] Tester l'ouverture, la fermeture et `aria-expanded` du menu mobile.
-- [ ] Tester les carrousels, les icônes Bootstrap et le titre Alpine.js.
-- [ ] Tester les champs requis, le format email et l'email prérempli du formulaire.
-- [ ] Tester le rendu depuis `json/` en HTTP et le repli statique en `file://`.
-- [ ] Tester la restauration du brouillon, la mise en file d'un envoi échoué et son réenvoi automatique.
-- [ ] Tester la section Contact à 390 x 844 sans débordement, titre tronqué ni chevauchement du pied de page.
+- [x] Vérifier l'absence d'erreur console et de ressource locale introuvable.
+- [x] Tester les six ancres et l'état actif de la navigation.
+- [x] Tester l'ouverture, la fermeture et `aria-expanded` du menu mobile.
+- [x] Tester les carrousels, les icônes Bootstrap et le titre Alpine.js.
+- [x] Tester les champs requis, le format email et l'email prérempli du formulaire.
+- [x] Tester le rendu depuis `json/` en HTTP et le repli statique en `file://`.
+- [x] Tester la restauration du brouillon, la mise en file d'un envoi échoué et son réenvoi automatique.
+- [x] Tester la section Contact à 390 x 844 sans débordement, titre tronqué ni chevauchement du pied de page.
 
 ## Règle de mise à jour
 Lorsqu'une fonctionnalité est ajoutée ou retirée, mettre à jour dans la même modification :

@@ -307,3 +307,80 @@ Traiter **P01, P02 et U04**. Mesurer les gains avant de remplacer une bibliothè
 8. Vérifier les politiques sur la réponse de production et l'absence de nouvelles erreurs console ou requêtes locales en échec.
 
 **Conclusion :** le site fonctionne sur les parcours de navigation contrôlés, mais l'amélioration prioritaire n'est pas une refonte visuelle. Elle consiste à rendre le contact fiable et confidentiel, à assurer un repli utilisable et à supprimer les obstacles d'accessibilité, puis à réduire le poids de la page sur la base de mesures reproductibles.
+
+
+### Résultat du contrôle console et ressources — 2026-10-20
+
+- Parcours des six sections en HTTP local sous `/pgdigital/` et en ouverture directe `file://`, à 1440 x 900 et 390 x 844.
+- Aucune erreur console, exception JavaScript, requête échouée, réponse HTTP en erreur ou image cassée observée; les polices Bootstrap Icons sont chargées.
+- Un avertissement fullPage.js persiste : `responsiveSlides` exige `fullpage.extensions.min.js`, alors que le site charge `fullpage.min.js` (`js/custom.js`). Ce contrôle n'a pas modifié cette configuration.
+- Le navigateur intégré a autorisé le chargement des JSON même en `file://`; ces parcours ne valident donc pas le repli statique dans un navigateur bloquant `fetch` sur ce protocole.
+- Aucun envoi réel du formulaire ni réémission de message en attente n'a été testé.
+
+### Résultat du contrôle des ancres et de la navigation — 2026-10-20
+
+- Tests dans le navigateur intégré en `file://`, à 1440 x 900 et 390 x 844.
+- Les six liens Accueil, À propos, Services, Compétences, Outils et Contact ont été cliqués via le menu, ouvert avant chaque sélection sur mobile.
+- Pour chaque lien, après la transition : fragment URL attendu (`#slide01` à `#slide06`), section correspondante visible et active, une seule entrée active dans `#nav` et indicateur fullPage correspondant actif. Le menu mobile se referme avec `aria-expanded="false"`.
+- Les six URL avec fragment ont également été rechargées à chaque résolution : les 12 contrôles de section visible et d'état actif ont réussi.
+- Un parcours desktop supplémentaire par clics rapprochés d'À propos à Contact a conservé la synchronisation finale, sans exception JavaScript.
+- Une première sonde avec clics forcés, sans attendre les transitions, a déclenché une exception fullPage (`Cannot set properties of undefined (setting 'top')`). Elle n'a pas été reproduite par les parcours avec clics ordinaires ci-dessus; la configuration du site n'a pas été modifiée.
+
+### Résultat du contrôle du menu mobile — 2026-10-20
+
+- Tests en `file://` dans le navigateur intégré, à 320 x 568 et 390 x 844 : 46 contrôles d'état réussis, sans exception JavaScript.
+- Au chargement, le menu est masqué et `aria-expanded="false"`. Trois cycles d'ouverture/fermeture au bouton par résolution maintiennent la cohérence entre visibilité réelle, attribut ARIA et classe `mobile-menu-open`, après les animations.
+- Les touches Entrée et Espace ouvrent puis ferment le menu depuis le bouton focalisé, aux deux résolutions.
+- Chacun des six liens ferme le menu, rétablit `aria-expanded="false"` et retire `mobile-menu-open`; le fragment URL et l'entrée active correspondent au lien sélectionné.
+- Le contrôle est un bouton natif avec un libellé accessible et `aria-controls="navigation-menu"` désignant le menu existant. Aucun code applicatif modifié.
+
+### Résultat du contrôle des carrousels, icônes et titre — 2026-10-20
+
+- Tests dans le navigateur intégré en `file://`, à 1440 x 900 et 390 x 844, sans exception JavaScript pendant le parcours des quatre carrousels.
+- Initialisation Owl Carousel confirmée : 4 faits, 5 services, 6 compétences et 6 outils. Sur desktop, les nombres d'éléments affichés sont respectivement 3, 3, 1 et 3; sur mobile, chaque carrousel affiche un élément.
+- Pour les quatre carrousels aux deux résolutions, clics ordinaires sur la dernière puis la première pagination : dernier élément présent parmi les cartes actives, puis retour à l'index zéro. Les clones Owl sont pris en compte pour les carrousels en boucle.
+- Les flèches Services avancent de l'index 0 à 1 puis reviennent à 0 aux deux résolutions. La lecture automatique des compétences et des outils avance de 0 à 1 sans action supplémentaire après sélection de la première pagination.
+- Le carrousel Outils est configuré sans boucle : une fois la dernière position atteinte, la lecture automatique n'avance plus. Le geste tactile natif n'a pas été testé.
+- Les 13 classes d'icônes présentes ont un glyphe `::before` défini avec la famille `bootstrap-icons`, dont la police est chargée, aux deux résolutions.
+- Alpine.js fait progresser le titre de `PG` observé au début jusqu'au texte exact `PGDigital PORTFOLIO`, sans duplication, aux deux résolutions.
+- Une première tentative de clic pendant l'alignement mobile a rencontré une interception par d'autres éléments; le contrôle a réussi après stabilisation de la section et lors d'un chargement direct sur Services. Aucun code applicatif modifié.
+
+### Résultat du contrôle de validation et de l'email prérempli — 2026-10-20
+
+- Tests HTTP locaux dans le navigateur intégré, à 1440 x 900 et 390 x 844 : 18 scénarios réussis, sans exception JavaScript ni requête `POST`.
+- Clic sur Envoyer avec les quatre champs vides, puis avec chacun des champs nom, prénom, email et message vide séparément : la validation native bloque la soumission (`valueMissing`), sans générer d'email.
+- Les adresses `sans-arobase`, `qa@` et `@example.test` sont rejetées avec `typeMismatch`, sans soumission. L'adresse de test `qa+portfolio@example.test` est acceptée.
+- Avec des données valides, vérification exacte du destinataire de repli, du sujet et du corps décodés du lien `mailto:` : nom/prénom, message multiligne, adresse de réponse, accents et caractères `&`, `?`, `#`, `=`, `%`, `+` préservés; espaces extérieurs du nom, prénom et message retirés.
+- Le statut « Ouverture de votre application de messagerie… » est affiché dans la zone `role="status"` / `aria-live="polite"`; le bouton reste disponible, le brouillon de test est supprimé et aucun message n'est mis en file.
+- Méthode sans envoi réel : serveur temporaire servant une configuration avec endpoint et clé vides, des clés de stockage réservées au test et une copie en mémoire de `js/custom.js` capturant l'URL au lieu d'affecter `window.location.href`. La validation native et le gestionnaire de soumission réel ont été exécutés par clics ordinaires.
+- Aucun service externe ni client de messagerie n'a été sollicité. Le flux de production Web3Forms et l'ouverture effective d'une application de messagerie ne sont pas validés par ces tests. Stockage de test nettoyé, serveur arrêté et fichiers applicatifs inchangés.
+
+### Résultat du contrôle JSON HTTP et repli statique — 2026-10-20
+
+- Tests dans le navigateur intégré à 1440 x 900 et 390 x 844, sans modification des fichiers applicatifs.
+- En HTTP sous `/pgdigital/`, les deux fichiers JSON répondent avec le statut 200 et les résultats de `PGDigital.ready` correspondent aux fichiers servis. La configuration du formulaire est chargée avec endpoint et clé renseignés, sans soumission de message.
+- Comparaison exacte du rendu avec `json/site-data.json` : 4 faits (icônes, valeurs finales et libellés), 5 services (icônes, titres et descriptions), 6 compétences et 6 outils (noms, descriptions et chemins d'images), coordonnées de contact et absence des liens sociaux conformément au tableau `social` vide. Aucune image cassée.
+- En `file://`, le navigateur intégré autorisant normalement `fetch`, un script de test injecté avant le chargement rejette uniquement les deux requêtes JSON. La restriction d'un navigateur standard est donc simulée, pas observée nativement; aucune interception ne reste après fermeture de l'onglet de test.
+- Avec ces deux échecs, `PGDigital.ready` se résout avec `content: null` et `form: null`; les avertissements de repli sont explicites et aucune exception JavaScript n'est observée. Les compteurs, textes, icônes, images, coordonnées et liens sociaux correspondent au HTML source, indépendamment des JSON.
+- Aux deux résolutions en repli, les quatre carrousels sont initialisés, les quatre champs requis du formulaire sont présents et les six liens activent les entrées attendues du menu. Aucune image cassée. Le serveur de vérification temporaire est arrêté après les contrôles.
+- Divergence préexistante révélée : le HTML statique conserve trois liens génériques Twitter, Reddit et GitHub, absents du rendu HTTP piloté par `social: []`. Le repli fonctionne, mais cette partie du contenu n'est pas synchronisée avec le JSON.
+
+### Résultat du contrôle du brouillon et des réémissions — 2026-10-20
+
+- Tests HTTP locaux à 1440 x 900 et 390 x 844 avec les scripts applicatifs inchangés, des données fictives et un endpoint local contrôlé répondant successivement 503 puis 200. La configuration de test utilise des clés de stockage distinctes; aucun service d'envoi réel ni brouillon existant n'a été sollicité.
+- Après saisie, le brouillon stocké correspond aux quatre champs, y compris accents et retour à la ligne. Après rechargement, les valeurs sont restaurées à l'identique et le statut annonce « Un brouillon de message a été restauré. ».
+- La soumission via `requestSubmit()` reçoit une réponse 503 : un seul payload est mis en file, identique à celui reçu par l'endpoint et contenant `savedAt`. Le brouillon est conservé, le bouton redevient disponible et le statut explique la conservation pour un réenvoi ultérieur.
+- Un événement `online` simulé avec l'endpoint encore en échec provoque une nouvelle tentative sans modifier la file. Après passage de l'endpoint à 200, un nouvel événement `online` réémet exactement le payload stocké, supprime la file et annonce le succès.
+- Une seconde soumission échouée est ensuite réémise automatiquement au rechargement, sans nouvel événement `online`, après rétablissement de l'endpoint. Identité du payload et suppression de la file vérifiées aux deux résolutions.
+- Comportement préexistant observé : après réémission réussie, le brouillon et les champs restent présents. Au rechargement, le statut peut donc rester « Un brouillon de message a été restauré. » malgré la file vidée; un nouvel envoi manuel peut renvoyer le même contenu.
+- Les erreurs réseau 503 visibles pendant le test sont attendues et simulées. Le retour de connectivité a été simulé par événement, pas par une coupure réseau réelle. Les envois simultanés, plusieurs onglets et la saturation du stockage n'ont pas été testés.
+- Clés de test supprimées, navigation d'origine restaurée et serveur temporaire arrêté après vérification. Aucun code applicatif modifié.
+
+### Résultat du contrôle Contact à 390 x 844 — 2026-10-20
+
+- Tests en `file://` dans le navigateur intégré, viewport confirmé à 390 x 844, après chargement des polices et stabilisation des animations. Contrôle par mesures DOM et capture visuelle.
+- Chargement direct sur `#slide06` puis accès via le menu mobile : aucun élément de Contact ni pied de page ne dépasse horizontalement le viewport; largeur défilable du document de 375 px (barre de défilement verticale présente).
+- Le titre « Contactez-moi en remplissant le formulaire ! » s'affiche intégralement sur deux lignes, sous le header fixe, sans conteneur ancêtre rognant son texte ni débordement interne.
+- Le formulaire et le bouton Envoyer ne chevauchent pas le pied de page, en position `static`. Écart mesuré entre la fin du formulaire et le début du pied de page : 28 px; entre la zone de statut et le pied de page : 12 px.
+- Avec un message de statut multiligne injecté temporairement dans le DOM, sans soumission, le pied de page reste après le formulaire et le statut : écarts respectifs de 76 px et 12 px, sans débordement horizontal ni titre tronqué. Texte de statut restauré après mesure.
+- Aucun code applicatif ni donnée de formulaire modifié. Le clavier virtuel d'un appareil mobile réel n'a pas été testé.
