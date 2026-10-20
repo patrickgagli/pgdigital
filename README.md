@@ -24,7 +24,7 @@ The project has no build step, package manifest, backend, or test runner. Runtim
 - Contact form posting JSON to a configurable endpoint, with honeypot spam trap, native validation, localStorage draft autosave, an offline outbox retried automatically, and a `mailto:` fallback when no endpoint is configured
 - Bootstrap Icons for navigation and interface controls
 - Persistent light/dark theme toggle in the header
-- Responsive contact layout and normal-flow footer below 768 px
+- Responsive contact layout with desktop header/footer clearance and a normal-flow footer below 768 px or 600 px viewport height
 - Canonical URL, static Schema.org JSON-LD (`Person`, `WebSite`, `WebPage`), XML sitemap, and a `robots.txt` file (see the GitHub Pages limitation below)
 
 ## Run Locally
