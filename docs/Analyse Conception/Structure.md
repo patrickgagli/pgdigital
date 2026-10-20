@@ -1,182 +1,196 @@
-# Structure du projet — [Nom du projet]
+# Structure du projet — PGDigital
 
 ## 1. Identification
 
-| Information | À compléter |
+| Information | Valeur |
 | --- | --- |
-| Nom du projet | [Nom du projet] |
-| Client / commanditaire | [Nom, organisation] |
-| Analyste(s) | [Noms] |
-| Date | [AAAA-MM-JJ] |
-| Version | [Version] |
-| Document d’analyse lié | [Lien vers l’analyse des besoins] |
+| Nom du projet | PGDigital — portfolio statique |
+| Commanditaire | Patrick G. |
+| Équipes propriétaires répertoriées | Product, Engineering et Design |
+| Date de mise à jour | 2026-10-20 |
+| Version | 1.0 |
+| Auteur | Patrick G. |
 
-## 1. Objectif et périmètre
+## 2. Objectif et périmètre
 
-**Objectif de ce document :** [Décrire l’organisation du projet et la manière dont les responsabilités, décisions et échanges sont répartis.]
+Ce document décrit l’organisation du dépôt, les responsabilités techniques connues et les éléments de gouvernance disponibles pour le projet PGDigital.
 
-**Périmètre couvert :** [Équipes, partenaires, phases et activités concernés.]
+Le projet couvre un portfolio statique à page unique, son contenu, ses interactions côté navigateur et sa documentation. Le site est destiné à être publié sur GitHub Pages sans compilation ni serveur applicatif. Les responsables nominatifs, les règles de décision, les fréquences de communication et les disponibilités ne sont pas précisés dans les documents de référence.
 
-**Documents liés :** [Liens Obsidian vers le cahier des charges, l’analyse des besoins, l’architecture, le backlog ou d’autres références.]
+## 3. Principes d’organisation
 
-## 2. Principes d’organisation
+- Garder `index.html` comme point d’entrée et conserver une exécution directe du site statique.
+- Séparer le contenu variable dans les fichiers JSON, tout en maintenant le contenu de repli correspondant dans `index.html`.
+- Garder les comportements actifs dans `js/custom.js`, le chargement et le rendu des données dans `js/data.js`, et la préférence de thème dans `js/scripts.js`.
+- Placer les styles généraux dans `css/style.css` et les adaptations aux dimensions d’écran dans `css/responsive.css`.
+- Réutiliser les bibliothèques présentes; ne pas modifier les bibliothèques minifiées et ne pas charger de versions en double.
+- Vérifier la présence des ressources locales ajoutées sous `img/`.
+- Ne pas considérer les fichiers de consentement aux cookies comme une fonctionnalité intégrée.
 
-- **Principe :** [Ex. : responsabilité clairement attribuée]
-- **Principe :** [Ex. : décisions prises au niveau le plus proche du travail concerné]
-- **Contraintes organisationnelles :** [Disponibilités, règles internes, dépendances ou limites connues]
+## 4. Organisation et rôles
 
-## 3. Organisation du projet
+### Équipes propriétaires
 
-### Vue d’ensemble
+Les documents généraux répertorient Product, Engineering et Design comme propriétaires du projet. Ils ne détaillent pas la répartition de leurs responsabilités ni les personnes affectées.
 
-[Décrire brièvement les équipes et les liens entre le commanditaire, la coordination, les métiers, la réalisation et l’exploitation.]
+| Équipe / rôle connu | Contribution au projet | Responsable nominatif |
+| --- | --- | --- |
+| Product | Équipe propriétaire répertoriée; responsabilité précise à confirmer. | À confirmer |
+| Engineering | Équipe propriétaire répertoriée; responsabilité précise à confirmer. | À confirmer |
+| Design | Équipe propriétaire répertoriée; responsabilité précise à confirmer. | À confirmer |
+| Propriétaire du portfolio | Valider les contenus et le besoin de contact; identité et délégations à confirmer. | À confirmer |
 
-### Organigramme
+### Parties prenantes du système
 
-```mermaid
-flowchart TD
-		Sponsor[Commanditaire / sponsor]
-		Lead[Responsable du projet]
-		Sponsor --> Lead
-		Lead --> Business[Référents métier]
-		Lead --> Delivery[Équipe de réalisation]
-		Lead --> Operations[Support / exploitation]
-```
+| Partie prenante | Interaction avec le projet |
+| --- | --- |
+| Visiteur | Parcourt les sections du portfolio et peut utiliser le formulaire de contact. |
+| Mainteneurs du dépôt | Modifient le contenu, les styles, les comportements et la documentation. Les personnes et affectations ne sont pas indiquées. |
+| Fournisseur du formulaire, si activé | Reçoit les requêtes JSON lorsque l’endpoint et la clé sont configurés. Le fournisseur n’est pas identifié. |
 
-[Adapter ou remplacer le schéma selon l’organisation réelle du projet.]
+### Matrice de responsabilités à compléter
 
-### Équipes et groupes de travail
+Les documents disponibles ne permettent pas d’attribuer un responsable final (A) à chaque activité. Cette matrice doit être validée par le commanditaire avant d’être utilisée pour la gouvernance.
 
-| Équipe / groupe | Mission | Membres ou profils | Responsable | Période / disponibilité |
+| Activité | Product | Engineering | Design | Propriétaire du portfolio |
 | --- | --- | --- | --- | --- |
-| [Équipe] | [Mission et résultats attendus] | [Profils ou noms] | [Nom / rôle] | [Période ou charge] |
+| Valider le périmètre et les besoins | À attribuer | À attribuer | À attribuer | À confirmer |
+| Valider les contenus du portfolio | À attribuer | À attribuer | À attribuer | À confirmer |
+| Maintenir le code et vérifier les comportements | À attribuer | À attribuer | À attribuer | À confirmer |
+| Valider l’expérience visuelle et responsive | À attribuer | À attribuer | À attribuer | À confirmer |
+| Configurer et valider le service de formulaire | À attribuer | À attribuer | À attribuer | À confirmer |
+| Publier et accepter une mise en production | À attribuer | À attribuer | À attribuer | À confirmer |
 
-## 4. Rôles et responsabilités
+## 5. Gouvernance, décisions et communication
 
-| Rôle | Personne / équipe | Responsabilités principales | Autorité / décisions possibles | Remplaçant ou relais |
-| --- | --- | --- | --- | --- |
-| Commanditaire | [Nom / organisation] | [Vision, financement, arbitrages majeurs] | [Décisions réservées] | [Nom / rôle] |
-| Responsable du projet | [Nom] | [Coordination, suivi du périmètre, délais et risques] | [Décisions déléguées] | [Nom / rôle] |
-| Référent métier | [Nom / équipe] | [Besoins, règles métier, validation fonctionnelle] | [Acceptation métier] | [Nom / rôle] |
-| Équipe de réalisation | [Noms / équipe] | [Conception, réalisation et vérification] | [Choix dans le cadre convenu] | [Nom / rôle] |
-| Support / exploitation | [Nom / équipe] | [Mise en service, assistance et maintien en condition] | [Décisions opérationnelles] | [Nom / rôle] |
+Les documents de référence ne précisent pas d’instance de gouvernance, de cadence de réunion, de canal officiel, de processus d’escalade ni de décideur par domaine. Ces éléments restent à définir par les équipes propriétaires.
 
-### Matrice des responsabilités
+Le dépôt distingue les documents de conception, de planification et les documents Scrum. Les décisions, validations et changements importants devraient être consignés dans les documents de suivi concernés et reflétés dans les documents techniques lorsqu’ils modifient le fonctionnement du site.
 
-Utiliser R = réalise, A = responsable final et redevable, C = consulté, I = informé. Attribuer un seul A par activité lorsque c’est possible.
+| Sujet à définir | État |
+| --- | --- |
+| Commanditaire et approbateurs | À confirmer |
+| Décideurs pour le périmètre, le contenu et l’architecture | À confirmer |
+| Réunions, participants et fréquence | À confirmer |
+| Canal de communication et emplacement des comptes rendus | À confirmer |
+| Processus d’escalade et délai de décision | À confirmer |
 
-| Activité / livrable | Commanditaire | Responsable projet | Référent métier | Équipe de réalisation | Support / exploitation |
-| --- | --- | --- | --- | --- | --- |
-| [Définir et valider le périmètre] | [A/C/I] | [R/A/C/I] | [R/A/C/I] | [R/A/C/I] | [R/A/C/I] |
-| [Valider les exigences] | [A/C/I] | [R/A/C/I] | [R/A/C/I] | [R/A/C/I] | [R/A/C/I] |
-| [Réaliser et vérifier la solution] | [A/C/I] | [R/A/C/I] | [R/A/C/I] | [R/A/C/I] | [R/A/C/I] |
-| [Accepter et mettre en service] | [A/C/I] | [R/A/C/I] | [R/A/C/I] | [R/A/C/I] | [R/A/C/I] |
+## 6. Processus de travail et responsabilités techniques
 
-## 5. Gouvernance et décisions
+### Flux d’exécution du site
 
-### Instances de gouvernance
+1. Le navigateur charge les styles déclarés dans `index.html`.
+2. Alpine.js est différé; les autres scripts sont chargés à la fin du document.
+3. jQuery et les bibliothèques locales sont chargés avant `js/data.js`, puis `js/custom.js`.
+4. `js/data.js` récupère `json/site-data.json` et `json/contact-form.json`, met à jour les contenus concernés et expose `window.PGDigital.ready`.
+5. `js/custom.js` attend cette promesse avant d’initialiser les carrousels, fullPage.js, les gestionnaires d’événements et le formulaire.
+6. Après l’événement `load`, le préchargeur disparaît et les animations de visibilité sont activées.
 
-| Instance | Participants | Responsabilité | Fréquence / déclencheur | Sorties attendues |
-| --- | --- | --- | --- | --- |
-| [Comité de pilotage / réunion d’équipe / revue technique] | [Rôles] | [Suivi, arbitrage ou validation] | [Fréquence] | [Décisions, actions, compte rendu] |
+### Responsabilités des fichiers et dossiers
 
-### Processus de décision
+| Chemin | Responsabilité |
+| --- | --- |
+| `index.html` | Point d’entrée, contenu des six sections, navigation, formulaire et chargement des ressources. |
+| `css/style.css` | Identité visuelle, typographie, mise en page et styles des composants. |
+| `css/responsive.css` | Surcharges selon les dimensions d’écran et comportement mobile. |
+| `js/custom.js` | fullPage.js, carrousels, animations, compteurs, menu mobile et formulaire. |
+| `js/data.js` | Chargement des fichiers JSON et rendu des sections pilotées par les données. |
+| `js/scripts.js` | Bascule du mode sombre et préférence persistée localement. |
+| `json/site-data.json` | Faits, services, compétences, outils et coordonnées de contact. |
+| `json/contact-form.json` | Endpoint, clé d’accès, clés de stockage local et messages de statut du formulaire. |
+| `img/competences/` | Illustrations de la section Compétences. |
+| `img/tools/` | Illustrations de la section Outils. |
+| `docs/` | Documentation technique, de conception, de planification et de suivi du projet. |
 
-1. [La question ou le besoin de décision est documenté par son responsable.]
-2. [Les impacts, options et personnes à consulter sont identifiés.]
-3. [La personne ou l’instance habilitée prend et consigne la décision.]
-4. [La décision est communiquée aux personnes concernées et les documents liés sont mis à jour.]
+### Dépendances et ressources externes
 
-| Domaine de décision | Décideur / instance | Personnes consultées | Délai ou règle d’escalade |
-| --- | --- | --- | --- |
-| [Périmètre, budget, priorité, architecture, mise en production…] | [Rôle / instance] | [Rôles] | [Règle] |
+Bootstrap, fullPage.js, Owl Carousel, jQuery, jquery.inview, scrolloverflow et Animate.css sont conservés localement. Bootstrap Icons, Alpine.js et Google Fonts sont chargés depuis des CDN; une ouverture hors ligne peut donc ne pas afficher certaines ressources externes.
 
-### Gestion des désaccords et escalade
+## 7. Outils et espaces de travail
 
-[Indiquer comment un désaccord est documenté, qui facilite sa résolution, le délai de décision et le niveau d’escalade si aucun accord n’est trouvé.]
-
-## 6. Communication et coordination
-
-| Échange / réunion | Participants | Objectif | Fréquence | Canal / compte rendu |
-| --- | --- | --- | --- | --- |
-| [Point de suivi] | [Rôles] | [Objectif] | [Fréquence] | [Outil / emplacement] |
-
-### Règles de communication
-
-- **Canal de référence :** [Outil ou emplacement pour les communications officielles]
-- **Documentation des décisions :** [Emplacement et responsable de mise à jour]
-- **Diffusion des changements :** [Personnes à informer et délai]
-- **Disponibilité attendue :** [Plages de travail ou délai de réponse, si nécessaire]
-
-## 7. Processus de travail
-
-| Processus | Déclencheur | Responsable | Étapes principales | Résultat / preuve |
-| --- | --- | --- | --- | --- |
-| [Gestion d’une demande ou d’un changement] | [Événement] | [Rôle] | [Étapes] | [Décision, ticket, document…] |
-| [Validation d’un livrable] | [Livrable prêt] | [Rôle] | [Revue, retours, approbation] | [Statut et preuve de validation] |
-| [Traitement d’un blocage] | [Blocage identifié] | [Rôle] | [Signalement, analyse, escalade] | [Résolution ou décision] |
-
-### Outils et espaces de travail
-
-| Outil / espace | Usage | Responsable | Règles d’accès ou de classement |
-| --- | --- | --- | --- |
-| [Outil de suivi, dépôt documentaire, communication…] | [Usage] | [Rôle] | [Règles] |
+| Espace | Usage connu | Remarque |
+| --- | --- | --- |
+| Dépôt du projet | Code du site, ressources et documentation. | Hébergement du dépôt et règles d’accès à confirmer. |
+| `docs/Analyse Conception/` | Documents d’analyse, architecture, structure et conception. | Références de conception. |
+| `docs/Agile Scrum/` | Documents de planification et de suivi Scrum. | Responsables et cadence à confirmer. |
+| `docs/Extra/` | Ressources complémentaires du projet. | Convention de classement à préciser si nécessaire. |
+| `docs/tasks.md` | État vérifié et prochain travail du projet, selon la structure technique. | Vérifier la mise à jour lors des changements importants. |
+| GitHub Pages | Publication prévue du site statique. | Procédure exacte et responsable de publication à confirmer. |
 
 ## 8. Arborescence du projet
 
-Présenter l’organisation des dossiers et fichiers utilisés pour le projet. Adapter l’exemple aux conventions du projet et supprimer les éléments inutilisés. Si le code source est hébergé séparément, indiquer son dépôt et documenter son arborescence dans la documentation technique.
+Arborescence représentative du dépôt. Les bibliothèques locales et ressources sont regroupées pour préserver la lisibilité.
 
 ```text
-[Nom du projet]/
-├── 00 - Project Overview.md
-├── 01 - Requirements.md
-├── 02 - Architecture.md
-├── 03 - Roadmap.md
-├── 04 - Decisions.md
-├── 05 - Meetings.md
-├── [Autres documents de référence].md
-├── [Dossier de travail]/
-│   └── [Sous-dossier ou fichier]
-└── [Dossier de livrables ou pièces jointes]/
-	└── [Fichier]
+pgdigital/
+├── index.html
+├── README.md
+├── css/
+│   ├── style.css
+│   ├── responsive.css
+│   ├── [styles des bibliothèques locales]
+│   └── cookie_consent.css (non intégré)
+├── js/
+│   ├── custom.js
+│   ├── data.js
+│   ├── scripts.js
+│   ├── [bibliothèques JavaScript locales]
+│   └── cookie_consent.js (non intégré)
+├── json/
+│   ├── site-data.json
+│   └── contact-form.json
+├── img/
+│   ├── competences/
+│   ├── tools/
+│   └── random/
+├── fonts/
+└── docs/
+    ├── structure.md
+    ├── tasks.md
+    ├── Analyse Conception/
+    ├── Agile Scrum/
+    └── Extra/
 ```
 
-| Dossier / fichier | Contenu et finalité | Responsable | Règles de classement, accès ou conservation |
+Les sous-dossiers de `docs/Analyse Conception/` comprennent notamment les documents d’analyse des besoins, d’architecture, de cahier des charges, de structure, de modélisation et d’UX/UI. Les fichiers et sous-dossiers peuvent évoluer; cette arborescence est un repère et non une liste exhaustive.
+
+## 9. Invariants et éléments non intégrés
+
+- Le site doit rester statique et fonctionner lors de l’ouverture directe de `index.html`.
+- Si les fichiers JSON ne peuvent pas être chargés, notamment en `file://`, le contenu HTML statique doit rester disponible.
+- Toute modification du contenu piloté par les données doit être reportée dans `json/site-data.json` et dans le contenu de repli correspondant de `index.html`.
+- Les ancres `slide01` à `slide06` doivent rester synchronisées entre les sections HTML, la navigation et le tableau `anchors` de `js/custom.js`.
+- Les comportements actifs restent dans `js/custom.js`; le thème actif reste géré par `js/scripts.js`.
+- `js/cookie_consent.js` et `css/cookie_consent.css` ne sont pas chargés par `index.html`. Le script attend une API `/api/cookie-consent/` absente du dépôt; ces fichiers ne doivent pas être décrits comme une fonctionnalité livrée.
+- Toute ressource locale ajoutée doit exister à l’emplacement référencé et ne pas dupliquer une bibliothèque déjà chargée.
+
+## 10. Continuité, points ouverts et risques organisationnels
+
+| Point / risque | Impact | Action attendue | Statut |
 | --- | --- | --- | --- |
-| [Chemin relatif] | [Documents ou fichiers à y conserver] | [Rôle] | [Convention de nommage, droits, archivage…] |
-
-- **Emplacement principal :** [Chemin du dossier ou lien vers le dépôt]
-- **Dépôt du code source, si distinct :** [Lien / emplacement]
-- **Convention de nommage :** [Règle appliquée aux dossiers et fichiers]
-- **Éléments exclus ou à ne pas versionner :** [Secrets, fichiers temporaires, données personnelles…]
-
-## 9. Continuité et évolution de l’organisation
-
-- **Absence ou indisponibilité d’un rôle clé :** [Relais et transfert des responsabilités]
-- **Arrivée ou départ d’un membre :** [Accueil, accès, transfert de connaissances]
-- **Évolution des équipes ou responsabilités :** [Processus de mise à jour et personnes à informer]
-- **Compétences ou ressources manquantes :** [Besoin, impact et action prévue]
-
-## 10. Points ouverts et risques organisationnels
-
-| Point / risque | Impact | Responsable | Action ou décision attendue | Échéance / statut |
-| --- | --- | --- | --- | --- |
-| [À clarifier] | [Impact sur le projet] | [Nom / rôle] | [Action] | [Date / ouvert] |
+| Responsabilités et approbateurs non attribués | Décisions et validations difficiles à achever. | Désigner un responsable et un approbateur par activité. | À confirmer |
+| Cohérence des contenus JSON et de leur repli HTML | Le site peut afficher des informations différentes selon le mode de chargement. | Inclure la vérification des deux sources dans la maintenance du contenu. | Règle connue |
+| Dépendance aux CDN | Certaines ressources peuvent manquer en mode hors ligne. | Décider si cette limitation est acceptable pour les usages prévus. | À confirmer |
+| Envoi de contact dépendant d’une configuration externe | L’envoi distant n’est pas actif par défaut et dépend d’un endpoint configuré. | Confirmer le fournisseur, la configuration et le responsable opérationnel. | À confirmer |
+| Absence de relais et procédure d’exploitation documentés | Les mises à jour et incidents peuvent dépendre d’une seule personne. | Définir les contacts, les accès et le transfert des connaissances. | À confirmer |
 
 ## 11. Vérification et validation
 
-- [ ] Les rôles et responsabilités sont attribués et compris.
-- [ ] Les activités importantes ont un responsable et une autorité de décision identifiés.
-- [ ] Les instances, fréquences et sorties de gouvernance sont définies.
-- [ ] Les canaux de communication et espaces documentaires sont connus.
-- [ ] Les relais et modalités d’escalade sont définis pour les situations pertinentes.
+- [ ] Les personnes responsables et approbateurs sont identifiés.
+- [ ] Les rôles d’équipe répertoriés sont confirmés et leurs responsabilités attribuées.
+- [ ] Les fichiers JSON et le repli statique restent cohérents.
+- [ ] Les six ancres sont synchronisées entre HTML, navigation et configuration.
+- [ ] Les dépendances locales et CDN sont documentées; les fichiers de consentement restent identifiés comme non intégrés.
+- [ ] La procédure de publication et les contacts d’exploitation sont définis.
 
 | Validateur | Rôle | Validation / remarques | Date |
 | --- | --- | --- | --- |
-| [Nom] | [Commanditaire / responsable projet / autre] | [À valider / validé / remarques] | [AAAA-MM-JJ] |
+| À confirmer | Commanditaire / représentant Product | À valider | À confirmer |
+| À confirmer | Représentant Engineering | À valider | À confirmer |
+| À confirmer | Représentant Design | À valider | À confirmer |
 
 ## 12. Historique des versions
 
 | Version | Date | Auteur | Modifications |
 | --- | --- | --- | --- |
-| 0.1 | [AAAA-MM-JJ] | [Nom] | Création du document |
+| 1.0 | 2026-10-20 | Patrick G. |  |
