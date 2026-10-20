@@ -1,116 +1,147 @@
-# Sprint Backlog — [Nom du projet]
+# Sprint Backlog — PGDigital
 
-## 1. Identification du projet
+## 1. Identification
 
-| Information | À compléter |
+| Information | Valeur |
 | --- | --- |
-| Nom du projet | [Nom du projet] |
-| Client / commanditaire | [Nom, organisation] |
-| Analyste(s) | [Noms] |
-| Date | [AAAA-MM-JJ] |
-| Version du document | [Version] |
+| Produit | PGDigital — portfolio statique |
+| Équipes propriétaires répertoriées | Product, Engineering et Design |
+| Sprint | À définir — proposition non planifiée |
+| Date de mise à jour | 2026-10-20 |
+| Version | 1.0 |
+| Références | [Product Backlog](Scrum%20Product%20Backlogs.md), [Roadmap](Roadmap.md), [Tâches](../tasks.md), [Audit](../Extra/Audit.md) |
 
-Le Sprint Backlog réunit l’objectif du sprint, les éléments du Product Backlog sélectionnés et le plan de travail nécessaire pour produire un incrément. Les descriptions canoniques des éléments restent dans le Product Backlog. Une tâche terminée ne signifie pas à elle seule que l’élément associé est terminé : les critères d’acceptation et la définition de fini doivent être satisfaits.
+Ce document présente une proposition de périmètre pour le prochain sprint. Aucun sprint en cours, date, durée, capacité, participant ou engagement d’équipe n’est indiqué dans les sources. Les éléments ci-dessous ne sont donc pas réputés acceptés ou planifiés.
 
-## 2. Cadre du sprint
+Les constats de l’audit concernent la révision `391b302`; le dépôt courant est `e46117a`. La première tâche proposée consiste à vérifier ces constats sur la révision courante et à ne corriger que ceux qui sont encore présents.
 
-| Information | À compléter |
+## 2. Proposition d’objectif de sprint
+
+**Objectif proposé :** confirmer l’état des défauts P1 du parcours de contact et, si ces défauts sont présents sur la révision courante, empêcher les succès trompeurs, la fuite de données de formulaire dans l’URL et la perte silencieuse des messages.
+
+**Statut :** à discuter lors de la planification.
+**Réussite attendue :** scénarios d’échec et de succès validés avec des réponses simulées, sans envoi réel de message ni affirmation de sauvegarde non vérifiée.
+
+## 3. Cadre, capacité et contraintes
+
+| Information | Valeur |
 | --- | --- |
-| Sprint | [Numéro / nom] |
-| Produit / projet | [Nom] |
-| Date de début | [AAAA-MM-JJ] |
-| Date de fin | [AAAA-MM-JJ] |
-| Durée | [Nombre de semaines / jours ouvrés] |
-| Participants | [Membres du Scrum Team] |
-| Disponibilité / capacité | [Capacité estimée de l’équipe et hypothèses] |
-| Références | [Product Backlog, définition de fini, calendrier] |
+| Début / fin / durée | À définir |
+| Participants | À désigner |
+| Capacité | À estimer par l’équipe |
+| Responsable produit / approbateur | À confirmer |
+| Environnement de test | À définir; utiliser des réponses simulées pour les tests de soumission |
+| Dépendance externe | Contrat et configuration Web3Forms à vérifier; éviter les envois réels pendant les tests |
 
-### Objectif du sprint
+**Contraintes :** préserver les six ancres et le comportement mobile; ne pas modifier les bibliothèques minifiées vendues; conserver le déploiement statique; ne pas exposer de clé ou de données personnelles dans les journaux ni dans le dépôt.
 
-[Formuler un objectif unique, compréhensible et mesurable qui explique la valeur attendue du sprint.]
+## 4. Éléments candidats au sprint
 
-## 3. Capacité et contraintes
-
-| Personne / compétence / équipe | Disponibilité prévue | Indisponibilités ou contraintes | Impact sur le sprint |
-| --- | --- | --- | --- |
-| [Nom / équipe] | [Jours ou capacité] | [Congé, dépendance, autre engagement…] | [Impact / aucune] |
-
-**Capacité totale estimée :** [Valeur et unité]  
-**Hypothèses :** [Données utilisées pour estimer la capacité et limites connues.]
-
-## 4. Éléments du Product Backlog sélectionnés
-
-| ID | Élément | Priorité | Estimation | Résultat attendu dans ce sprint | Statut |
-| --- | --- | --- | --- | --- | --- |
-| [USx / TSx / BUGx] | [Nom court et référence au Product Backlog] | [Priorité] | [Valeur et unité] | [Partie réalisable contribuant à l’objectif] | [Planifié / en cours / terminé / reporté] |
-
-**Capacité / estimation totale sélectionnée :** [Valeur et unité, si utilisées par l’équipe]
-
-## 5. Plan de travail par élément
-
-Dupliquer cette section pour chaque élément sélectionné. Décomposer le travail en tâches suffisamment concrètes pour permettre à l’équipe d’inspecter l’avancement et d’adapter le plan.
-
-### [USx / TSx / BUGx] — [Nom de l’élément]
-
-**Référence au Product Backlog :** [Lien ou emplacement]  
-**Contribution à l’objectif du sprint :** [Résultat visé]  
-**Critères d’acceptation concernés :** [Référence ou résumé des critères applicables]
-
-| Tâche | État | Échéance (si utile) | Personne en charge (si applicable) | Notes / blocage |
+| ID | Élément du Product Backlog | Priorité | Résultat visé | Statut de planification |
 | --- | --- | --- | --- | --- |
-| [Action concrète] | [À planifier / en cours / suspendue / finie] | [AAAA-MM-JJ] | [Nom / à affecter] | [Dépendance ou note] |
+| PB-00 | Revalider l’audit sur la révision courante | Préalable | Statut vérifié pour F01–F03, S02 et M01. | À discuter |
+| F01 | Vérifier le succès métier avant confirmation | P1 | Aucun faux succès; formulaire non effacé sur un rejet. | À discuter si confirmé |
+| F02 | Rendre le contact sûr pendant le chargement | P1 | Aucun GET contenant des données personnelles; contact utilisable en cas de panne JSON/scripts. | À discuter si confirmé |
+| F03 | Fiabiliser stockage et file | P1 | Pas de sauvegarde ou d’envoi annoncé sans preuve; pas de perte silencieuse. | À discuter si confirmé |
+| S02 | Définir conservation et effacement | P1 | Politique, information et commandes de suppression définies et vérifiables. | À discuter |
+| M01 | Harmoniser repli, configuration et documentation | P2 | Contenu et destinataire validés en HTTP et en mode de repli. | À discuter |
 
-## 6. Suivi de l’avancement
+Le Product Owner et l’équipe doivent confirmer le périmètre après estimation. Si les éléments excèdent la capacité, conserver l’objectif et reprioriser explicitement; ne pas présenter cette proposition comme un engagement.
 
-| Date | Travail terminé / restant | Écart ou blocage | Adaptation décidée |
-| --- | --- | --- | --- |
-| [AAAA-MM-JJ] | [Résumé de l’avancement vers l’objectif] | [Blocage / aucun] | [Action ou ajustement du plan] |
+## 5. Plan de travail proposé
 
-### Blocages et dépendances
+### PB-00 — Vérification initiale
 
-| Blocage / dépendance | Impact sur l’objectif | Responsable du suivi | Prochaine action / échéance | Statut |
-| --- | --- | --- | --- | --- |
-| [Élément] | [Impact] | [Nom / rôle] | [Action et date] | [Ouvert / résolu] |
-
-## 7. Changements et éléments reportés
-
-| Élément concerné | Changement / raison du report | Impact sur l’objectif | Décision / action suivante |
-| --- | --- | --- | --- |
-| [ID ou tâche] | [Description] | [Impact] | [Décision et destination dans le Product Backlog] |
-
-Les changements de périmètre sont discutés par l’équipe en fonction de leur impact sur l’objectif du sprint. Mettre à jour le backlog produit pour les éléments non réalisés ou les nouveaux besoins identifiés.
-
-## 8. Revue du sprint et incrément
-
-- **Date de la revue :** [AAAA-MM-JJ]
-- **Participants / parties prenantes :** [Noms ou rôles]
-- **Incrément présenté :** [Description]
-- **Éléments acceptés :** [IDs et preuves de satisfaction des critères]
-- **Éléments non terminés :** [IDs et suite donnée]
-- **Retours recueillis :** [Résumé et liens vers les nouveaux éléments du backlog]
-
-## 9. Rétrospective et amélioration
-
-| Observation | Décision d’amélioration | Responsable | Échéance / sprint cible | Statut |
-| --- | --- | --- | --- | --- |
-| [Ce qui a aidé ou freiné l’équipe] | [Action d’amélioration concrète] | [Nom / équipe] | [Date / sprint] | [À faire / en cours / terminée] |
-
-## 10. Vérification de la définition de fini
-
-- [ ] Chaque élément déclaré terminé satisfait ses critères d’acceptation.
-- [ ] La définition de fini du projet est respectée.
-- [ ] L’incrément est intégré et vérifié selon les pratiques de l’équipe.
-- [ ] Les éléments non terminés sont remis dans le Product Backlog et leur état est mis à jour.
-- [ ] Les retours, décisions et actions de suivi sont consignés.
-
-**Définition de fini de référence :** [Lien ou emplacement]
-
-## 11. Validation et historique
-
-| Personne / rôle | Validation / remarques | Date |
+| Tâche | État initial | Responsable |
 | --- | --- | --- |
-| [Product Owner / Scrum Team / autre] | [À valider / validé / remarques] | [AAAA-MM-JJ] |
+| Comparer les chemins de code actuels aux preuves F01–F03, S02 et M01 de l’audit. | À planifier | À affecter |
+| Vérifier les tâches précédemment cochées et les contrôles encore ouverts dans `docs/tasks.md`. | À planifier | À affecter |
+| Consigner pour chaque constat : confirmé, corrigé, non reproduit ou hors périmètre, avec preuve. | À planifier | À affecter |
 
-| Version | Date | Auteur | Modifications |
+### F01 — Résultat métier du formulaire, si le constat est confirmé
+
+| Tâche | État initial | Responsable |
+| --- | --- | --- |
+| Définir les réponses positives et négatives selon le contrat du fournisseur. | À planifier | À affecter |
+| Traiter les réponses JSON invalides et les rejets sans afficher le succès ni effacer les champs. | À planifier | À affecter |
+| Vérifier les cas HTTP 200 avec `success: false`, JSON invalide, HTTP 400 et succès positif simulé. | À planifier | À affecter |
+
+### F02 — Démarrage et soumission sûre, si le constat est confirmé
+
+| Tâche | État initial | Responsable |
+| --- | --- | --- |
+| Empêcher le comportement natif GET avant que la configuration JSON soit disponible. | À planifier | À affecter |
+| Découpler l’initialisation du formulaire du chargement des données de contenu ou prévoir un état de repli sûr. | À planifier | À affecter |
+| Borner le chargement JSON et présenter une erreur compréhensible; garder un moyen de contact accessible. | À planifier | À affecter |
+| Vérifier JSON lent, absent, invalide et scripts désactivés; confirmer l’absence de données personnelles dans l’URL. | À planifier | À affecter |
+
+### F03 — Stockage et file fiable, si le constat est confirmé
+
+| Tâche | État initial | Responsable |
+| --- | --- | --- |
+| Rendre visibles les erreurs de lecture et d’écriture de `localStorage`. | À planifier | À affecter |
+| Définir les erreurs temporaires réessayables et les rejets définitifs. | À planifier | À affecter |
+| Empêcher la suppression silencieuse lorsque `maxQueued` est atteint; ajouter information et option d’annulation. | À planifier | À affecter |
+| Sérialiser la vidange, traiter les soumissions concurrentes et ajouter un timeout contrôlé. | À planifier | À affecter |
+| Tester stockage interdit, file pleine, 400, 429, 503, timeout, retour en ligne et nouvelle saisie pendant la vidange. | À planifier | À affecter |
+
+### S02 / M01 — Données et cohérence
+
+| Tâche | État initial | Responsable |
+| --- | --- | --- |
+| Faire valider la durée de conservation, la finalité, les destinataires et le texte d’information du formulaire. | À planifier | À affecter |
+| Définir l’effacement du brouillon et l’annulation de la file; vérifier qu’aucune donnée expirée n’est restaurée. | À planifier | À affecter |
+| Valider le destinataire de secours et harmoniser contenu JSON, HTML de repli et README. | À planifier | À affecter |
+| Vérifier les liens sociaux réels ou les omettre tant que les profils ne sont pas configurés. | À planifier | À affecter |
+
+## 6. Suivi d’avancement
+
+À remplir lors de la planification et du déroulement réel du sprint. Aucun avancement ne peut être inféré des documents sources.
+
+| Date | Travail terminé / restant | Blocage | Adaptation décidée |
 | --- | --- | --- | --- |
-| 0.1 | [AAAA-MM-JJ] | [Nom] | Création du template |
+| À compléter | À compléter | À compléter | À compléter |
+
+## 7. Hors de cette proposition et dépendances
+
+Les sujets suivants restent dans le Product Backlog et ne sont pas automatiquement inclus dans ce sprint :
+
+- S01 — inventaire et mise à niveau des dépendances;
+- U01 et U02 — contraste, structure sémantique, clavier et carrousels;
+- S03 — ressources tierces et politiques HTTP;
+- P01 et P02 — images, démarrage et mesures de performance;
+- U03 — mouvement réduit et pause des animations;
+- U04 et TODO-02/03 — présentation, métadonnées de partage et évaluation SEO;
+- TODO-01 — décision sur le consentement aux cookies, qui reste non intégré faute de balisage et d’API serveur documentés;
+- TODO-04 — contrôles navigateur récurrents non encore cochés dans `docs/tasks.md`.
+
+Le respect du calendrier, les disponibilités des personnes, le service de formulaire et les limites d’en-têtes de GitHub Pages sont des dépendances à clarifier.
+
+## 8. Définition de fini et recette proposée
+
+- [ ] Les constats traités ont été confirmés sur la révision visée et leurs critères d’acceptation sont satisfaits.
+- [ ] Les contrôles syntaxiques JavaScript et `html-validate` réussissent si des scripts ou du HTML ont été modifiés.
+- [ ] Les tests du formulaire utilisent des réponses simulées; aucun message réel n’est envoyé sans autorisation.
+- [ ] Aucun cas ne présente un faux succès, ne perd silencieusement un message ou n’expose les champs dans l’URL.
+- [ ] Brouillon, file, effacement et erreurs de stockage sont vérifiés.
+- [ ] Les six ancres, le menu, les carrousels et les dimensions mobiles n’ont pas régressé.
+- [ ] Les documents liés et `docs/tasks.md` sont actualisés avec les résultats et les tâches restantes.
+- [ ] Aucun secret, message personnel ou donnée de test sensible n’est ajouté au dépôt.
+
+## 9. Revue et rétrospective
+
+À compléter uniquement après un sprint approuvé :
+
+| Élément | Résultat |
+| --- | --- |
+| Date et participants de la revue | À compléter |
+| Incrément et éléments acceptés | À compléter |
+| Éléments reportés et destination | À compléter |
+| Retours recueillis | À compléter |
+| Amélioration décidée | À compléter |
+
+## 10. Historique
+
+| Version | Date | Modifications |
+| --- | --- | --- |
+| 1.0 | 2026-10-20 | Proposition de sprint issue des priorités P1 de l’audit; statut explicitement non planifié et révision à revalider. |

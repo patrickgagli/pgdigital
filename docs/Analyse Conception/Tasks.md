@@ -1,30 +1,17 @@
----
-title: tasks
-description: État vérifié, tâches et points de contrôle du projet.
-product: pgdigital
-version: 1.0
-status: current
-owners:
-  - Product
-  - Engineering
-  - Design
-last_updated: 2026-09-11
-tags:
-  [
-    tâches,
-    listes de tâches,
-    checkpoints de tâches,
-    codebase,
-    gestion de projet,
-    développement agile,
-    scrum,
-    planification,
-    livraison,
-  ]
----
+# Tâches - PGDigital
 
-# Tâches
 Ce document suit l'état observable du dépôt. Une case terminée correspond à une fonctionnalité présente dans le code actuel, pas nécessairement à une validation sur tous les navigateurs.
+
+## Identification
+
+| Information | Valeur |
+| --- | --- |
+| Nom du projet | PGDigital — portfolio statique |
+| Commanditaire | Patrick G. |
+| Équipes propriétaires répertoriées | Product, Engineering et Design |
+| Date de mise à jour | 2026-10-20 |
+| Version | 1.0 |
+| Auteur | Patrick G. 
 
 ## Livré
 - [x] Créer les six sections Accueil, À propos, Services, Compétences, Outils et Contact.
