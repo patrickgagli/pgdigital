@@ -1,6 +1,6 @@
 # Sprint Backlog — PGDigital
 
-## 1. Identification
+## Identification
 
 | Information | Valeur |
 | --- | --- |
@@ -15,14 +15,14 @@ Ce document présente une proposition de périmètre pour le prochain sprint. Au
 
 Les constats de l’audit concernent la révision `391b302`; le dépôt courant est `e46117a`. La première tâche proposée consiste à vérifier ces constats sur la révision courante et à ne corriger que ceux qui sont encore présents.
 
-## 2. Proposition d’objectif de sprint
+## 1. Proposition d’objectif de sprint
 
 **Objectif proposé :** confirmer l’état des défauts P1 du parcours de contact et, si ces défauts sont présents sur la révision courante, empêcher les succès trompeurs, la fuite de données de formulaire dans l’URL et la perte silencieuse des messages.
 
 **Statut :** à discuter lors de la planification.
 **Réussite attendue :** scénarios d’échec et de succès validés avec des réponses simulées, sans envoi réel de message ni affirmation de sauvegarde non vérifiée.
 
-## 3. Cadre, capacité et contraintes
+## 2. Cadre, capacité et contraintes
 
 | Information | Valeur |
 | --- | --- |
@@ -35,7 +35,7 @@ Les constats de l’audit concernent la révision `391b302`; le dépôt courant 
 
 **Contraintes :** préserver les six ancres et le comportement mobile; ne pas modifier les bibliothèques minifiées vendues; conserver le déploiement statique; ne pas exposer de clé ou de données personnelles dans les journaux ni dans le dépôt.
 
-## 4. Éléments candidats au sprint
+## 3. Éléments candidats au sprint
 
 | ID | Élément du Product Backlog | Priorité | Résultat visé | Statut de planification |
 | --- | --- | --- | --- | --- |
@@ -48,7 +48,7 @@ Les constats de l’audit concernent la révision `391b302`; le dépôt courant 
 
 Le Product Owner et l’équipe doivent confirmer le périmètre après estimation. Si les éléments excèdent la capacité, conserver l’objectif et reprioriser explicitement; ne pas présenter cette proposition comme un engagement.
 
-## 5. Plan de travail proposé
+## 4. Plan de travail proposé
 
 ### PB-00 — Vérification initiale
 
@@ -94,7 +94,7 @@ Le Product Owner et l’équipe doivent confirmer le périmètre après estimati
 | Valider le destinataire de secours et harmoniser contenu JSON, HTML de repli et README. | À planifier | À affecter |
 | Vérifier les liens sociaux réels ou les omettre tant que les profils ne sont pas configurés. | À planifier | À affecter |
 
-## 6. Suivi d’avancement
+## 5. Suivi d’avancement
 
 À remplir lors de la planification et du déroulement réel du sprint. Aucun avancement ne peut être inféré des documents sources.
 
@@ -102,7 +102,7 @@ Le Product Owner et l’équipe doivent confirmer le périmètre après estimati
 | --- | --- | --- | --- |
 | À compléter | À compléter | À compléter | À compléter |
 
-## 7. Hors de cette proposition et dépendances
+## 6. Hors de cette proposition et dépendances
 
 Les sujets suivants restent dans le Product Backlog et ne sont pas automatiquement inclus dans ce sprint :
 
@@ -117,7 +117,7 @@ Les sujets suivants restent dans le Product Backlog et ne sont pas automatiqueme
 
 Le respect du calendrier, les disponibilités des personnes, le service de formulaire et les limites d’en-têtes de GitHub Pages sont des dépendances à clarifier.
 
-## 8. Définition de fini et recette proposée
+## 7. Définition de fini et recette proposée
 
 - [ ] Les constats traités ont été confirmés sur la révision visée et leurs critères d’acceptation sont satisfaits.
 - [ ] Les contrôles syntaxiques JavaScript et `html-validate` réussissent si des scripts ou du HTML ont été modifiés.
@@ -128,7 +128,7 @@ Le respect du calendrier, les disponibilités des personnes, le service de formu
 - [ ] Les documents liés et `docs/tasks.md` sont actualisés avec les résultats et les tâches restantes.
 - [ ] Aucun secret, message personnel ou donnée de test sensible n’est ajouté au dépôt.
 
-## 9. Revue et rétrospective
+## 8. Revue et rétrospective
 
 À compléter uniquement après un sprint approuvé :
 
@@ -140,7 +140,7 @@ Le respect du calendrier, les disponibilités des personnes, le service de formu
 | Retours recueillis | À compléter |
 | Amélioration décidée | À compléter |
 
-## 10. Historique
+## 9. Historique
 
 | Version | Date | Modifications |
 | --- | --- | --- |

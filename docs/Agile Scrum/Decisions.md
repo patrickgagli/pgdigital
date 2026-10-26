@@ -1,6 +1,6 @@
 # Décisions — [Nom du projet]
 
-## 1. Identification du projet
+## Identification du projet
 
 | Information | À compléter |
 | --- | --- |
@@ -10,7 +10,7 @@
 | Date | [AAAA-MM-JJ] |
 | Version du document | [Version] |
 
-## 2. Objet et règles de suivi
+## 1. Objet et règles de suivi
 
 Consigner les décisions qui influencent le périmètre, les priorités, les coûts, les délais, la solution ou l’organisation du projet. Chaque décision doit avoir un identifiant unique, un statut, un décideur et une trace de son contexte et de ses conséquences.
 
@@ -19,13 +19,13 @@ Consigner les décisions qui influencent le périmètre, les priorités, les co�
 - Ne pas supprimer une décision remplacée : conserver son historique et la lier à la décision qui la remplace.
 - Lier les décisions aux exigences, éléments du backlog, risques, réunions ou livrables concernés.
 
-## 3. Registre des décisions
+## 2. Registre des décisions
 
 | ID | Décision / sujet | Domaine | Décideur | Date | Statut | Référence / impact |
 | --- | --- | --- | --- | --- | --- | --- |
 | DEC-001 | [Intitulé court] | [Produit / technique / budget / organisation…] | [Nom / rôle] | [AAAA-MM-JJ] | [Proposée / approuvée / rejetée / remplacée] | [Lien ou impact principal] |
 
-## 4. Fiche de décision
+## 3. Fiche de décision
 
 Dupliquer la fiche ci-dessous pour documenter chaque décision importante.
 
@@ -86,26 +86,26 @@ Dupliquer la fiche ci-dessous pour documenter chaque décision importante.
 - **Preuve de validation :** [Lien vers compte rendu ou approbation]
 - **Remplacée par :** [ID de la nouvelle décision, le cas échéant]
 
-## 5. Jalons clés
+## 4. Jalons clés
 
 | Jalon | Résultat attendu | Décision(s) requise(s) | Responsable | Échéance | Statut |
 | --- | --- | --- | --- | --- | --- |
 | [Jalon] | [Résultat vérifiable] | [ID(s) ou décision attendue] | [Nom / rôle] | [AAAA-MM-JJ] | [À venir / en cours / atteint / reporté] |
 
-## 6. Suivi des actions transversales
+## 5. Suivi des actions transversales
 
 | ID | Action | Décision liée | Responsable | Échéance | Statut / commentaire |
 | --- | --- | --- | --- | --- | --- |
 | ACT-001 | [Action vérifiable] | [DEC-XXX] | [Nom / rôle] | [AAAA-MM-JJ] | [À faire / en cours / terminée / bloquée] |
 
-## 7. Documents associés
+## 6. Documents associés
 
 | Document | Lien / emplacement | Relation avec les décisions |
 | --- | --- | --- |
 | [Compte rendu de réunion] | [Lien Obsidian] | [Décision ou validation consignée] |
 | [Backlog / roadmap / calendrier] | [Lien Obsidian] | [Éléments ou jalons concernés] |
 
-## 8. Historique des mises à jour
+## 7. Historique des mises à jour
 
 | Date | Auteur | Modification |
 | --- | --- | --- |

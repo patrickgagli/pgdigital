@@ -1,6 +1,6 @@
 # Analyse des besoins — PGDigital
 
-## 1. Identification du projet
+## Identification du projet
 
 | Information | Valeur |
 | --- | --- |
@@ -11,7 +11,7 @@
 | Version du document | 1.0 |
 | Auteur | Patrick G. |
 
-## 2. Contexte et objectifs
+## 1. Contexte et objectifs
 
 ### Contexte
 
@@ -38,7 +38,7 @@ Les problèmes métier à l’origine du projet et les indicateurs de réussite 
 
 Les objectifs chiffrés de performance, de disponibilité et de fréquentation ne sont pas définis.
 
-## 3. Périmètre du projet
+## 2. Périmètre du projet
 
 ### Éléments inclus
 
@@ -69,7 +69,7 @@ Les objectifs chiffrés de performance, de disponibilité et de fréquentation n
 | Dépendances | Réutiliser les bibliothèques présentes et ne pas charger de doublons ni modifier les bibliothèques minifiées vendues avec le projet. | Les nouvelles fonctions doivent suivre l’architecture existante. |
 | Budget / échéance | Non documentés. | À confirmer avec le commanditaire. |
 
-## 4. Parties prenantes et utilisateurs
+## 3. Parties prenantes et utilisateurs
 
 | Partie prenante / profil | Rôle et besoins | Préoccupations |
 | --- | --- | --- |
@@ -80,11 +80,11 @@ Les objectifs chiffrés de performance, de disponibilité et de fréquentation n
 
 Les noms des personnes, le public cible détaillé et les modalités de validation métier ne sont pas fournis.
 
-## 5. Recueil d’informations
+## 4. Recueil d’informations
 
 L’analyse s’appuie sur la documentation technique du dépôt, mise à jour le 2026-09-11, et sur les comportements qui y sont décrits. Aucun entretien, atelier, questionnaire ou observation utilisateur n’y est consigné. Une validation par le propriétaire du portfolio reste à organiser.
 
-## 6. Utilisateurs et besoins
+## 5. Utilisateurs et besoins
 
 | Profil utilisateur | Tâches | Besoins principaux | Contexte |
 | --- | --- | --- | --- |
@@ -92,7 +92,7 @@ L’analyse s’appuie sur la documentation technique du dépôt, mise à jour l
 | Visiteur souhaitant contacter le propriétaire | Saisir ses coordonnées et son message puis soumettre le formulaire. | Validation claire et confirmation du résultat ou ouverture d’un email prérempli. | Connexion requise pour l’envoi distant; `mailto:` disponible comme repli. |
 | Mainteneur du contenu | Modifier les données et la configuration du site. | Repérer les fichiers JSON et maintenir le repli statique cohérent. | Édition des fichiers du dépôt. |
 
-## 7. Exigences
+## 6. Exigences
 
 ### Exigences fonctionnelles
 
@@ -120,7 +120,7 @@ L’analyse s’appuie sur la documentation technique du dépôt, mise à jour l
 
 Les seuils mesurables de performance, de disponibilité et de conservation des données restent à définir.
 
-## 8. Cas d’utilisation
+## 7. Cas d’utilisation
 
 ### Acteurs et cas d’utilisation
 
@@ -145,7 +145,7 @@ Les seuils mesurables de performance, de disponibilité et de conservation des d
 
 **Scénarios alternatifs :** une validation invalide bloque l’envoi; un échec réseau laisse le message dans la file locale, réémise au chargement ou au retour en ligne.
 
-## 9. Questions ouvertes et décisions à confirmer
+## 8. Questions ouvertes et décisions à confirmer
 
 | Question | Responsable | Statut |
 | --- | --- | --- |
@@ -155,7 +155,7 @@ Les seuils mesurables de performance, de disponibilité et de conservation des d
 | Quelles exigences de conservation et de confidentialité s’appliquent aux brouillons et à la file locale? | Commanditaire / responsable du site | À confirmer |
 | Quel budget et quelle échéance sont associés au projet? | Commanditaire | À confirmer |
 
-## 10. Validation
+## 9. Validation
 
 La validation par le propriétaire du portfolio et les responsables concernés reste à documenter.
 
@@ -163,7 +163,7 @@ La validation par le propriétaire du portfolio et les responsables concernés r
 | --- | --- | --- | --- |
 | À confirmer | Commanditaire / propriétaire du portfolio | À confirmer | À confirmer |
 
-## 11. Historique des versions
+## 10. Historique des versions
 
 | Version | Date | Auteur | Modifications |
 | --- | --- | --- | --- |

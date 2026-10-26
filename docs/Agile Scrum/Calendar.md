@@ -1,6 +1,6 @@
 # Calendrier — [Nom du projet]
 
-## 1. Identification du projet
+## Identification du projet
 
 | Information | À compléter |
 | --- | --- |
@@ -10,7 +10,7 @@
 | Date | [AAAA-MM-JJ] |
 | Version du document | [Version] |
 
-## 2. Repères et hypothèses
+## 1. Repères et hypothèses
 
 | Information | À compléter |
 | --- | --- |
@@ -28,13 +28,13 @@
 
 **Périodes sans activité planifiée :** [Congés, jours fériés, fermetures ou autres indisponibilités.] Préciser les dates incluses et les équipes concernées.
 
-## 3. Jalons clés
+## 2. Jalons clés
 
 | Jalon | Résultat vérifiable | Date cible | Responsable | Dépendances | Statut |
 | --- | --- | --- | --- | --- | --- |
 | [Jalon] | [Livrable, décision ou validation attendue] | [AAAA-MM-JJ] | [Nom / rôle] | [Éléments requis] | [À venir / en cours / atteint / reporté] |
 
-## 4. Calendrier de réalisation
+## 3. Calendrier de réalisation
 
 Utiliser une ligne par semaine, itération ou période pertinente. Ajouter une ligne « Congés » ou « Aucune activité planifiée » lorsque cela clarifie le calendrier. Indiquer les jalons dans la période où ils doivent être atteints.
 
@@ -43,7 +43,7 @@ Utiliser une ligne par semaine, itération ou période pertinente. Ajouter une l
 | [Semaine ou itération 1] | [AAAA-MM-JJ au AAAA-MM-JJ] | [Travaux planifiés] | [Résultat attendu] | [Nom(s) / équipe] | [Dépendance / statut] |
 | [Congés / période sans activité] | [AAAA-MM-JJ au AAAA-MM-JJ] | Aucune activité planifiée. | — | [Équipe(s) concernée(s)] | [À confirmer] |
 
-## 5. Itérations et points de contrôle
+## 4. Itérations et points de contrôle
 
 | Itération | Début | Fin | Planification | Revue / démonstration | Rétrospective | Responsable |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -51,19 +51,19 @@ Utiliser une ligne par semaine, itération ou période pertinente. Ajouter une l
 
 **Cadence de suivi :** [Fréquence des points d’équipe, mises à jour du calendrier et communication des écarts.]
 
-## 6. Congés et disponibilités
+## 5. Congés et disponibilités
 
 | Personne / équipe | Indisponibilité ou capacité réduite | Période | Impact sur les tâches / jalons | Mesure prévue |
 | --- | --- | --- | --- | --- |
 | [Nom / équipe] | [Congé, autre projet, capacité réduite…] | [Dates] | [Impact] | [Relais, réordonnancement, aucune…] |
 
-## 7. Dépendances et échéances externes
+## 6. Dépendances et échéances externes
 
 | Dépendance / échéance | Fournisseur ou responsable | Date nécessaire | Éléments concernés | Plan en cas de retard |
 | --- | --- | --- | --- | --- |
 | [Accès, décision, livraison, validation…] | [Nom / équipe / organisme] | [AAAA-MM-JJ] | [Tâches ou jalons] | [Mesure de mitigation] |
 
-## 8. Marges et risques de calendrier
+## 7. Marges et risques de calendrier
 
 | Risque de retard | Probabilité / impact | Période ou jalon touché | Prévention / réponse | Responsable |
 | --- | --- | --- | --- | --- |
@@ -72,13 +72,13 @@ Utiliser une ligne par semaine, itération ou période pertinente. Ajouter une l
 **Marge avant l’échéance finale :** [Durée prévue entre la fin de réalisation et l’échéance externe, ou aucune.]  
 **Règle de replanification :** [Qui approuve un changement de date, comment il est communiqué et où l’historique est consigné.]
 
-## 9. Suivi des mises à jour
+## 8. Suivi des mises à jour
 
 | Date | Modification du calendrier | Motif / impact | Décisionnaire | Version |
 | --- | --- | --- | --- | --- |
 | [AAAA-MM-JJ] | [Dates, tâches, jalons ou disponibilités modifiés] | [Motif et impact sur l’échéance] | [Nom / rôle] | [Version] |
 
-## 10. Validation
+## 9. Validation
 
 | Validateur | Rôle | Validation / remarques | Date |
 | --- | --- | --- | --- |

@@ -1,4 +1,17 @@
-# Audit du site PGDigital
+# Audit — PGDigital
+
+## Identification du projet
+
+| Information | Valeur |
+| --- | --- |
+| Nom du projet | PGDigital — portfolio |
+| Client / commanditaire | Patrick G. |
+| Analystes / responsables | Product, Engineering et Design (noms à confirmer) |
+| Date de référence | 2026-10-20 |
+| Version du document | 1.0 |
+| Auteur | Patrick G. |
+
+## 1. Rapport d'audit
 
 Date : **20 octobre 2026**
 
@@ -6,7 +19,7 @@ Périmètre : site statique [PGDigital publié](https://patrickgagli.github.io/p
 
 Objet : performance, sécurité, confidentialité et expérience utilisateur. **Aucune correction applicative n'a été effectuée dans le cadre de cet audit.**
 
-## 1. Synthèse
+## 2. Synthèse
 
 Le site dispose d'une base simple, sans backend applicatif à maintenir. Les six sections sont accessibles sur ordinateur et mobile lorsque JavaScript et les fichiers JSON ont terminé leur initialisation. La vue Contact à 390 × 844 ne présente pas de débordement horizontal ni de chevauchement formulaire/pied de page dans le navigateur testé.
 
@@ -30,7 +43,7 @@ Les priorités sont toutefois la **fiabilité du parcours de contact**, la **pro
 
 **Lecture des priorités :** P1 = à traiter en premier ; P2 = amélioration importante après sécurisation du parcours principal ; P3 = optimisation de contenu et de visibilité. Il ne s'agit pas d'une échelle CVSS. Aucun scénario d'exploitation critique n'a été démontré ; une dépendance ancienne n'est pas, à elle seule, la preuve d'une faille exploitable sur ce site.
 
-## 2. Méthode et limites
+## 3. Méthode et limites
 
 ### Contrôles effectués
 
@@ -52,7 +65,7 @@ Il ne s'agit ni d'un test d'intrusion, ni d'une certification WCAG/RGPD, ni d'un
 
 Aucun score Lighthouse ni résultat de terrain Core Web Vitals n'est disponible. Les temps ci-dessous proviennent d'une navigation de navigateur sans bridage réseau et majoritairement en cache ; ils ne prouvent pas les performances d'une première visite mobile. Le chemin `file://` a été analysé dans le code, mais n'a pas fait l'objet d'un essai navigateur pendant cet audit.
 
-## 3. État mesuré
+## 4. État mesuré
 
 | Indicateur | Résultat et interprétation |
 |---|---|
@@ -72,7 +85,7 @@ Aucun score Lighthouse ni résultat de terrain Core Web Vitals n'est disponible.
 
 Les tailles sont des octets de fichiers ou de corps décompressés, **pas une somme du trafic réellement transféré**. Les ressources en cache indiquent souvent `transferSize: 0`, et les métriques des ressources tierces sont limitées par les règles du navigateur. Les gros fichiers non utilisés, comme `img/placeholder.png`, ne sont pas comptés comme un coût de chargement de cette page.
 
-## 4. Fiabilité du contact
+## 5. Fiabilité du contact
 
 ### F01 — Ne pas confondre succès HTTP et succès métier — P1
 
@@ -127,7 +140,7 @@ Autre dégradation confirmée : lorsque les scripts sont bloqués, le précharge
 
 **Acceptation.** Tester quota de stockage, stockage interdit, 400, 429, 503, timeout, file pleine, retour en ligne et nouvelle soumission pendant la vidange. Aucun message ne doit être déclaré sauvegardé sans l'être, ni disparaître silencieusement.
 
-## 5. Sécurité et confidentialité
+## 6. Sécurité et confidentialité
 
 ### S01 — Mettre à niveau les dépendances réellement utilisées — P1
 
@@ -177,7 +190,7 @@ Autre dégradation confirmée : lorsque les scripts sont bloqués, le précharge
 
 **Acceptation.** Versions figées et ressources contrôlées ; contact, icônes, polices et animations fonctionnent sous la politique retenue ; absence de violations inattendues et vérification des en-têtes sur la réponse publiée.
 
-## 6. Performance
+## 7. Performance
 
 ### P01 — Optimiser les images et réserver leur espace — P2
 
@@ -215,7 +228,7 @@ Bootstrap JS représente environ 81 Kio ; aucune interaction Bootstrap JS n'a é
 
 **Acceptation.** Comparaison avant/après avec cache froid et réseau mobile simulé : octets transférés, requêtes, temps de blocage et Core Web Vitals. Cibles de référence au 75e percentile : **LCP ≤ 2,5 s, INP ≤ 200 ms, CLS ≤ 0,1**. Ce sont des objectifs, pas des résultats mesurés par cet audit.
 
-## 7. Expérience utilisateur et accessibilité
+## 8. Expérience utilisateur et accessibilité
 
 ### U01 — Corriger les contrastes du thème clair — P1
 
@@ -258,7 +271,7 @@ Ce calcul établit un problème pour le texte courant affiché sur la zone turqu
 
 **Acceptation.** Offre et prochaine action compréhensibles dès le premier écran ; partage social lisible ; réalisations consultables au clavier et sur mobile.
 
-## 8. Cohérence du contenu et maintenance
+## 9. Cohérence du contenu et maintenance
 
 ### M01 — Maintenir un repli statique réellement cohérent — P2
 
@@ -270,7 +283,7 @@ Ce calcul établit un problème pour le texte courant affiché sur la zone turqu
 
 **Acceptation.** Contenu, contact et liens cohérents avec JSON disponible, JSON absent et ouverture directe. [Le script de consentement](../../js/cookie_consent.js) et sa feuille CSS restent des expériences non intégrées ; ne pas les présenter comme une gestion de consentement active ni les brancher sans API adaptée.
 
-## 9. Points positifs à préserver
+## 10. Points positifs à préserver
 
 - Architecture statique simple et déploiement HTTPS ; HSTS déjà fourni.
 - Rendu des textes JSON via `textContent`, plutôt que concaténation HTML.
@@ -281,7 +294,7 @@ Ce calcul établit un problème pour le texte courant affiché sur la zone turqu
 - Contact mobile sans chevauchement du pied de page ; icônes Bootstrap et effet de frappe observés.
 - Contenu HTML de repli déjà présent, à rendre effectivement accessible en cas de panne des scripts.
 
-## 10. Plan de correction et de recette
+## 11. Plan de correction et de recette
 
 ### Lot 1 — Protéger le parcours principal
 

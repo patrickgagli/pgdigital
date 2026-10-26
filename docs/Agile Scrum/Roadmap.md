@@ -1,6 +1,6 @@
 # Feuille de route — PGDigital
 
-## 1. Identification
+## Identification
 
 | Information | Valeur |
 | --- | --- |
@@ -10,7 +10,7 @@
 | Version | 1.0 |
 | Références | [Product Backlog](Scrum%20Product%20Backlogs.md), [Sprint Backlog](Scrum%20Sprint%20Backlogs.md) |
 
-## 2. Contexte et vision
+## 1. Contexte et vision
 
 PGDigital est un portfolio statique à page unique, publié sur GitHub Pages. Les tâches suivies dans `docs/tasks.md` indiquent que les six sections, la navigation, les carrousels, les contenus JSON et le formulaire de contact sont déjà implémentés. Le suivi distingue les fonctionnalités présentes dans le code de leur validation complète sur tous les navigateurs.
 
@@ -18,7 +18,7 @@ L’audit du 20 octobre 2026 relève des risques prioritaires dans la fiabilité
 
 **Vision :** proposer un portfolio accessible et fiable, dont le parcours de contact protège les informations saisies, tout en conservant un déploiement statique simple.
 
-## 3. Objectifs et indicateurs de réussite
+## 2. Objectifs et indicateurs de réussite
 
 | ID | Objectif | Indicateur / cible | Source et méthode |
 | --- | --- | --- | --- |
@@ -29,7 +29,7 @@ L’audit du 20 octobre 2026 relève des risques prioritaires dans la fiabilité
 | OBJ-05 | Améliorer les performances sans régression. | Cibles au 75e percentile : LCP ≤ 2,5 s, INP ≤ 200 ms, CLS ≤ 0,1; ce sont des objectifs, pas des résultats mesurés. | Audit P02; mesures reproductibles avant/après et données de terrain si disponibles. |
 | OBJ-06 | Préserver les parcours et le déploiement existants. | Six ancres, menus, carrousels, formulaire et repli statique demeurent vérifiés; le site ne nécessite pas de build. | `docs/tasks.md`, audit et contrôles manuels. |
 
-## 4. Principes, horizon et limites
+## 3. Principes, horizon et limites
 
 - Les phases ci-dessous définissent un ordre de travail, pas un calendrier approuvé. Aucune date, capacité ou affectation n’est connue.
 - Commencer par vérifier les constats d’audit sur `e46117a`, car l’audit décrit `391b302` et précise qu’aucune correction applicative n’a été effectuée dans son cadre.
@@ -38,7 +38,7 @@ L’audit du 20 octobre 2026 relève des risques prioritaires dans la fiabilité
 - Conserver une architecture statique, les comportements existants et la compatibilité d’ouverture directe; éviter une refonte ou un build non justifiés.
 - Ne pas intégrer le consentement aux cookies sans décision de produit, balisage adapté et API serveur compatible.
 
-## 5. Vue d’ensemble par phase
+## 4. Vue d’ensemble par phase
 
 | Phase | Horizon indicatif | Objectif | Initiatives principales | Condition de sortie |
 | --- | --- | --- | --- | --- |
@@ -48,7 +48,7 @@ L’audit du 20 octobre 2026 relève des risques prioritaires dans la fiabilité
 | 3 — Résilience, performance et visibilité | À planifier | Améliorer le chargement, le mouvement, les médias et la présentation du portfolio. | S03, P01, P02, U03, M01 et U04; demandes ouvertes de `tasks.md` relatives aux métadonnées. | Mesures comparatives documentées; expérience sans régression; contenu et SEO validés. |
 | Transversal — Contrôles de livraison | À chaque livraison | Vérifier les fonctionnalités, le repli et l’état de production. | Contrôles automatisés existants et scénarios manuels non cochés de `docs/tasks.md`. | Résultats de recette et anomalies restantes consignés. |
 
-## 6. Détail des phases
+## 5. Détail des phases
 
 ### Phase 0 — Revalider l’état du dépôt
 
@@ -100,7 +100,7 @@ L’audit du 20 octobre 2026 relève des risques prioritaires dans la fiabilité
 | SEO — Décider des données structurées, du sitemap et de `robots.txt`. | Décision documentée selon l’utilité du site monopage. | À évaluer |
 | Consentement — Décider du sort de l’expérimentation. | Intégration uniquement si le besoin, le balisage et l’API serveur sont définis; sinon maintenir les fichiers hors fonctionnalités livrées. | À décider |
 
-## 7. Dépendances, risques et arbitrages
+## 6. Dépendances, risques et arbitrages
 
 | Dépendance / risque | Impact | Réponse |
 | --- | --- | --- |
@@ -111,7 +111,7 @@ L’audit du 20 octobre 2026 relève des risques prioritaires dans la fiabilité
 | Absence de mesures à froid et de données terrain. | Les performances observées en cache ne caractérisent pas une première visite mobile. | Établir des mesures reproductibles avant/après; distinguer mesures laboratoire et données de terrain. |
 | Responsables, dates et capacité non précisés. | Impossible de confirmer l’ordre calendaire et l’engagement d’un sprint. | Faire valider les personnes, disponibilités et dates par les propriétaires du projet. |
 
-## 8. Suivi de la valeur et de l’avancement
+## 7. Suivi de la valeur et de l’avancement
 
 Les valeurs initiales sont celles mesurées dans l’audit, et non une mesure garantie de l’état courant. Elles doivent être reproduites avant comparaison.
 
@@ -122,7 +122,7 @@ Les valeurs initiales sont celles mesurées dans l’audit, et non une mesure ga
 | Navigation responsive | Six ancres vérifiées à 1440 × 900 et 390 × 844 dans l’audit; tâches demandent aussi 320 × 568. | À revérifier après toute modification. |
 | Contact | Réponses négatives et scénarios d’échec simulés dans l’audit; aucun envoi réel effectué. | À revalider sans soumettre de message réel. |
 
-## 9. Gouvernance et mise à jour
+## 8. Gouvernance et mise à jour
 
 - **Équipes propriétaires répertoriées :** Product, Engineering et Design.
 - **Responsable de la roadmap, décideurs, capacité et cadence de revue :** à confirmer.
@@ -133,7 +133,7 @@ Les valeurs initiales sont celles mesurées dans l’audit, et non une mesure ga
 | --- | --- | --- |
 | 2026-10-20 | Création des phases à partir de `docs/tasks.md` et de l’audit du 20 octobre 2026; aucune date de livraison assignée. | Distinguer les fonctionnalités déjà livrées, les constats à revalider et les travaux à planifier. |
 
-## 10. Documents liés et validation
+## 9. Documents liés et validation
 
 | Document | Utilisation |
 | --- | --- |

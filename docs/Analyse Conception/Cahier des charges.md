@@ -1,6 +1,6 @@
 # Cahier des charges — PGDigital
 
-## 1. Identification
+## Identification
 
 | Information | Valeur |
 | --- | --- |
@@ -12,13 +12,13 @@
 | Statut | Document de cadrage technique; approbation métier à confirmer |
 | Références | [Analyse des besoins](Analyse%20des%20besoins.md), [Architecture](Architecture.md) |
 
-## 2. Objet et contexte
+## 1. Objet et contexte
 
 Ce cahier des charges décrit le périmètre fonctionnel et technique documenté de PGDigital ainsi que les vérifications attendues. Il s’agit d’un portfolio statique composé d’une page unique et déployable sur GitHub Pages, sans compilation ni serveur applicatif. Le site permet de consulter des contenus de présentation et d’envoyer une demande de contact.
 
 Le commanditaire, les objectifs métier chiffrés et la décision d’approbation restent à préciser. Les exigences ci-dessous sont établies à partir de l’état décrit dans la documentation technique et ne constituent pas une validation contractuelle.
 
-## 3. Périmètre
+## 2. Périmètre
 
 ### Inclus
 
@@ -48,7 +48,7 @@ Le commanditaire, les objectifs métier chiffrés et la décision d’approbatio
 | Dépendances | Les bibliothèques utilisées sont locales ou chargées depuis les CDN mentionnés. | Ne pas ajouter de versions dupliquées ni modifier les bibliothèques minifiées vendues. |
 | Budget, délai, réglementation | Non précisés. | À déterminer et valider avec le commanditaire. |
 
-## 4. Parties prenantes et utilisateurs
+## 3. Parties prenantes et utilisateurs
 
 | Profil | Besoin / responsabilité | Validation attendue |
 | --- | --- | --- |
@@ -57,7 +57,7 @@ Le commanditaire, les objectifs métier chiffrés et la décision d’approbatio
 | Mainteneurs Product, Engineering et Design | Maintenir les fichiers statiques, les interactions et la cohérence entre contenu JSON et repli. | Contrôles techniques et navigateur. |
 | Fournisseur de formulaire (si configuré) | Recevoir les soumissions du formulaire. | Endpoint et modalités de configuration à confirmer. |
 
-## 5. Solution attendue et exigences
+## 4. Solution attendue et exigences
 
 ### Vue d’ensemble
 
@@ -101,7 +101,7 @@ Aucune cible chiffrée de performance ou disponibilité n’est spécifiée; ell
 | Brouillon et file de messages | Stockés dans le `localStorage` du navigateur; durée de conservation et règles de suppression à définir. |
 | Préférence de thème | Stockée dans `localStorage` sous `dark-mode`. |
 
-## 6. Livrables attendus
+## 5. Livrables attendus
 
 | ID | Livrable | Critère de qualité |
 | --- | --- | --- |
@@ -112,11 +112,11 @@ Aucune cible chiffrée de performance ou disponibilité n’est spécifiée; ell
 
 Les responsables de livraison, formats supplémentaires et dates d’échéance sont à confirmer.
 
-## 7. Planning, budget et ressources
+## 6. Planning, budget et ressources
 
 Aucun planning, jalon, budget ou estimation de ressources n’est fourni par la documentation de référence. Ces éléments doivent être définis et validés par le commanditaire avant engagement.
 
-## 8. Vérification, recette et réception
+## 7. Vérification, recette et réception
 
 ### Contrôles automatisables documentés
 
@@ -143,7 +143,7 @@ L’état documenté au 2026-09-11 indique que les contrôles de syntaxe JavaScr
 
 La réception doit confirmer les critères d’acceptation et documenter les anomalies ou réserves. Le responsable de recette et les règles de traitement des anomalies sont à désigner.
 
-## 9. Risques et mesures de maîtrise
+## 8. Risques et mesures de maîtrise
 
 | Risque | Mesure de maîtrise |
 | --- | --- |
@@ -153,13 +153,13 @@ La réception doit confirmer les critères d’acceptation et documenter les ano
 | Conservation locale de messages de contact après un échec. | Définir une politique de rétention et de suppression; informer le propriétaire du traitement des données. |
 | Difficulté d’utilisation sur petits écrans. | Vérifier les dimensions 390 × 844 et 320 × 568, ainsi que le mode responsive sous 768 px. |
 
-## 10. Gouvernance et changements
+## 9. Gouvernance et changements
 
 Le propriétaire du portfolio doit valider le contenu et le périmètre. Les responsables Product, Engineering et Design sont indiqués dans la documentation générale; leurs personnes référentes, pouvoirs d’approbation, cadence de suivi et processus de demande de changement restent à confirmer.
 
 Toute modification du périmètre, du formulaire, des données conservées ou des critères de recette doit être validée par le commanditaire puis répercutée dans les documents concernés.
 
-## 11. Documents associés
+## 10. Documents associés
 
 | Document | Objet |
 | --- | --- |
@@ -169,7 +169,7 @@ Toute modification du périmètre, du formulaire, des données conservées ou de
 | [Modélisation](Modélisation.md) | Document associé; contenu non repris ici. |
 | [UX-UI](UX-UI.md) | Document associé; contenu non repris ici. |
 
-## 12. Approbation et historique
+## 11. Approbation et historique
 
 L’approbation du commanditaire et la date d’entrée en vigueur sont à confirmer.
 

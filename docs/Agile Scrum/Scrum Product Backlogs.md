@@ -1,6 +1,6 @@
 # Product Backlog — PGDigital
 
-## 1. Identification
+## Identification
 
 | Information | Valeur |
 | --- | --- |
@@ -14,11 +14,11 @@ Ce backlog rassemble les travaux issus des tâches déclarées et de l’audit. 
 
 Les priorités P1/P2/P3 sont reprises de l’audit et ne représentent pas une échelle CVSS. Les estimations, responsables et dates ne sont pas documentés.
 
-## 2. Objectif produit
+## 1. Objectif produit
 
 Fournir un portfolio statique simple à déployer et parcourir, dont le contenu reste disponible en repli, et dont le contact est fiable, compréhensible, accessible et respectueux des données saisies.
 
-## 3. Conventions et états
+## 2. Conventions et états
 
 | État | Signification dans ce backlog |
 | --- | --- |
@@ -32,7 +32,7 @@ Fournir un portfolio statique simple à déployer et parcourir, dont le contenu 
 
 Les identifiants F01–U04 et M01 correspondent aux constats de l’audit afin de préserver leur traçabilité. Les éléments TODO proviennent des priorités ou contrôles non terminés listés dans `docs/tasks.md`.
 
-## 4. Vue d’ensemble
+## 3. Vue d’ensemble
 
 | ID | Élément | Type | Priorité | État initial | Source |
 | --- | --- | --- | --- | --- | --- |
@@ -55,7 +55,7 @@ Les identifiants F01–U04 et M01 correspondent aux constats de l’audit afin d
 | TODO-03 | Évaluer données structurées, sitemap et robots.txt | Story technique | À prioriser | À faire | Tâches |
 | TODO-04 | Réaliser les contrôles navigateur encore non cochés | Story technique / recette | Préalable de livraison | À faire | Tâches |
 
-## 5. Éléments du backlog
+## 4. Éléments du backlog
 
 ### PB-00 — Revalider l’audit sur la révision courante
 
@@ -200,7 +200,7 @@ Les identifiants F01–U04 et M01 correspondent aux constats de l’audit afin d
 
 **Critères d’acceptation :** console et ressources; six ancres et état actif; menu et `aria-expanded`; carrousels, icônes et titre Alpine; validation et `mailto:`; HTTP et `file://`; brouillon et file; contact à 390 × 844 et 320 × 568. Ajouter les scénarios d’échec décrits par l’audit.
 
-## 6. Affinage et définition de fini
+## 5. Affinage et définition de fini
 
 Avant de planifier un élément :
 
@@ -214,7 +214,7 @@ Avant de planifier un élément :
 
 Un élément ne peut être marqué Fini que si ses critères sont vérifiés, les tests pertinents réussissent, les documents liés sont à jour et aucun défaut bloquant ne subsiste sans décision explicite.
 
-## 7. Historique des mises à jour
+## 6. Historique des mises à jour
 
 | Date | Modifications | Motif |
 | --- | --- | --- |

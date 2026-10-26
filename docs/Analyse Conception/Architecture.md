@@ -1,6 +1,6 @@
 # Architecture — PGDigital
 
-## 1. Identification
+## Identification
 
 | Information | Valeur |
 | --- | --- |
@@ -10,15 +10,15 @@
 | Date de référence | 2026-09-11 |
 | Version | 1.0 |
 
-## 2. Contexte et objectifs d’architecture
+## 1. Contexte et objectifs d’architecture
 
 PGDigital est un site de portfolio statique à page unique, exécuté dans le navigateur et déployable tel quel sur GitHub Pages. L’architecture privilégie une maintenance simple, l’absence de compilation et de serveur applicatif, le chargement de contenu structuré depuis des fichiers JSON et un repli utilisable lorsque `fetch` ne fonctionne pas en `file://`.
 
 Les objectifs de performance, disponibilité, budget, volume de trafic et conservation des données ne sont pas quantifiés dans la documentation de référence.
 
-## 3. Architecture de solution
+## 2. Architecture de solution
 
-### 3.1 Vue d’ensemble et composants applicatifs
+### 2.1 Vue d’ensemble et composants applicatifs
 
 | Composant | Utilisateurs / consommateurs | Responsabilité |
 | --- | --- | --- |
@@ -31,7 +31,7 @@ Les objectifs de performance, disponibilité, budget, volume de trafic et conser
 | GitHub Pages | Visiteurs | Héberger et servir les fichiers statiques du site. |
 | Endpoint de formulaire configuré | Formulaire | Recevoir les soumissions JSON lorsque l’endpoint et la clé sont renseignés. Le fournisseur n’est pas précisé. |
 
-### 3.2 Données et persistance
+### 2.2 Données et persistance
 
 | Données | Stockage / origine | Utilisation |
 | --- | --- | --- |
@@ -43,7 +43,7 @@ Les objectifs de performance, disponibilité, budget, volume de trafic et conser
 
 Aucune base de données ou persistance serveur propre au site n’est décrite. La durée de conservation, l’effacement et les règles de confidentialité des données stockées localement restent à définir.
 
-### 3.3 Flux et intégrations
+### 2.3 Flux et intégrations
 
 | Émetteur | Destinataire | Mécanisme | Comportement |
 | --- | --- | --- | --- |
@@ -55,7 +55,7 @@ Aucune base de données ou persistance serveur propre au site n’est décrite. 
 
 Le texte JSON est inséré via `textContent`; les URL sont limitées aux schémas `http`, `https` et `mailto`.
 
-### 3.4 Infrastructure et déploiement
+### 2.4 Infrastructure et déploiement
 
 | Élément | Choix documenté | Rôle |
 | --- | --- | --- |
@@ -69,7 +69,7 @@ Le référencement utilise l’URL canonique `https://patrickgagli.github.io/pgd
 
 Le fichier `robots.txt` autorise l’exploration et référence le sitemap par son URL absolue. Sur GitHub Pages, il est servi sous `/pgdigital/robots.txt`, alors que les robots consultent `/robots.txt` à la racine du domaine. Son activation nécessite donc une publication à la racine via le dépôt `patrickgagli.github.io`, en préservant les règles des autres projets, ou un domaine personnalisé servant ce site à sa racine. Le sitemap peut être soumis directement dans Google Search Console. Tout changement d’URL publique doit être répercuté dans la canonique, le JSON-LD, le sitemap et la directive `Sitemap`.
 
-### 3.5 Sécurité et limites
+### 2.5 Sécurité et limites
 
 - Le rendu des textes utilise `textContent` et les URL acceptées sont limitées à `http`, `https` et `mailto`.
 - Aucune clé d’accès n’est fournie par défaut. Si une clé est configurée dans les fichiers servis au navigateur, elle est accessible côté client; la configuration doit tenir compte des capacités et recommandations du fournisseur de formulaire.
@@ -77,7 +77,7 @@ Le fichier `robots.txt` autorise l’exploration et référence le sitemap par s
 - Le contenu de formulaire peut rester dans le `localStorage` du navigateur après un échec. La durée de conservation et le traitement des données personnelles ne sont pas spécifiés.
 - Les expérimentations de consentement aux cookies ne sont pas intégrées : elles ne sont pas chargées par `index.html` et leur API serveur `/api/cookie-consent/` est absente.
 
-### 3.6 Composants humains et opérationnels
+### 2.6 Composants humains et opérationnels
 
 | Profil | Responsabilité |
 | --- | --- |
@@ -87,7 +87,7 @@ Le fichier `robots.txt` autorise l’exploration et référence le sitemap par s
 
 Les noms des responsables et les modalités de support opérationnel sont à confirmer.
 
-### 3.7 Schéma logique
+### 2.7 Schéma logique
 
 ```text
 Visiteur
@@ -108,9 +108,9 @@ Fichiers JSON             Endpoint de formulaire
 Si les fichiers JSON ne sont pas accessibles : contenu statique de index.html.
 ```
 
-## 4. Architecture logicielle
+## 3. Architecture logicielle
 
-### 4.1 Modules et dépendances
+### 3.1 Modules et dépendances
 
 | Module / dépendance | Responsabilité |
 | --- | --- |
@@ -124,7 +124,7 @@ Si les fichiers JSON ne sont pas accessibles : contenu statique de index.html.
 
 `js/cookie_consent.js` et `css/cookie_consent.css` sont des fichiers non intégrés et ne font pas partie du chemin d’exécution actif.
 
-### 4.2 Ordonnancement et comportement des composants
+### 3.2 Ordonnancement et comportement des composants
 
 1. `index.html` charge la page, les bibliothèques et les scripts.
 2. `js/data.js` récupère les JSON et reconstruit les conteneurs de faits, services, témoignages, galerie et contact.
@@ -132,11 +132,11 @@ Si les fichiers JSON ne sont pas accessibles : contenu statique de index.html.
 4. Si `fetch` échoue, le contenu statique du document demeure le repli.
 5. Le formulaire choisit l’envoi distant uniquement lorsque l’endpoint et la clé sont présents; sinon il construit un lien `mailto:`.
 
-### 4.3 Charge et évolution
+### 3.3 Charge et évolution
 
 Le site ne documente ni volume de trafic, ni objectif de disponibilité, ni mesure de charge. Il n’y a pas de composants applicatifs côté serveur à mettre à l’échelle. L’hébergement statique et l’exécution côté navigateur constituent le modèle actuel. Les exigences de montée en charge doivent être réévaluées si un backend, une authentification ou une persistance serveur est ajouté.
 
-### 4.4 Type d’architecture logicielle
+### 3.4 Type d’architecture logicielle
 
 | Option | Adéquation au projet |
 | --- | --- |
@@ -147,7 +147,7 @@ Le site ne documente ni volume de trafic, ni objectif de disponibilité, ni mesu
 **Architecture constatée :** site statique à page unique avec composants et scripts côté client.
 **Compromis :** simplicité de déploiement et de maintenance contre dépendance au navigateur pour les interactions; envoi de contact distant délégué à un endpoint externe optionnel.
 
-## 5. Hébergement et services cloud
+## 4. Hébergement et services cloud
 
 | Sujet | État documenté |
 | --- | --- |
@@ -157,7 +157,7 @@ Le site ne documente ni volume de trafic, ni objectif de disponibilité, ni mesu
 | Autres services externes | CDN jsDelivr, unpkg et Google Fonts pour certaines dépendances; endpoint de formulaire optionnel non identifié. |
 | Environnements | Aucun environnement distinct de développement, test ou production n’est décrit. |
 
-## 6. Décisions architecturales constatées
+## 5. Décisions architecturales constatées
 
 Les éléments suivants décrivent l’implémentation documentée et ne constituent pas des décisions formellement approuvées dans un registre ADR.
 
@@ -170,7 +170,7 @@ Les éléments suivants décrivent l’implémentation documentée et ne constit
 
 Les dates d’adoption, participants, alternatives formelles et approbations sont à confirmer.
 
-## 7. Critères d’architecture et vérifications
+## 6. Critères d’architecture et vérifications
 
 | Critère | État / vérification documentée |
 | --- | --- |
@@ -182,7 +182,7 @@ Les dates d’adoption, participants, alternatives formelles et approbations son
 | Maintenabilité | Fichiers sans compilation; règles de maintenance définies dans la documentation technique. |
 | Conformité | Obligations et règles de conservation non précisées. |
 
-## 8. Déploiement et exploitation
+## 7. Déploiement et exploitation
 
 - **Pré-requis :** les fichiers du site, JSON, scripts, styles et ressources doivent être présents et cohérents.
 - **Hébergement :** publier les fichiers statiques via GitHub Pages. La procédure exacte de publication n’est pas documentée.
@@ -190,7 +190,7 @@ Les dates d’adoption, participants, alternatives formelles et approbations son
 - **Contrôles navigateur :** tester les six ancres, menu mobile, carrousels, thème, formulaire et vues 390 × 844 et 320 × 568.
 - **Incidents et retour arrière :** procédure, contacts, sauvegarde et restauration à définir par les responsables du dépôt.
 
-## 9. Validation
+## 8. Validation
 
 La validation architecturale et les responsables d’exploitation ne sont pas renseignés.
 
@@ -198,7 +198,7 @@ La validation architecturale et les responsables d’exploitation ne sont pas re
 | --- | --- | --- | --- |
 | À confirmer | Propriétaire / responsable technique | À confirmer | À confirmer |
 
-## 10. Historique des versions
+## 9. Historique des versions
 
 | Version | Date | Auteur | Modifications |
 | --- | --- | --- | --- |

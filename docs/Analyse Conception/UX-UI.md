@@ -1,6 +1,6 @@
 # Conception UX/UI — [Nom du projet]
 
-## 1. Identification
+## Identification
 
 | Information | À compléter |
 | --- | --- |
@@ -12,7 +12,7 @@
 | Documents liés | [Analyse des besoins, modélisation, architecture…] |
 | Plateformes concernées | [Web, mobile, tablette, autre] |
 
-## 2. Objectifs de l’expérience
+## 1. Objectifs de l’expérience
 
 ### Contexte et problèmes utilisateurs
 
@@ -29,7 +29,7 @@
 - [Ex. : simplicité, cohérence, feedback immédiat, prévention des erreurs]
 - [Principe et justification]
 
-## 3. Utilisateurs et parcours (UX)
+## 2. Utilisateurs et parcours (UX)
 
 ### Profils d’utilisateurs
 
@@ -63,7 +63,7 @@
 | --- | --- | --- | --- |
 | [Écran] | [Contenu] | [Actions] | [Navigation] |
 
-## 4. Interactions et règles UX
+## 3. Interactions et règles UX
 
 ### Principes UX
 
@@ -97,7 +97,7 @@ Pour chaque règle, préciser l’application concrète ou le motif de non-appli
 | --- | --- | --- | --- | --- |
 | [Écran ou action] | [Affichage] | [Feedback] | [Confirmation] | [Message et solution proposée] |
 
-## 5. Identité visuelle et interface (UI)
+## 4. Identité visuelle et interface (UI)
 
 ### Hiérarchie visuelle
 
@@ -142,7 +142,7 @@ Limiter la palette à 3–5 couleurs et vérifier les contrastes.
 **Répartition indicative 60-30-10 :** 60 % dominante, 30 % secondaire, 10 % accent.  
 **Signification ou justification des couleurs :** [À préciser selon le public et le contexte.]
 
-## 6. Accessibilité
+## 5. Accessibilité
 
 ### Principes WCAG
 
@@ -171,7 +171,7 @@ Limiter la palette à 3–5 couleurs et vérifier les contrastes.
 | Formulaires | Labels, consignes et erreurs reliés aux champs | [À vérifier] |
 | Champs obligatoires | Identification compréhensible | [À vérifier] |
 
-## 7. Sécurité, vie privée et RGPD
+## 6. Sécurité, vie privée et RGPD
 
 ### Données et finalités
 
@@ -200,7 +200,7 @@ Limiter la palette à 3–5 couleurs et vérifier les contrastes.
 - [ ] Fail secure : en cas d’erreur, bloquer l’accès plutôt que l’ouvrir.
 - [ ] Protection des données sensibles au repos et en transit.
 
-## 8. Écrans, prototypes et tests utilisateurs
+## 7. Écrans, prototypes et tests utilisateurs
 
 ### Inventaire des écrans / composants
 
@@ -220,7 +220,7 @@ Limiter la palette à 3–5 couleurs et vérifier les contrastes.
 | --- | --- | --- | --- | --- |
 | [Profil] | [Tâche] | [Observation] | [Réussite / difficulté] | [Action] |
 
-## 9. Synthèse et validation
+## 8. Synthèse et validation
 
 ### Synthèse des choix UX/UI
 
@@ -239,7 +239,7 @@ Limiter la palette à 3–5 couleurs et vérifier les contrastes.
 | --- | --- | --- | --- |
 | [Nom] | [Client / utilisateurs / équipe projet] | [AAAA-MM-JJ] | [À compléter] |
 
-## 10. Historique des versions
+## 9. Historique des versions
 
 | Version | Date | Auteur | Modifications |
 | --- | --- | --- | --- |
