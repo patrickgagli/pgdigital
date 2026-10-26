@@ -1,5 +1,7 @@
 # Product Requirements Document (PRD) - PGDigital
 
+> Document d'exigences produit (PRD).
+> 
 > Ce document décrit le produit, ses utilisateurs, les problèmes à résoudre et les résultats attendus. Remplacez les indications entre crochets et supprimez les sections facultatives qui ne s'appliquent pas.
 >
 > Considérez ce PRD comme un document de travail évolutif. Il complète le backlog produit sans le remplacer et ne constitue pas un artefact formel de Scrum. Identifiez clairement les hypothèses et validez les décisions avec les parties prenantes concernées.
