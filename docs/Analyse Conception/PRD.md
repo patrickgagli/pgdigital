@@ -6,7 +6,7 @@
 | --- | --- |
 | Produit | PGDigital — portfolio personnel |
 | Statut | Document de travail |
-| Version | 1.0 |
+| Version | 1.1 |
 | Date de mise à jour | 2026-10-26 |
 | Propriétaire du produit / commanditaire | Patrick G. |
 | Type de produit | Site web statique monopage |
@@ -19,7 +19,7 @@
 
 ## 1. Résumé exécutif
 
-PGDigital est un portfolio personnel en français, composé d’une page unique et de six sections : Accueil, À propos, Services, Compétences, Outils et Contact. Il présente les services et les compétences du propriétaire et permet aux visiteurs d’initier une demande de contact.
+PGDigital est le portfolio personnel de Patrick G., bachelier en informatique. En français, le site est composé d’une page unique et de six sections : Accueil, À propos, Services, Compétences, Outils et Contact. Il présente son profil, ses services et ses compétences et permet aux visiteurs d’initier une demande de contact.
 
 Le site est exécuté dans le navigateur et publié sous forme de fichiers statiques sur GitHub Pages, sans compilation ni serveur applicatif propre. En HTTP, les contenus et la configuration du formulaire proviennent de fichiers JSON; le balisage contient aussi un rendu statique de repli lorsque les données ne peuvent pas être chargées. Le contact est actuellement configuré pour soumettre du JSON à un service externe; un lien `mailto:` est prévu lorsque la configuration requise est absente.
 
@@ -37,7 +37,7 @@ Les résultats commerciaux quantifiés et leurs valeurs de référence ne sont p
 
 ### Contexte et problème
 
-Le produit sert de présence en ligne au propriétaire du portfolio. Les visiteurs doivent pouvoir découvrir son profil, ses services, ses compétences et ses outils, puis le contacter. Les documents disponibles ne consignent pas d’étude utilisateur ni de problème métier quantifié; la compréhension de la cible et des résultats attendus doit donc être validée avec le propriétaire.
+Le produit sert de présence en ligne à Patrick G., bachelier en informatique, et présente son parcours, ses services, ses compétences et ses outils. Les visiteurs doivent pouvoir découvrir son profil puis le contacter. Les documents disponibles ne consignent pas d’étude utilisateur ni de problème métier quantifié; la compréhension de la cible et des résultats attendus doit donc être validée avec le propriétaire.
 
 ### Éléments de preuve
 
@@ -355,6 +355,7 @@ Ces lots sont des recommandations d’audit et non des engagements de date. Le b
 | Version | Date | Auteur | Résumé |
 | --- | --- | --- | --- |
 | 1.0 | 2026-10-26 | Copilot | Remplacement du modèle générique par un PRD fondé sur le dépôt, les documents associés et l’audit du 2026-10-20; séparation des capacités constatées, risques ouverts et décisions à confirmer. |
+| 1.1 | 2026-10-26 | Copilot | Précision que PGDigital est le portfolio personnel de Patrick G., bachelier en informatique. |
 
 ---
 
