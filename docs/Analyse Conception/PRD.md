@@ -5,14 +5,14 @@
 | Information | Valeur |
 | --- | --- |
 | Produit | PGDigital — portfolio personnel |
-| Statut | Document de travail; approbation métier à confirmer |
+| Statut | Document de travail |
 | Version | 1.0 |
 | Date de mise à jour | 2026-10-26 |
-| Propriétaire du produit / commanditaire | Patrick G. (validation et responsabilités détaillées à confirmer) |
+| Propriétaire du produit / commanditaire | Patrick G. |
 | Type de produit | Site web statique monopage |
-| Approche de livraison | Dépôt de fichiers statiques; processus Scrum non confirmé |
+| Approche de livraison | Dépôt de fichiers statiques; Agile / Scrum |
 | Public visé | Visiteurs et clients potentiels; mainteneurs du dépôt |
-| Mise en production | GitHub Pages; échéance non précisée |
+| Mise en production | GitHub Pages; MVP après environ 12 semaines |
 | Documents associés | [Analyse des besoins](Analyse%20des%20besoins.md), [Architecture](Architecture.md), [Cahier des charges](Cahier%20des%20charges.md), [Audit](Audit.md), [Tasks](Tasks.md) |
 
 > Ce PRD décrit le produit constaté dans le dépôt et les résultats attendus connus. Il ne vaut pas approbation formelle, engagement de livraison ni remplacement du backlog. Les constats d’audit et les travaux proposés sont identifiés comme tels et ne sont pas présentés comme des fonctionnalités déjà acquises.
