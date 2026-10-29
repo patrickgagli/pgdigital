@@ -47,7 +47,7 @@ Ce document suit l'état observable du dépôt. Une case terminée correspond à
 - [ ] Décider si le consentement doit être intégré ; ne pas présenter `js/cookie_consent.js` comme une fonctionnalité active sans bandeau HTML et API serveur compatibles.
 - [ ] Ajouter les métadonnées de partage Open Graph et Twitter Card.
 - [x] Implémenter l'ajout de données structurées, d'un sitemap et d'un fichier `robots.txt`.
-- [ ] Publier les règles `robots.txt` à la racine de `patrickgagli.github.io` (ou d'un domaine personnalisé) et soumettre le sitemap dans Google Search Console.
+- [x] Publier les règles `robots.txt` à la racine de `patrickgagli.github.io` (ou d'un domaine personnalisé) et soumettre le sitemap dans Google Search Console.
 - [x] Évaluer un canal de contact ne dépendant pas d'une application de messagerie locale.
 
 ## Contrôles récurrents
