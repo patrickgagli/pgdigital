@@ -4,14 +4,14 @@
 
 | Information | Valeur |
 | --- | --- |
-| Produit | PGDigital — portfolio personnel |
+| Produit | PGDigital — portfolio personnel DevOps |
 | Statut | Document de travail |
-| Version | 1.1 |
-| Date de mise à jour | 2026-10-26 |
+| Version | 1.2 |
+| Date de mise à jour | 2026-11-08 |
 | Propriétaire du produit / commanditaire | Patrick G. |
 | Type de produit | Site web statique monopage |
 | Approche de livraison | Dépôt de fichiers statiques; Agile / Scrum |
-| Public visé | Visiteurs et clients potentiels; mainteneurs du dépôt |
+| Public visé | Recruteurs, responsables techniques, clients potentiels et mainteneurs du dépôt |
 | Mise en production | GitHub Pages; MVP après environ 12 semaines |
 | Documents associés | [Analyse des besoins](Analyse%20des%20besoins.md), [Architecture](Architecture.md), [Cahier des charges](Cahier%20des%20charges.md), [Audit](Audit.md), [Tasks](Tasks.md) |
 
@@ -19,15 +19,16 @@
 
 ## 1. Résumé exécutif
 
-PGDigital est le portfolio personnel de Patrick G., bachelier en informatique. En français, le site est composé d’une page unique et de six sections : Accueil, À propos, Services, Compétences, Outils et Contact. Il présente son profil, ses services et ses compétences et permet aux visiteurs d’initier une demande de contact.
+PGDigital a vocation à présenter Patrick G. comme professionnel DevOps et à aider les recruteurs, responsables techniques et clients potentiels à comprendre son profil, ses compétences, ses projets et sa manière de contribuer à la livraison et à l’exploitation de logiciels. Le site existant est une page française composée de six sections — Accueil, À propos, Services, Compétences, Outils et Contact — initialement organisée comme un portfolio généraliste de développeur. Le repositionnement DevOps implique de revoir les textes et les preuves présentées; il ne constitue pas, à lui seul, une preuve d’expérience ou de maîtrise d’outils.
 
-Le site est exécuté dans le navigateur et publié sous forme de fichiers statiques sur GitHub Pages, sans compilation ni serveur applicatif propre. En HTTP, les contenus et la configuration du formulaire proviennent de fichiers JSON; le balisage contient aussi un rendu statique de repli lorsque les données ne peuvent pas être chargées. Le contact est actuellement configuré pour soumettre du JSON à un service externe; un lien `mailto:` est prévu lorsque la configuration requise est absente.
+Le site est exécuté dans le navigateur et publié sous forme de fichiers statiques sur GitHub Pages, sans compilation ni serveur applicatif propre. En HTTP, les contenus et la configuration du formulaire proviennent de fichiers JSON; le balisage contient aussi un rendu statique de repli lorsque les données ne peuvent pas être chargées. Le contact est actuellement configuré pour soumettre du JSON à un service externe; un lien `mailto:` est prévu lorsque la configuration requise est absente. Les outils DevOps évoqués dans le portfolio seront des informations éditoriales et non des dépendances exécutées par le site.
 
-Les priorités produit sont de permettre la découverte du portfolio sur ordinateur et mobile, de rendre le contact compréhensible et fiable, et de conserver un déploiement statique simple. L’audit du 2026-10-20 relève des risques à traiter pour la fiabilité du formulaire, la confidentialité des données locales, l’accessibilité et la résilience du démarrage. Ces points sont des travaux ouverts, non des garanties du produit actuel.
+Les priorités produit sont d’expliquer clairement le positionnement DevOps, d’étayer les compétences par des projets et des éléments vérifiables, de faciliter le contact et de conserver un déploiement statique simple. L’audit du 2026-10-20 relève également des risques à traiter pour la fiabilité du formulaire, la confidentialité des données locales, l’accessibilité et la résilience du démarrage. Ces points sont des travaux ouverts, non des garanties du produit actuel.
 
 ### Résultats attendus
 
-- Les visiteurs peuvent parcourir les six sections et comprendre l’offre et les moyens de contact.
+- Les visiteurs comprennent le positionnement DevOps, les compétences effectivement attestées et les moyens de contact.
+- Les visiteurs peuvent examiner des projets présentés avec leur contexte, la contribution de Patrick et des résultats publiables et vérifiables.
 - Le contenu reste disponible en HTTP et lorsque les fichiers JSON ne sont pas accessibles.
 - Le site reste utilisable sur les petits écrans et peut être maintenu et publié comme fichiers statiques.
 
@@ -37,13 +38,14 @@ Les résultats commerciaux quantifiés et leurs valeurs de référence ne sont p
 
 ### Contexte et problème
 
-Le produit sert de présence en ligne à Patrick G., bachelier en informatique, et présente son parcours, ses services, ses compétences et ses outils. Les visiteurs doivent pouvoir découvrir son profil puis le contacter. Les documents disponibles ne consignent pas d’étude utilisateur ni de problème métier quantifié; la compréhension de la cible et des résultats attendus doit donc être validée avec le propriétaire.
+Le produit sert de présence en ligne à Patrick G. et doit rendre son orientation DevOps plus claire qu’un portfolio généraliste de développeur. Les visiteurs doivent pouvoir comprendre son rôle visé, évaluer ses compétences à partir de preuves concrètes — par exemple des études de cas de projets — puis le contacter. Les documents disponibles ne consignent ni l’expérience DevOps détaillée, ni les projets publiables, ni une étude utilisateur ou un problème métier quantifié; les contenus, la cible prioritaire et les résultats attendus doivent donc être validés avec le propriétaire.
 
 ### Éléments de preuve
 
 | Constat | Source | Date / limite |
 | --- | --- | --- |
 | Le dépôt contient une page statique avec six sections, des fichiers JSON de contenu et un formulaire. | Code et documentation du dépôt | État constaté au 2026-10-26 |
+| Les notes du projet recensent des pratiques, étapes de cycle de vie et outils DevOps à titre de référence. | [Notes](Notes.md) | Notes générales; elles ne prouvent ni l’expérience du propriétaire ni les outils qu’il maîtrise |
 | Les six ancres et les principaux parcours visuels ont été parcourus aux dimensions consignées. | [Audit](Audit.md) | Audit ponctuel du site publié et du code local; pas une certification |
 | Le parcours Contact présente des cas où une réponse d’échec peut être annoncée comme un succès et où le chargement des JSON retarde l’initialisation. | [Audit](Audit.md), constats F01–F02 | À corriger et à retester |
 | Brouillon et file locale peuvent conserver des données personnelles sans expiration ni commande d’effacement visible. | [Audit](Audit.md), constat S02 | Politique à définir; aucun avis juridique réalisé |
@@ -53,6 +55,8 @@ Le produit sert de présence en ligne à Patrick G., bachelier en informatique, 
 
 - Un visiteur peut ne pas trouver l’information ou le moyen de contact sur son appareil.
 - Une demande de contact peut être perdue ou son état mal présenté.
+- Un positionnement DevOps sans exemples concrets ou avec des affirmations non étayées peut réduire la confiance des visiteurs.
+- La publication d’architectures, d’identifiants ou de détails opérationnels sensibles peut exposer le propriétaire ou un tiers.
 - Des informations de contact peuvent rester dans le stockage local au-delà de ce que le visiteur attend.
 - Une panne des scripts ou données peut rendre la page ou ses contrôles difficiles à utiliser.
 
@@ -60,24 +64,27 @@ Le produit sert de présence en ligne à Patrick G., bachelier en informatique, 
 
 | ID | Hypothèse ou décision | Importance | Validation | Statut |
 | --- | --- | --- | --- | --- |
-| A-01 | Le public cible principal est constitué de visiteurs et clients potentiels recherchant les services du propriétaire. | Périmètre et contenu | Validation avec le propriétaire | À confirmer |
+| A-01 | Le public cible comprend les recruteurs et responsables techniques évaluant un profil DevOps, ainsi que des clients potentiels si des services sont proposés. | Périmètre et contenu | Définir la cible et sa priorité avec le propriétaire | À confirmer |
 | A-02 | Le site restera un portfolio statique hébergé sur GitHub Pages. | Architecture et livraison | Confirmer avec le propriétaire | Constat actuel, décision formelle à confirmer |
 | A-03 | Le service de formulaire actuellement configuré est le fournisseur prévu pour la production. | Contact et données | Confirmer fournisseur, restrictions, conditions et configuration | À confirmer |
 | A-04 | Une sauvegarde locale du brouillon et une réémission automatique sont souhaitables. | Confidentialité et comportement | Décider durée, consentement/notice, effacement et annulation | À confirmer |
 | A-05 | Les profils sociaux restent absents tant que des liens réels ne sont pas fournis. | Contenu | Confirmer avec le propriétaire | Données JSON actuellement vides |
-| A-06 | Les objectifs chiffrés de performance, de fréquentation et de conversion ne sont pas connus. | Mesure du succès | Définir une référence et des objectifs utiles | À confirmer |
-| A-07 | Les responsabilités nominatives, le budget, l’échéance et la procédure de publication restent à préciser. | Gouvernance | Décision du commanditaire | À confirmer |
+| A-06 | Les projets, contributions, technologies utilisées, niveaux de maîtrise, certifications et résultats doivent être confirmés avant publication. | Exactitude et crédibilité du profil | Valider chaque affirmation et les autorisations de publication avec le propriétaire | À confirmer |
+| A-07 | Les objectifs chiffrés de performance, de fréquentation et de conversion ne sont pas connus. | Mesure du succès | Définir une référence et des objectifs utiles | À confirmer |
+| A-08 | Les responsabilités nominatives, le budget, l’échéance et la procédure de publication restent à préciser. | Gouvernance | Décision du commanditaire | À confirmer |
 
 ## 4. Vision, objectifs et hors objectifs
 
 ### Vision
 
-Offrir une présentation personnelle claire et maintenable qui permet aux visiteurs de découvrir l’offre de PGDigital et de contacter son propriétaire depuis un navigateur de bureau ou mobile.
+Présenter un profil DevOps clair, crédible et maintenable, étayé par des projets vérifiables, afin que recruteurs, responsables techniques et clients potentiels puissent évaluer la contribution de Patrick G. à l’automatisation, à la livraison et à l’exploitation de logiciels, puis le contacter depuis un navigateur de bureau ou mobile.
 
 ### Principes produit
 
 - Préserver le fonctionnement statique, sans backend ni compilation obligatoires.
 - Garder les contenus éditables en JSON et fournir un repli HTML utile.
+- Présenter distinctement les pratiques, projets et outils dont l’usage ou le niveau de maîtrise a été confirmé; distinguer expérience démontrée, apprentissage et intérêt.
+- Ne publier que des études de cas autorisées, anonymisées au besoin et dépourvues de secrets ou d’informations opérationnelles sensibles.
 - Privilégier une expérience compréhensible, responsive, accessible et honnête sur l’état d’une demande de contact.
 - Ne pas présenter comme existantes des fonctions ou garanties non vérifiées.
 
@@ -85,14 +92,18 @@ Offrir une présentation personnelle claire et maintenable qui permet aux visite
 
 | ID | Objectif | Résultat attendu | Mesure |
 | --- | --- | --- | --- |
-| OBJ-01 | Présenter le portfolio | Six sections consultables et navigation cohérente | Parcours des six ancres |
-| OBJ-02 | Prendre en charge les visiteurs mobiles | Pas de débordement, titre tronqué ni chevauchement sur les tailles convenues | Vérification navigateur aux tailles précisées ci-dessous |
-| OBJ-03 | Permettre une prise de contact compréhensible | Validation et retour de statut; soumission au service configuré ou solution de repli explicite | Scénarios de validation et de réponse du service |
-| OBJ-04 | Maintenir l’autonomie de publication | Exécution directe et hébergement statique | Vérification HTTP et ouverture directe |
+| OBJ-01 | Clarifier le positionnement DevOps | Les visiteurs identifient le rôle, la valeur apportée et les domaines de compétence à partir de contenus validés | Relecture par le propriétaire et tests de compréhension avec des visiteurs cibles |
+| OBJ-02 | Étayer les compétences | Les compétences principales renvoient à des projets ou preuves publiables, sans exagérer le niveau d’expérience | Vérifier les contenus et leurs preuves avant publication |
+| OBJ-03 | Prendre en charge les visiteurs mobiles | Pas de débordement, titre tronqué ni chevauchement sur les tailles convenues | Vérification navigateur aux tailles précisées ci-dessous |
+| OBJ-04 | Permettre une prise de contact compréhensible | Validation et retour de statut; soumission au service configuré ou solution de repli explicite | Scénarios de validation et de réponse du service |
+| OBJ-05 | Maintenir l’autonomie de publication | Exécution directe et hébergement statique | Vérification HTTP et ouverture directe |
 
 ### Hors objectifs actuels
 
 - Backend applicatif, base de données serveur, authentification ou espace administrateur.
+- Plateforme DevOps, infrastructure cloud, pipeline CI/CD ou démonstration interactive opérés par le portfolio.
+- Promesse de disponibilité, de sécurité, de réduction des coûts ou de performance d’un système en production sans preuve et validation explicites.
+- Affirmation de maîtrise d’un outil, d’une certification, d’une mission ou d’un résultat qui n’a pas été confirmé par le propriétaire.
 - Service de consentement aux cookies : les fichiers présents ne sont pas intégrés et l’API attendue n’existe pas dans le dépôt.
 - Garantie de livraison d’un email par le fournisseur de formulaire.
 - Objectifs commerciaux, délais, budget ou niveaux de service non approuvés.
@@ -101,9 +112,10 @@ Offrir une présentation personnelle claire et maintenable qui permet aux visite
 
 | Profil | Objectifs et besoins | Contraintes |
 | --- | --- | --- |
-| Visiteur du portfolio | Découvrir le profil, les services, compétences et outils; consulter sur mobile ou bureau. | Navigation et contenu compréhensibles, contrôles utilisables. |
+| Recruteur ou responsable technique | Évaluer rapidement le positionnement, les compétences, la contribution et les projets DevOps. | Affirmations précises, preuves accessibles et navigation compréhensible. |
+| Client potentiel | Comprendre les services réellement proposés, les domaines d’intervention et la façon de prendre contact. | Ne pas laisser entendre qu’une prestation, disponibilité ou garantie est acquise sans validation. |
 | Visiteur souhaitant contacter | Envoyer ses coordonnées et un message et comprendre ce qu’il advient de sa demande. | Validation utile, information sur la transmission et le stockage, résultat honnête. |
-| Propriétaire du portfolio | Présenter des informations exactes et recevoir les demandes. | Valider les contenus, le destinataire et le fournisseur. |
+| Propriétaire du portfolio | Présenter des informations exactes sur son profil DevOps, ses projets et ses compétences et recevoir les demandes. | Valider les contenus, les preuves, les autorisations de publication, le destinataire et le fournisseur. |
 | Mainteneurs | Modifier les données, styles et comportements et publier le site. | Maintenir le JSON et le repli cohérents; pas de build obligatoire. |
 | Fournisseur du formulaire | Recevoir une soumission lorsque l’envoi distant est activé. | Fournisseur actuellement configuré, conditions et limites à vérifier. |
 
@@ -114,7 +126,7 @@ Les personnes responsables de la validation produit, de la confidentialité, de 
 ### Inclus dans l’état actuel
 
 - Page unique à six sections avec navigation fullPage.js.
-- Contenu éditable dans `json/site-data.json` et configuration du formulaire dans `json/contact-form.json`.
+- Contenu de portfolio éditable dans `json/site-data.json` et configuration du formulaire dans `json/contact-form.json`.
 - Contenu HTML statique de repli dans `index.html`.
 - Carrousels de faits, services, compétences et outils, animations, compteurs et titre animé.
 - Menu mobile, bascule de thème clair/sombre et formulaire de contact.
@@ -122,13 +134,20 @@ Les personnes responsables de la validation produit, de la confidentialité, de 
 - Publication de fichiers statiques sur GitHub Pages.
 - URL canonique et données structurées JSON-LD dans `index.html`, ainsi que `sitemap.xml` et `robots.txt` dans le dépôt. Le fichier `robots.txt` du dépôt de projet n’est pas à la racine du domaine GitHub Pages; son activation est conditionnée à une publication adaptée.
 
+### Cible éditoriale du repositionnement DevOps
+
+- Réorganiser l’accueil, le profil, les services, les compétences et les outils autour de la contribution DevOps, notamment l’automatisation, les pipelines, les conteneurs, l’infrastructure, l’exploitation, la supervision et la sécurité, uniquement lorsque ces domaines correspondent à l’expérience confirmée du propriétaire.
+- Ajouter des études de cas de projets réels et autorisés. Pour chaque projet, préciser le contexte, le problème, le rôle personnel, les choix techniques, les étapes de livraison/exploitation, les résultats vérifiables et les limites.
+- Indiquer clairement si une technologie relève d’une expérience professionnelle, d’un projet personnel/formation ou d’un apprentissage en cours. Les exemples de [Notes](Notes.md) sont des pistes de vocabulaire, pas une liste de compétences acquises.
+- Préserver la structure et le comportement de la page statique tout en assurant la cohérence du contenu JSON et du repli HTML.
+
 ### Hors périmètre ou non intégré
 
 - Backend, base de données ou authentification propres au site.
 - Consentement aux cookies; `js/cookie_consent.js` et `css/cookie_consent.css` ne sont pas chargés et leur API serveur est absente.
 - Fournisseur de formulaire alternatif non validé.
 - Métadonnées Open Graph et Twitter Card, signalées comme non implémentées dans le suivi du projet.
-- Réalisations clients, témoignages ou résultats non fournis et approuvés par le propriétaire.
+- Réalisations, témoignages, résultats, environnements clients et détails opérationnels non fournis, autorisés et approuvés par le propriétaire.
 
 ### Contraintes
 
@@ -140,15 +159,16 @@ Les personnes responsables de la validation produit, de la confidentialité, de 
 
 ## 7. Parcours utilisateurs principaux
 
-### UC-01 — Découvrir le portfolio
+### UC-01 — Évaluer le profil DevOps
 
-**Acteur et objectif :** visiteur souhaitant comprendre l’offre.
+**Acteur et objectif :** recruteur, responsable technique ou client potentiel souhaitant comprendre le positionnement et l’expérience pertinente.
 
 1. Le visiteur ouvre la page.
-2. Il parcourt Accueil, À propos, Services, Compétences, Outils et Contact par la navigation ou le défilement.
-3. Il consulte les contenus dans une mise en page adaptée à son écran.
+2. Il identifie le rôle visé, les domaines d’intervention et les compétences présentées comme effectivement pratiquées.
+3. Il examine une ou plusieurs études de cas pour comprendre le contexte, la contribution personnelle, les pratiques et les résultats publiables.
+4. Il consulte les contenus dans une mise en page adaptée à son écran et peut accéder au contact.
 
-**Résultat attendu :** les sections, ancres et états de navigation restent synchronisés. Si les JSON sont indisponibles, le contenu statique reste consultable.
+**Résultat attendu :** les affirmations importantes sont étayées et nuancées; les sections, ancres et états de navigation restent synchronisés. Si les JSON sont indisponibles, le contenu statique reste consultable.
 
 ### UC-02 — Contacter le propriétaire
 
@@ -164,7 +184,7 @@ Les étapes 3 à 5 décrivent le comportement attendu. Les défauts F01–F03 de
 
 ### UC-03 — Mettre à jour le contenu
 
-Le mainteneur modifie les données JSON et vérifie également le rendu statique de repli. Les informations doivent être cohérentes dans les deux modes.
+Le mainteneur met à jour le profil, les compétences et les études de cas dans les données JSON et vérifie également le rendu statique de repli. Avant publication, il vérifie l’exactitude des affirmations, les autorisations, l’absence de secrets et la cohérence des deux modes.
 
 ## 8. Exigences fonctionnelles
 
@@ -173,11 +193,11 @@ Priorités : **Must** = indispensable; **Should** = important; **Could** = facul
 | ID | Exigence | Justification | Priorité | Critères d’acceptation |
 | --- | --- | --- | --- | --- |
 | FR-001 | Le site doit présenter les six sections et synchroniser les ancres, liens de navigation et configuration fullPage.js. | Découverte du portfolio | Must | Les ancres `slide01` à `slide06` ouvrent la section correspondante; une seule entrée active est annoncée. |
-| FR-002 | En HTTP, le site doit charger les contenus de portfolio depuis `json/site-data.json`. | Mise à jour sans backend | Must | Les contenus affichés correspondent aux données servies. |
+| FR-002 | En HTTP, le site doit charger depuis `json/site-data.json` le profil DevOps, les compétences, les outils et les projets validés. | Mise à jour sans backend | Must | Les contenus affichés correspondent aux données servies et les éléments prévus comme projets y sont disponibles. |
 | FR-003 | Le site doit conserver un contenu utile dans `index.html` si les fichiers JSON ne sont pas accessibles. | Résilience et ouverture directe | Must | Un échec ou refus de chargement des JSON ne supprime pas le contenu statique. |
 | FR-004 | Le site doit fournir menu mobile et navigation adaptative. | Utilisation sur petits écrans | Must | Sous 768 px, ouverture/fermeture fonctionnent, `aria-expanded` reflète l’état et la sélection d’un lien ferme le menu. |
 | FR-005 | Le visiteur doit pouvoir basculer entre thèmes clair et sombre. | Préférence d’affichage | Should | Le thème, l’état accessible et la préférence `dark-mode` sont synchronisés. |
-| FR-006 | Les faits, services, compétences et outils doivent être présentés dans les groupes/carrousels prévus. | Présentation du contenu | Should | Les quatre groupes s’initialisent après disponibilité des données et restent navigables. |
+| FR-006 | Les services, domaines de compétence et outils doivent être présentés dans les groupes prévus et refléter le positionnement DevOps validé. | Présentation du contenu | Should | Les groupes s’initialisent après disponibilité des données; les outils affichés sont qualifiés selon le niveau d’expérience confirmé. |
 | FR-007 | Le formulaire doit valider les champs obligatoires et le format email et annoncer son état de manière accessible. | Réduire les erreurs et informer le visiteur | Must | Les champs invalides bloquent l’envoi; le résultat est annoncé dans la région de statut. |
 | FR-008 | Le formulaire doit empêcher toute soumission native de données personnelles dans l’URL, y compris pendant le chargement ou l’échec des scripts/configuration. | Confidentialité | Must | Sous JSON lent, absent ou invalide, aucun champ de formulaire ne se retrouve dans la query string. |
 | FR-009 | Lorsque l’envoi distant est configuré, le formulaire doit envoyer les données en JSON et distinguer succès métier, rejet et réponse invalide. | Fiabilité du contact | Must | HTTP 200 avec succès métier négatif, JSON invalide et rejet HTTP ne déclenchent jamais un faux succès ni l’effacement du message. |
@@ -185,6 +205,9 @@ Priorités : **Must** = indispensable; **Should** = important; **Could** = facul
 | FR-011 | Si une sauvegarde locale est conservée, l’utilisateur doit être informé, pouvoir effacer son brouillon et annuler une réémission; la conservation doit être bornée. | Confidentialité et maîtrise utilisateur | Must avant de maintenir la persistance automatique | Expiration, effacement et annulation vérifiables; aucune sauvegarde annoncée après échec de `localStorage`. La durée reste à décider. |
 | FR-012 | Les liens sociaux ne doivent être affichés que si des URL de profils réelles et approuvées sont disponibles. | Exactitude du contenu | Should | Aucun lien générique n’est affiché avec la liste JSON sociale vide ni dans le repli. |
 | FR-013 | La page doit fournir les métadonnées de base et les ressources de référencement réellement définies. | Découvrabilité et partage | Should | Titre/description cohérents; toute URL canonique, donnée structurée, sitemap ou directive robots correspond à l’URL publiée. |
+| FR-014 | Le portfolio doit présenter des études de cas de projets DevOps réels, autorisés et suffisamment documentés. | Étayer les compétences et rendre la contribution compréhensible | Must | Chaque étude de cas publiée précise au minimum le contexte, le rôle personnel, les solutions mises en œuvre et les résultats vérifiables; les projets non confirmés ne sont pas publiés. |
+| FR-015 | Le site doit distinguer les compétences démontrées, les outils utilisés en projet et les apprentissages en cours. | Éviter les affirmations trompeuses | Must | Les catégories et niveaux sont explicites, validés par le propriétaire et cohérents entre JSON et repli HTML. |
+| FR-016 | Les études de cas ne doivent exposer ni secrets, ni identifiants, ni informations de tiers ou détails opérationnels non autorisés. | Confidentialité et sécurité des projets présentés | Must | Chaque étude de cas passe une revue de publication; les exemples sont expurgés ou anonymisés lorsque nécessaire. |
 
 ## 9. Exigences non fonctionnelles
 
@@ -208,7 +231,8 @@ Les cibles de disponibilité, conservation légale, support navigateur formel et
 
 | Donnée | Finalité / origine | Stockage et accès | Conservation |
 | --- | --- | --- | --- |
-| Contenu du portfolio | Présenter les faits, services, compétences, outils et coordonnées; JSON et repli HTML | Fichiers statiques publics | Mis à jour par les mainteneurs |
+| Contenu du portfolio | Présenter le profil DevOps, les services validés, les compétences, les outils, les études de cas et les coordonnées; JSON et repli HTML | Fichiers statiques publics | Mis à jour par les mainteneurs après validation des affirmations, preuves et autorisations |
+| Informations de projets | Étayer les compétences par le contexte, le rôle personnel, les choix techniques et les résultats autorisés | Contenus JSON/HTML publics; revue avant publication | Aucune information confidentielle, aucun secret ni détail opérationnel non autorisé |
 | Nom, prénom, email et message | Répondre à une demande de contact; saisie du visiteur | Navigateur, puis service externe si envoi activé | Brouillon et file locale actuellement dans `localStorage`; durée et suppression à définir |
 | Préférence de thème | Restaurer la préférence du visiteur | `localStorage` | Jusqu’à effacement par l’utilisateur ou le navigateur |
 | Configuration du formulaire | Définir l’endpoint, destinataire et messages | Fichier JSON public côté client | Ne jamais y placer un secret serveur; vérifier toute donnée avant publication |
@@ -219,6 +243,9 @@ Les cibles de disponibilité, conservation légale, support navigateur formel et
 - Une réponse HTTP réussie seule ne suffit pas à déclarer le succès métier du formulaire.
 - Un message ne peut être annoncé comme sauvegardé que si l’écriture locale a effectivement réussi.
 - Les erreurs définitives ne doivent pas être réessayées indéfiniment; les règles de reprise restent à spécifier.
+- Une technologie citée ne doit pas être interprétée comme une compétence acquise sans validation explicite du propriétaire.
+- Les études de cas doivent différencier le travail personnel de celui d’une équipe et ne présenter que des résultats étayés et autorisés.
+- Aucun secret, identifiant, adresse interne, détail d’architecture sensible ou donnée client ne doit être publié dans les études de cas.
 - L’endpoint, la politique du fournisseur, les destinataires, la base légale et les durées de conservation doivent être validés par le propriétaire.
 - La clé d’accès actuellement présente dans la configuration est une donnée de configuration publique exposée au navigateur; elle ne doit pas être copiée dans cette documentation. Les restrictions et protections du fournisseur sont à confirmer.
 
@@ -231,12 +258,17 @@ Les cibles de disponibilité, conservation légale, support navigateur formel et
 | Fournisseur de formulaire configuré | Réception du POST JSON | Configuration observée; contrat, restrictions, quotas, conservation et conditions à valider |
 | Application de messagerie du visiteur | Repli `mailto:` | Dépend de la configuration locale du visiteur; ne confirme pas l’envoi |
 | CDN et Google Fonts | Icônes, script et police | Dépendances externes; versions flottantes et politiques à évaluer selon l’audit |
+| Technologies et pratiques DevOps citées | Décrire les projets et compétences du propriétaire | Contenu éditorial uniquement; aucune intégration d’exécution ni maîtrise n’est implicite. Chaque élément doit être confirmé |
 
 Les fichiers de consentement aux cookies et leur API attendue ne sont pas des intégrations actives.
 
 ## 12. UX/UI
 
-- Conserver les six sections et la cohérence des ancres desktop/mobile.
+- Conserver les six sections et la cohérence des ancres desktop/mobile; orienter leurs titres et contenus vers un profil DevOps lisible.
+- Faire apparaître rapidement le rôle visé, la valeur apportée et des preuves pertinentes plutôt qu’une simple liste de technologies.
+- Organiser les compétences par domaines utiles au profil — par exemple CI/CD, conteneurs/orchestration, IaC, cloud, observabilité et sécurité — uniquement si ces domaines sont confirmés.
+- Présenter les études de cas selon une structure récurrente : contexte et besoin, rôle/contribution, approche et outils réellement utilisés, résultats vérifiables, limites et enseignements.
+- Distinguer visuellement l’expérience professionnelle, les projets personnels/formation et les apprentissages en cours.
 - Adapter l’interface au mobile, y compris la vue Contact et le pied de page en flux normal.
 - Donner aux champs du formulaire des libellés, contraintes et messages d’erreur compréhensibles.
 - Annoncer distinctement envoi, acceptation, rejet, échec, mise en attente et repli email.
@@ -249,7 +281,7 @@ Les fichiers de consentement aux cookies et leur API attendue ne sont pas des in
 | Élément | Contrainte ou état |
 | --- | --- |
 | Point d’entrée | `index.html` |
-| Contenu et configuration | `json/site-data.json`, `json/contact-form.json`; contenu de repli dans le HTML |
+| Contenu et configuration | `json/site-data.json` pour le profil, les compétences, outils et projets; `json/contact-form.json` pour le formulaire; contenu de repli dans le HTML |
 | Comportements | `js/custom.js`, `js/data.js`, `js/scripts.js` |
 | Styles | `css/style.css`, `css/responsive.css` |
 | Publication | Fichiers statiques GitHub Pages |
@@ -271,35 +303,41 @@ npx --yes html-validate@latest index.html
 
 | ID | Indicateur | Définition / vérification | Référence et cible |
 | --- | --- | --- | --- |
-| KPI-01 | Navigation fonctionnelle | Six liens ouvrent les six sections attendues | Contrôles ponctuels réussis selon l’audit; maintenir le résultat à chaque recette |
+| KPI-01 | Clarté du positionnement | Recruteurs/visiteurs cibles peuvent décrire le rôle DevOps et la valeur apportée après une consultation rapide | Référence et cible à établir lors de tests de compréhension |
 | KPI-02 | Utilisabilité mobile | Aucun débordement horizontal, titre tronqué ni chevauchement Contact/pied de page | Vérifié à 390 × 844 lors de l’audit; cible 390 × 844 et 320 × 568 |
-| KPI-03 | Fidélité du contenu | Données visibles identiques entre JSON et repli pour les champs convenus | Contrôle de comparaison à chaque modification; divergences antérieures à corriger |
-| KPI-04 | Fiabilité du contact | Succès uniquement après réponse métier positive; aucun message perdu silencieusement | État initial comporte des défauts audit F01–F03; cible à définir et tester |
+| KPI-03 | Preuves de compétences | Chaque compétence mise en avant est reliée à une expérience ou preuve publiée et qualifiée | Inventaire à valider avant publication; aucun objectif chiffré sans données |
+| KPI-04 | Fidélité du contenu | Profil, études de cas et coordonnées sont cohérents entre JSON et repli HTML | Contrôle de comparaison à chaque modification |
 | KPI-05 | Performance | LCP, INP et CLS séparés entre mesures terrain et laboratoire | Cibles proposées dans NFR-009; référence terrain absente |
-| KPI-06 | Conversion / fréquentation | À définir avec le propriétaire sans collecte superflue de données personnelles | Valeur de référence et cible inconnues |
+| KPI-06 | Fiabilité du contact | Succès uniquement après réponse métier positive; aucun message perdu silencieusement | État initial comporte des défauts audit F01–F03; cible à définir et tester |
+| KPI-07 | Prises de contact pertinentes | Demandes liées aux objectifs professionnels définis, sans collecte superflue de données personnelles | Définition, référence et cible à confirmer avec le propriétaire |
 
 ## 15. Priorités MVP et livraison
 
 ### Capacités indispensables
 
+- Positionnement DevOps clair, avec profil et domaines d’intervention validés.
+- Sélection de projets ou études de cas réels et autorisés qui étayent les compétences mises en avant.
+- Distinction explicite entre compétences démontrées, expérience de projet et apprentissage en cours.
 - Navigation fonctionnelle sur les six sections et contenu lisible.
 - Rendu du contenu en HTTP et repli statique utile.
 - Expérience responsive et contrôles de navigation utilisables.
 - Formulaire sans soumission GET accidentelle, validation adéquate et état de résultat honnête.
 - Informations de confidentialité et comportement de stockage décidés avant de conserver automatiquement des données personnelles.
 
-### Travaux proposés à prioriser selon l’audit
+### Travaux proposés à prioriser
 
-1. **Lot contact et données (P1)** : F01, F02, F03, S02; traiter également la cohérence de contenu M01.
-2. **Lot sécurité et accessibilité (P1/P2)** : S01, U01, U02, U03, puis S03.
-3. **Lot performance et visibilité (P2/P3)** : P01, P02, U04.
+1. **Lot repositionnement et contenu (P1)** : valider la cible, le rôle, les domaines de compétence et les projets; concevoir les études de cas et les mettre en cohérence entre JSON et repli.
+2. **Lot contact et données (P1)** : F01, F02, F03, S02; traiter également la cohérence de contenu M01.
+3. **Lot sécurité et accessibilité (P1/P2)** : S01, U01, U02, U03, puis S03; inclure une revue des informations sensibles dans les études de cas.
+4. **Lot performance et visibilité (P2/P3)** : P01, P02, U04.
 
-Ces lots sont des recommandations d’audit et non des engagements de date. Le backlog de tâches reste la source de suivi d’implémentation.
+Ces lots sont des recommandations produit et d’audit, non des engagements de date. Le backlog de tâches reste la source de suivi d’implémentation.
 
 ## 16. Risques
 
 | ID | Risque | Impact | Réponse proposée | Statut |
 | --- | --- | --- | --- | --- |
+| R-08 | Positionnement DevOps ou affirmations de compétences non étayés | Perte de crédibilité et attentes incorrectes | Faire valider le profil, les niveaux, les projets et chaque résultat avant publication | Ouvert |
 | R-01 | Réponse d’échec métier interprétée comme succès | Perte de confiance ou de demande | Vérifier le contrat de réponse du fournisseur et tester les réponses négatives | Ouvert, audit F01 |
 | R-02 | Formulaire non initialisé pendant le chargement et soumission native GET | Données personnelles dans l’URL | Prévenir la soumission immédiatement et découpler l’initialisation des JSON | Ouvert, audit F02 |
 | R-03 | Échec silencieux du stockage ou perte/répétition des messages en attente | Demande perdue ou envoyée à tort comme conservée | Rendre les erreurs visibles, sérialiser les reprises, tester les limites | Ouvert, audit F03 |
@@ -312,7 +350,9 @@ Ces lots sont des recommandations d’audit et non des engagements de date. Le b
 
 | Domaine | Scénarios et critères |
 | --- | --- |
-| Fonctionnel | Vérifier les six ancres, le thème, le menu, les carrousels, le rendu JSON et le repli. |
+| Contenu DevOps | Vérifier l’exactitude des affirmations, la qualification des compétences/outils, l’attribution des contributions et les preuves des résultats; aucun contenu non confirmé ne passe en production. |
+| Publication des projets | Revue des autorisations, anonymisation et absence de secrets, identifiants, données client ou détails internes dans chaque étude de cas. |
+| Fonctionnel | Vérifier les six ancres, le thème, le menu, les carrousels, le rendu JSON et le repli; contrôler que le contenu DevOps reste cohérent dans les deux modes. |
 | Contact | Champs vides, email invalide, succès métier, HTTP 200 négatif, JSON invalide, 400, 429, 503, timeout et absence de configuration; aucune donnée dans l’URL et aucun faux succès. |
 | Stockage | Brouillon, expiration, effacement, annulation, quota/interdiction du stockage, file pleine, retour en ligne, nouvelle soumission pendant reprise et absence de perte silencieuse. |
 | Résilience | HTTP, ouverture `file://`, JSON lent/absent/invalide, JavaScript et CDN indisponibles. La page ne doit pas masquer durablement son contenu ni rendre impossible tout contact. |
@@ -334,12 +374,13 @@ Ces lots sont des recommandations d’audit et non des engagements de date. Le b
 | ID | Question | Responsable pressenti | Échéance | Impact |
 | --- | --- | --- | --- | --- |
 | Q-01 | Qui valide formellement le périmètre, le contenu et la livraison? | Propriétaire / Product | À définir | Approbation |
-| Q-02 | Quel est le public prioritaire et quels indicateurs de conversion sont utiles? | Propriétaire / Product | À définir | Contenu et mesure |
+| Q-02 | La cible prioritaire est-elle le recrutement, les clients ou les deux; quel rôle DevOps et quelle valeur doivent être mis en avant? | Propriétaire / Product | À définir | Contenu et mesure |
 | Q-03 | Quel fournisseur, quelles protections et quelles conditions s’appliquent au formulaire en production? | Propriétaire / Engineering | Avant validation du formulaire | Contact et confidentialité |
 | Q-04 | Quelle durée de rétention s’applique au brouillon et à la file; faut-il conserver la sauvegarde automatique? | Propriétaire / responsable concerné | Avant maintien de la persistance automatique | Confidentialité |
 | Q-05 | Quel est le périmètre navigateur officiellement pris en charge? | Engineering / Product | À définir | Compatibilité |
 | Q-06 | Quels budget, échéance, cadence, procédure de publication et responsabilités opérationnelles sont retenus? | Commanditaire | À définir | Livraison et exploitation |
 | Q-07 | Faut-il publier `robots.txt` à la racine du domaine GitHub Pages ou utiliser un domaine personnalisé? | Propriétaire | À définir | Référencement |
+| Q-08 | Quels projets, contributions, technologies, niveaux de maîtrise, résultats et certifications peuvent être publiés, et avec quelles autorisations? | Propriétaire | Avant validation du contenu DevOps | Crédibilité, exactitude et confidentialité |
 
 ## 19. Approbations et historique
 
@@ -347,7 +388,7 @@ Ces lots sont des recommandations d’audit et non des engagements de date. Le b
 
 | Relecteur / rôle | Décision | Date | Notes |
 | --- | --- | --- | --- |
-| Patrick G. / propriétaire du portfolio | À confirmer | À confirmer | Validation du périmètre, des données et des objectifs |
+| Patrick G. / propriétaire du portfolio DevOps | À confirmer | À confirmer | Validation du positionnement, des preuves, des données et des objectifs |
 | Product / Engineering / Design | À confirmer | À confirmer | Responsables nominatifs et approbations à documenter |
 
 ### Historique des modifications
@@ -356,6 +397,7 @@ Ces lots sont des recommandations d’audit et non des engagements de date. Le b
 | --- | --- | --- | --- |
 | 1.0 | 2026-10-26 | Copilot | Remplacement du modèle générique par un PRD fondé sur le dépôt, les documents associés et l’audit du 2026-10-20; séparation des capacités constatées, risques ouverts et décisions à confirmer. |
 | 1.1 | 2026-10-26 | Copilot | Précision que PGDigital est le portfolio personnel de Patrick G., bachelier en informatique. |
+| 1.2 | 2026-11-08 | Copilot | Repositionnement du produit en portfolio DevOps; ajout d’exigences de preuves, d’études de cas et de validation des compétences, sans présenter les notes générales comme une expérience acquise. |
 
 ---
 
