@@ -1,6 +1,6 @@
-# PGDIGITAL — Developer Portfolio
+# PGDIGITAL — DevOps Portfolio
 
-PGDigital is a static, single-page developer portfolio deployed on GitHub Pages. It presents services, skills, tools, and contact information across six full-page sections.
+PGDigital is a static, single-page portfolio deployed on GitHub Pages. Its product direction is to present Patrick G. as a DevOps professional, supported by verified skills and authorized project case studies. The current visible content still largely describes generalist web development; the repositioning and supporting evidence remain to be validated and implemented. Do not infer experience or tool mastery from technologies listed on the site.
 
 ## Technology Stack
 
@@ -26,6 +26,7 @@ The project has no build step, package manifest, backend, or test runner. Runtim
 - Persistent light/dark theme toggle in the header
 - Responsive contact layout with desktop header/footer clearance and a normal-flow footer below 768 px or 600 px viewport height
 - Canonical URL, static Schema.org JSON-LD (`Person`, `WebSite`, `WebPage`), XML sitemap, and a `robots.txt` file (see the GitHub Pages limitation below)
+- DevOps-oriented content and project case studies are a product goal, not yet a completed site feature; publish them only after the owner validates claims, evidence, and permissions
 
 ## Run Locally
 
@@ -46,7 +47,7 @@ The project has no build step, package manifest, backend, or test runner. Runtim
 
 ## Contact Form Configuration
 
-Edit `json/contact-form.json` to configure the [Web3Forms](https://web3forms.com/) endpoint and public access key. The current configuration uses Web3Forms; if either `endpoint` or `accessKey` is empty, the form falls back to `mailto:`. Any endpoint accepting a JSON `POST` can be used through the `endpoint` field.
+Edit `json/contact-form.json` to configure the [Web3Forms](https://web3forms.com/) endpoint and public access key. The current configuration targets Web3Forms. If either `endpoint` or `accessKey` is unavailable, the form falls back to `mailto:`. Treat this file as public client-side configuration: never put server secrets in it or copy the access-key value into documentation. Confirm the provider's restrictions, terms, and data handling before changing the production configuration.
 
 ## Validation
 
@@ -75,19 +76,25 @@ After deployment, check that the canonical page and sitemap return HTTP 200, val
 
 ## Documentation
 
-- [Technical documentation](docs/documentation.md)
-- [Project structure](docs/structure.md)
-- [Project tasks](docs/tasks.md)
-- [Experiment log](docs/labo.md)
+- [Product Requirements Document](docs/Analyse%20Conception/PRD.md)
+- [Requirements analysis](docs/Analyse%20Conception/Analyse%20des%20besoins.md)
+- [Specifications](docs/Analyse%20Conception/Cahier%20des%20charges.md)
+- [UX/UI design](docs/Analyse%20Conception/UX-UI.md)
+- [Data and process modeling](docs/Analyse%20Conception/Mod%C3%A9lisation.md)
+- [Project tasks and validation status](docs/Analyse%20Conception/Tasks.md)
+- [Product backlog](docs/Agile%20Scrum/Scrum%20Product%20Backlog.md)
+- [Sprint backlog](docs/Agile%20Scrum/Scrum%20Sprint%20Backlog.md)
+- [Roadmap](docs/Agile%20Scrum/Roadmap.md)
 
 ## Current Limitations
 
-- Contact submission falls back to the visitor's email client until a form endpoint access key is configured.
+- The form has a configured external submission endpoint. Its response handling, retention, privacy notice, and production-provider terms still require validation; `mailto:` is a fallback when remote submission is unavailable, not proof that a message was sent.
 - Content changes must be mirrored in `json/site-data.json` and in the static fallback markup.
-- Social links are intentionally omitted until real profile URLs are available.
+- The JSON-driven social list is empty, but generic social links remain in the static HTML fallback and must be removed or replaced with owner-approved profiles.
+- The DevOps repositioning is not complete in the live content. Skills, services, and project case studies must be owner-validated and supported by evidence and publication permission before being presented as facts.
 - `js/cookie_consent.js` and `css/cookie_consent.css` are present but are not integrated or loaded by `index.html`; the script also expects a server API that this static site does not provide.
 - Open Graph and Twitter Card metadata are not yet implemented.
-- The project-level `robots.txt` is not discovered automatically by crawlers on the current GitHub Pages subpath; origin-root configuration is required as described above.
+- The project-level `robots.txt` is not discovered automatically by crawlers on the current GitHub Pages subpath; origin-root configuration is required as described above. Confirm whether it has been published at the origin root before claiming that the rules are active.
 
 ## Contributing and License
 
