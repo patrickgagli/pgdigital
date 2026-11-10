@@ -1,172 +1,150 @@
-# Modélisation — [Nom du projet]
+# Modélisation — PGDigital
 
 ## 1. Identification
 
-| Information | À compléter |
+| Information | Valeur |
 | --- | --- |
-| Nom du projet | [Nom du projet] |
-| Client / commanditaire | [Nom, organisation] |
-| Analyste(s) | [Noms] |
-| Date | [AAAA-MM-JJ] |
-| Version | [Version] |
-| Document d’analyse lié | [Lien vers l’analyse des besoins] |
+| Produit | PGDigital — portfolio personnel DevOps |
+| Propriétaire / commanditaire | Patrick G. |
+| Date de mise à jour | 2026-11-10 |
+| Version | 1.0 |
+| Document de référence | [Analyse des besoins](Analyse%20des%20besoins.md), [PRD](PRD.md) |
+| Statut | Modèle conceptuel fondé sur le produit actuel et sa cible éditoriale |
 
-## 2. Objectif et périmètre de la modélisation
+## 2. Objectif et périmètre
 
-**Objectif :** [Quelles données et quels processus le système doit-il représenter ?]
+PGDigital est un site statique, sans base de données serveur ni classes métier applicatives. Les modèles ci-dessous décrivent les données éditoriales et les parcours utiles pour maintenir le produit; ils ne constituent pas un schéma de base de données déjà implémenté.
 
-**Périmètre couvert :**
-
-- [Fonctionnalité ou processus inclus]
-
-**Hypothèses et contraintes :**
-
-- [Hypothèse ou contrainte]
+L’état courant comporte des faits, services, compétences, outils, coordonnées et liens sociaux dans `json/site-data.json`, ainsi qu’une représentation HTML de repli dans `index.html`. Les études de cas DevOps et la qualification explicite des compétences sont des besoins du PRD, mais ne figurent pas encore dans la structure JSON observée. Leur schéma proposé est donc une cible à valider avant implémentation.
 
 ## 3. Modélisation des données
 
-### 3.1 Entités et attributs
+### 3.1 Entités éditoriales observées
 
-Une entité représente un objet à gérer. Ses attributs décrivent ses caractéristiques.
-
-| Entité | Description | Attributs principaux |
+| Entité logique | Description | Collection / source actuelle |
 | --- | --- | --- |
-| [Entité] | [Ce que l’entité représente] | [Liste des attributs] |
+| Portfolio | Page publique contenant les sections et les groupes de contenu. | `index.html` |
+| Fait | Statistique courte avec icône, valeur et libellé. | `facts[]` dans `json/site-data.json` |
+| Service | Offre éditoriale avec icône, titre et description. | `services[]` |
+| Compétence | Langage ou compétence présentée avec image, nom et description. | `skills[]` |
+| Outil | Outil présenté avec image, nom et description. | `tools[]` |
+| Contact public | Nom et adresse affichés dans la section Contact. | `contact` |
+| Profil social | Lien social fourni avec libellé, icône et URL. | `social[]`; la liste JSON observée est vide |
 
-#### Détail des attributs
+Les éléments présentés comme compétences ou services doivent être validés par le propriétaire. Leur présence dans le JSON n’est pas à elle seule une preuve de niveau de maîtrise ou d’offre commerciale.
 
-| Entité | Attribut | Type de donnée | Obligatoire ? | Identifiant / remarque |
-| --- | --- | --- | --- | --- |
-| [Entité] | [Attribut] | [Texte, nombre, date…] | [Oui / non] | [Clé, unicité, règle…] |
+### 3.2 Modèle cible des contenus de compétence et de projet
 
-### 3.2 Relations et cardinalités
+La structure suivante est une proposition éditoriale issue du PRD et n’existe pas encore dans `site-data.json`.
 
-Indiquer les cardinalités minimales et maximales, ainsi que le caractère obligatoire ou optionnel de chaque participation.
+| Entité cible | Attributs proposés | Règles |
+| --- | --- | --- |
+| Compétence qualifiée | `name`, `category`, `experienceType`, `level` (facultatif), `summary`, `evidenceIds[]` | `experienceType` distingue expérience professionnelle, projet personnel/formation ou apprentissage; les niveaux doivent être validés et ne pas suggérer une certification non acquise. |
+| Étude de cas | `id`, `title`, `context`, `problem`, `personalContribution`, `approach`, `tools[]`, `results[]`, `limitations[]`, `learnings[]`, `authorizationStatus` | Publier uniquement après validation factuelle et autorisation; résultats vérifiables; aucun secret, identifiant, donnée client ou détail opérationnel non autorisé. |
+| Résultat vérifiable | `description`, `evidenceReference` (facultatif), `publicationAllowed` | Ne publier que les mesures ou résultats confirmés et autorisés. |
 
-| Entité A | Relation / description | Entité B | Type | Cardinalités et optionalité |
-| --- | --- | --- | --- | --- |
-| [Entité] | [Verbe décrivant la relation] | [Entité] | [1:1 / 1:N / N:N] | [Ex. : 1 obligatoire à 0..N] |
+Les champs finaux, les niveaux et la présentation des preuves restent à définir avec le propriétaire. Les références à des outils ne doivent pas être interprétées automatiquement comme des compétences acquises.
 
-**Rappel de notation :** `1` = exactement un ; `0..1` = zéro ou un ; `1..*` = un ou plusieurs ; `0..*` = zéro ou plusieurs.
+### 3.3 Relations conceptuelles et cardinalités
 
-### 3.3 Modèle entité-relation (MER)
-
-[Insérer ou joindre le MER. Représenter les entités, attributs, relations, cardinalités et participations obligatoires ou optionnelles.]
-
-### 3.4 Modèle logique — tables et clés
-
-Transformer chaque entité en table et chaque attribut en colonne. Ajouter une clé primaire à chaque table. Pour une relation 1:N, placer la clé étrangère du côté N ; pour une relation N:N, créer une table de liaison.
-
-| Table | Colonne | Type | Clé primaire ? | Clé étrangère / référence | Obligatoire ? |
-| --- | --- | --- | --- | --- | --- |
-| [Table] | [Colonne] | [Type] | [Oui / non] | [Table.colonne ou —] | [Oui / non] |
-
-#### Tables de liaison
-
-| Table de liaison | Entités reliées | Clés étrangères | Attributs propres éventuels |
+| Entité A | Relation | Entité B | Cardinalité |
 | --- | --- | --- | --- |
-| [Table] | [Entité A et Entité B] | [Clés étrangères] | [Attributs] |
+| Portfolio | contient | Section | 1 à 6 dans la structure actuelle |
+| Section Services | présente | Service | 1 à 0..* |
+| Section Compétences | présente | Compétence | 1 à 0..* |
+| Section Outils | présente | Outil | 1 à 0..* |
+| Section À propos | présente | Fait | 1 à 0..* |
+| Portfolio | affiche | Contact public | 1 à 1 |
+| Portfolio | peut afficher | Profil social | 1 à 0..* |
+| Compétence qualifiée (cible) | est étayée par | Étude de cas (cible) | 0..* à 0..* |
+| Étude de cas (cible) | présente | Résultat vérifiable (cible) | 1 à 0..* |
 
-### 3.5 Diagramme de classes UML
+Les relations « Compétence — Étude de cas » et « Étude de cas — Résultat » décrivent le modèle cible; elles ne correspondent pas à des liens présents dans les données actuelles.
 
-Pour chaque classe, préciser son nom, ses attributs et ses méthodes principales.
+### 3.4 Modèle logique JSON observé
 
-| Classe | Attributs (nom et type) | Méthodes principales |
+| Objet / tableau | Champs actuellement observés | Contraintes observées |
 | --- | --- | --- |
-| [Classe] | [attribut : type] | [méthode(paramètres) : retour] |
+| `facts[]` | `icon`, `value`, `label` | Liste d’objets; affichée dans le carrousel des faits. |
+| `services[]` | `icon`, `title`, `description` | Liste d’objets; affichée dans le carrousel de services. |
+| `skills[]` | `name`, `image`, `description` | Liste d’objets; image locale référencée par chemin. |
+| `tools[]` | `name`, `image`, `description` | Liste d’objets; image locale référencée par chemin. |
+| `contact` | `name`, `address`; `email` facultatif selon le rendu | Un objet de contact public. Ne pas ajouter de donnée personnelle non nécessaire. |
+| `social[]` | `label`, `icon`, `url` | Les liens ne sont rendus que si leur URL passe le filtre de schéma; les profils doivent être réels et approuvés. |
 
-#### Relations entre classes
+Les textes JSON sont rendus avec `textContent` et les URL acceptées sont limitées dans le code aux schémas HTTP(S) et `mailto:`. Toute extension du modèle doit préserver ces règles. Le contenu statique de `index.html` est une source de repli distincte, à maintenir cohérente.
 
-| Classe A | Relation | Classe B | Multiplicités | Justification |
-| --- | --- | --- | --- | --- |
-| [Classe] | [Association / agrégation / composition] | [Classe] | [Ex. : 1 — 0..*] | [Règle métier] |
+### 3.5 Données de contact et stockage
 
-### Diagramme de classes
+| Donnée | Emplacement / durée observés | Point à décider |
+| --- | --- | --- |
+| Nom, prénom, email, message | Formulaire du navigateur; configuration distante dans `json/contact-form.json`. | Confirmer le fournisseur, le destinataire, les conditions, l’information fournie et les règles de rétention. |
+| Brouillon | `localStorage`, clé `pgdigital:contact:draft`. | Définir durée, effacement et information du visiteur. |
+| File d’envoi | `localStorage`, clé `pgdigital:contact:outbox`, limite configurée par `maxQueued`. | Définir expiration, annulation et comportement sûr en cas d’erreur/quota. |
+| Préférence de thème | `localStorage`, clé `dark-mode`. | Préférence locale; suppression gérée par le navigateur ou l’utilisateur. |
 
-[Insérer ou joindre le diagramme UML des classes avec attributs, méthodes et multiplicités.]
+Le produit ne possède pas de modèle de persistance serveur propre. Le schéma de stockage local et les comportements d’échec doivent être validés; l’audit a relevé des risques de succès trompeur, perte ou conservation indéfinie à revalider.
 
 ## 4. Modélisation des processus
 
-Un processus transforme des éléments d’entrée en éléments de sortie au moyen d’activités. Il peut être métier, de support ou de pilotage.
+### 4.1 Charger et présenter les contenus
 
-### 4.1 Fiche descriptive du processus
+| Étape | Acteur | Action | Résultat |
+| --- | --- | --- | --- |
+| 1 | Navigateur | Affiche `index.html` et le contenu statique initial. | Page de repli disponible. |
+| 2 | `js/data.js` | Demande `json/site-data.json` et `json/contact-form.json` via `fetch`. | Données reçues ou erreur de chargement consignée. |
+| 3 | `js/data.js` | Rend le contenu JSON lorsque celui-ci est chargé. | Conteneurs actualisés; textes insérés comme texte, non comme HTML. |
+| 4 | `js/custom.js` | Attend l’état partagé des données avant initialisation des composants. | Carrousels et navigation initialisés selon les données disponibles. |
+| Alternative | Navigateur | Si `fetch` échoue, notamment en `file://`, garde le contenu HTML statique. | Rendu de repli; cohérence à vérifier lors des changements éditoriaux. |
 
-| Information | À compléter |
-| --- | --- |
-| Nom du processus | [Nom sous forme d’action] |
-| Type | [Métier / support / pilotage] |
-| Objectif / valeur créée | [Résultat attendu] |
-| Déclencheur / événement de début | [Événement qui lance le processus] |
-| Événement de fin | [Condition de fin] |
-| Entrées | [Données, documents, produits…] |
-| Sorties | [Résultats, documents, décisions…] |
+### 4.2 Parcours de contact
 
-### 4.2 Acteurs
+Le flux ci-dessous résume le comportement actuel et les attentes; les défauts de résultat métier et de stockage identifiés par l’audit doivent être confirmés ou corrigés avant validation du parcours.
 
-| Acteur | Principal / secondaire | Rôle dans le processus |
-| --- | --- | --- |
-| [Personne, service ou système] | [Principal / secondaire] | [Activités ou responsabilité] |
+```mermaid
+flowchart TD
+    A[Visiteur remplit le formulaire] --> B{Validation native valide ?}
+    B -- Non --> C[Afficher les erreurs de saisie]
+    B -- Oui --> D{Endpoint et clé configurés ?}
+    D -- Non --> E[Proposer un mailto prérempli]
+    D -- Oui --> F[Envoyer un POST JSON]
+    F --> G{Réponse métier positive ?}
+    G -- Oui --> H[Annoncer le résultat confirmé]
+    G -- Non / réseau en échec --> I[Afficher l'échec et préserver les données]
+    I --> J{Mise en file locale réussie ?}
+    J -- Oui --> K[Informer du stockage effectif et des règles applicables]
+    J -- Non --> L[Signaler que le message n'a pas été sauvegardé]
+```
 
-### 4.3 Étapes, décisions et flux
+Le résultat doit être annoncé dans la région de statut. Une réponse HTTP 2xx sans succès métier explicite ne suffit pas à confirmer l’acceptation. Le libellé et le comportement de la file doivent refléter les réponses réelles du fournisseur et le résultat des écritures locales.
 
-| Ordre | Acteur responsable | Activité / décision / contrôle | Entrée ou information utilisée | Flux / résultat produit |
-| --- | --- | --- | --- | --- |
-| 1 | [Acteur] | [Action ou décision] | [Entrée] | [Sortie ou destinataire] |
+### 4.3 Publication d’une étude de cas cible
 
-**Règles de décision :**
+1. Le propriétaire identifie un projet réel et confirme son rôle et sa contribution.
+2. Les preuves et résultats sont vérifiés; les autorisations de publication sont obtenues.
+3. Les données sensibles, informations de tiers et détails opérationnels non autorisés sont supprimés ou anonymisés.
+4. L’étude de cas est rédigée avec contexte, approche, outils, résultats, limites et enseignements.
+5. Le contenu est rendu cohérent dans les données JSON et le HTML statique de repli.
+6. Le contenu est revu dans les deux modes avant publication.
 
-- [Condition] → [Résultat / prochaine étape]
+Ce processus est une exigence de gouvernance éditoriale, pas une fonctionnalité automatisée actuelle.
 
-**Activités en parallèle :**
+## 5. Classes et tables
 
-- [Activités pouvant se dérouler simultanément]
+Le site ne comporte ni base de données relationnelle ni classes métier applicatives; un diagramme de classes ou un modèle relationnel physique serait donc trompeur. Les tableaux des sections 3.1 à 3.5 sont le modèle conceptuel et logique pertinent pour l’application statique. Les collections JSON sont des données de présentation, pas des tables normalisées.
 
-### 4.4 Diagramme d’activités UML
+## 6. Vérification du modèle
 
-Utiliser le diagramme d’activités pour montrer les actions et leur enchaînement, les décisions, les flux et les éventuelles activités parallèles.
+- [ ] Toute donnée éditoriale publiée répond à un besoin défini et est vérifiée par le propriétaire.
+- [ ] Les nouvelles compétences et études de cas sont clairement identifiées comme cible tant que leur schéma n’est pas implémenté.
+- [ ] Chaque compétence mise en avant est qualifiée et reliée à une preuve autorisée.
+- [ ] Chaque étude de cas décrit la contribution personnelle, les résultats vérifiables et les limites.
+- [ ] Aucun secret, identifiant, donnée client ou détail opérationnel non autorisé n’apparaît dans les sources publiées.
+- [ ] Le rendu JSON et le repli HTML demeurent cohérents.
+- [ ] Les échecs du formulaire et du stockage ne produisent aucun succès trompeur ni perte silencieuse.
 
-**Repères :** cercle noir = début ; rectangle arrondi = activité ; losange = décision ; flèche = flux ; barre = parallélisme ; cercle final = fin.
-
-[Insérer ou joindre le diagramme d’activités UML.]
-
-### 4.5 Swimlanes (couloirs de nage)
-
-Utiliser un couloir par acteur (personne, service ou système) afin de montrer qui réalise chaque étape et les échanges entre acteurs.
-
-| Couloir / acteur | Événements et activités à représenter |
-| --- | --- |
-| [Acteur ou système] | [Étapes et échanges] |
-
-[Insérer ou joindre le diagramme avec swimlanes.]
-
-### 4.6 Choix du diagramme
-
-| Diagramme | Adapté au processus ? | Justification |
-| --- | --- | --- |
-| Diagramme d’activités UML | [Oui / non] | [Actions, enchaînement, décisions, parallélisme] |
-| Swimlanes | [Oui / non] | [Responsabilités et interactions entre acteurs] |
-
-## 5. Synthèse et vérification
-
-### Modèles à remettre
-
-- [ ] MER avec entités, attributs, relations et cardinalités
-- [ ] Modèle logique avec tables, clés primaires, clés étrangères et tables de liaison nécessaires
-- [ ] Diagramme de classes UML avec attributs, méthodes et multiplicités
-- [ ] Diagramme d’activités UML pour chaque processus retenu
-- [ ] Swimlanes lorsque les responsabilités ou échanges entre acteurs doivent être distingués
-- [ ] Synthèse des choix de modélisation
-
-### Points à vérifier
-
-- [ ] Chaque entité et attribut répond à un besoin identifié.
-- [ ] Les relations, cardinalités et optionalités correspondent aux règles métier.
-- [ ] Les relations 1:N et N:N sont traduites correctement dans le modèle logique.
-- [ ] Chaque processus a un début, une fin, des acteurs, des activités, des flux et des événements.
-- [ ] Les décisions et activités parallèles sont représentées clairement.
-
-## 6. Historique des versions
+## 7. Historique des versions
 
 | Version | Date | Auteur | Modifications |
 | --- | --- | --- | --- |
-| 0.1 | [AAAA-MM-JJ] | [Nom] | Création du document |
+| 1.0 | 2026-11-10 | Copilot | Remplacement du modèle générique par un modèle conceptuel du site statique, des données observées et des besoins de contenu DevOps du PRD. |

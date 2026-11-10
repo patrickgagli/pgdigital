@@ -9,9 +9,11 @@ Ce document suit l'état observable du dépôt. Une case terminée correspond à
 | Nom du projet | PGDigital — portfolio statique |
 | Commanditaire | Patrick G. |
 | Équipes propriétaires répertoriées | Product, Engineering et Design |
-| Date de mise à jour | 2026-10-20 |
-| Version | 1.0 |
-| Auteur | Patrick G. 
+| Date de mise à jour | 2026-11-10 |
+| Version | 1.1 |
+| Auteur | Patrick G. |
+
+Le PRD 1.2 repositionne le produit comme portfolio DevOps. Le site et ses données visibles restent actuellement généralistes; les tâches éditoriales ci-dessous sont ouvertes et ne signifient pas que les compétences ou projets ont déjà été confirmés.
 
 ## Livré
 - [x] Créer les six sections Accueil, À propos, Services, Compétences, Outils et Contact.
@@ -40,15 +42,21 @@ Ce document suit l'état observable du dépôt. Une case terminée correspond à
 
 ## Prochaines priorités
 - [x] Renseigner la clé d'accès du service de formulaire dans `json/contact-form.json` pour activer l'envoi réel en production.
-- [x] Retirer les liens sociaux génériques du rendu alimenté par JSON ; synchroniser aussi le repli HTML (voir M01).
+- [ ] Retirer les liens sociaux génériques du HTML statique de repli; le rendu JSON les omet déjà lorsque `social` est vide (voir M01).
 - [x] Passer l'attribut `lang` du document à `fr` pour refléter le contenu de l'interface.
 - [x] Retirer le chargement réseau de HTMX, qui n'est pas utilisé par la page.
 - [x] Intégrer, tester et documenter le mode sombre de `js/scripts.js`.
 - [ ] Décider si le consentement doit être intégré ; ne pas présenter `js/cookie_consent.js` comme une fonctionnalité active sans bandeau HTML et API serveur compatibles.
 - [ ] Ajouter les métadonnées de partage Open Graph et Twitter Card.
 - [x] Implémenter l'ajout de données structurées, d'un sitemap et d'un fichier `robots.txt`.
-- [x] Publier les règles `robots.txt` à la racine de `patrickgagli.github.io` (ou d'un domaine personnalisé) et soumettre le sitemap dans Google Search Console.
+- [ ] Publier les règles `robots.txt` à la racine de `patrickgagli.github.io` (ou d'un domaine personnalisé), si cette décision est retenue.
+- [ ] Soumettre le sitemap dans Google Search Console et consigner le résultat.
 - [x] Évaluer un canal de contact ne dépendant pas d'une application de messagerie locale.
+- [ ] Valider avec le propriétaire le public prioritaire, le rôle DevOps et la valeur apportée avant de modifier les contenus visibles.
+- [ ] Inventorier et qualifier les compétences/outils selon des preuves confirmées; distinguer expérience professionnelle, projets personnels/formation et apprentissage.
+- [ ] Identifier les projets réels publiables et obtenir les autorisations requises.
+- [ ] Rédiger des études de cas avec contexte, contribution personnelle, approche, outils réellement utilisés, résultats vérifiables, limites et enseignements.
+- [ ] Synchroniser le contenu DevOps approuvé dans `json/site-data.json` et le HTML statique de repli de `index.html`; retirer les liens sociaux génériques du repli.
 
 ## Contrôles récurrents
 - [x] Exécuter `node --check js/custom.js` après une modification du comportement actif.
@@ -75,7 +83,7 @@ Lorsqu'une fonctionnalité est ajoutée ou retirée, mettre à jour dans la mêm
 
 ## Suivi de l'audit du 2026-10-20
 
-Les éléments cochés ci-dessous correspondent aux contrôles effectivement réalisés dans le périmètre et l'environnement décrits dans [Audit.md](../Extra/Audit.md). Ils ne valent pas certification, test exhaustif ni validation de la production au-delà des observations consignées.
+Les éléments cochés ci-dessous correspondent aux contrôles effectivement réalisés dans le périmètre et l'environnement décrits dans [Audit.md](Audit.md). Ils ne valent pas certification, test exhaustif ni validation de la production au-delà des observations consignées.
 
 ### Résultats et contrôles réalisés
 

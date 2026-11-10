@@ -7,20 +7,20 @@
 | Produit | PGDigital — portfolio statique |
 | Équipes propriétaires répertoriées | Product, Engineering et Design |
 | Sprint | À définir — proposition non planifiée |
-| Date de mise à jour | 2026-10-20 |
-| Version | 1.0 |
-| Références | [Product Backlog](Scrum%20Product%20Backlogs.md), [Roadmap](Roadmap.md), [Tâches](../tasks.md), [Audit](../Extra/Audit.md) |
+| Date de mise à jour | 2026-11-10 |
+| Version | 1.1 |
+| Références | [Product Backlog](Scrum%20Product%20Backlog.md), [Roadmap](Roadmap.md), [Tâches](../Analyse%20Conception/Tasks.md), [PRD](../Analyse%20Conception/PRD.md), [Audit](../Analyse%20Conception/Audit.md) |
 
-Ce document présente une proposition de périmètre pour le prochain sprint. Aucun sprint en cours, date, durée, capacité, participant ou engagement d’équipe n’est indiqué dans les sources. Les éléments ci-dessous ne sont donc pas réputés acceptés ou planifiés.
+Ce document présente une proposition de périmètre pour un prochain sprint. Aucun sprint en cours, date, durée, capacité, participant ou engagement d’équipe n’est indiqué dans les sources. Les éléments ci-dessous ne sont donc pas réputés acceptés ou planifiés. Le PRD 1.2 cible un portfolio DevOps étayé par des preuves; le contenu en place reste encore généraliste et ne doit pas être présenté comme repositionné avant validation et mise à jour.
 
-Les constats de l’audit concernent la révision `391b302`; le dépôt courant est `e46117a`. La première tâche proposée consiste à vérifier ces constats sur la révision courante et à ne corriger que ceux qui sont encore présents.
+Les constats de l’audit concernent la révision `391b302`. La première tâche proposée consiste à vérifier ces constats sur la révision ciblée et à ne corriger que ceux qui sont encore présents.
 
 ## 1. Proposition d’objectif de sprint
 
-**Objectif proposé :** confirmer l’état des défauts P1 du parcours de contact et, si ces défauts sont présents sur la révision courante, empêcher les succès trompeurs, la fuite de données de formulaire dans l’URL et la perte silencieuse des messages.
+**Objectif proposé :** valider avec le propriétaire le positionnement DevOps, les compétences et les projets publiables, tout en revalidant les défauts P1 du parcours de contact avant de retenir un périmètre d’implémentation.
 
 **Statut :** à discuter lors de la planification.
-**Réussite attendue :** scénarios d’échec et de succès validés avec des réponses simulées, sans envoi réel de message ni affirmation de sauvegarde non vérifiée.
+**Réussite attendue :** décisions éditoriales et preuves requises consignées; constats d’audit confirmés, clos ou maintenus avec preuve; aucun message réel n’est envoyé durant les essais et aucune expérience ou compétence n’est inventée.
 
 ## 2. Cadre, capacité et contraintes
 
@@ -40,6 +40,7 @@ Les constats de l’audit concernent la révision `391b302`; le dépôt courant 
 | ID | Élément du Product Backlog | Priorité | Résultat visé | Statut de planification |
 | --- | --- | --- | --- | --- |
 | PB-00 | Revalider l’audit sur la révision courante | Préalable | Statut vérifié pour F01–F03, S02 et M01. | À discuter |
+| PB-01 | Valider le positionnement DevOps et préparer les études de cas | P1 | Décisions de contenu et critères de preuve consignés; aucun projet non autorisé présenté comme réel. | À discuter |
 | F01 | Vérifier le succès métier avant confirmation | P1 | Aucun faux succès; formulaire non effacé sur un rejet. | À discuter si confirmé |
 | F02 | Rendre le contact sûr pendant le chargement | P1 | Aucun GET contenant des données personnelles; contact utilisable en cas de panne JSON/scripts. | À discuter si confirmé |
 | F03 | Fiabiliser stockage et file | P1 | Pas de sauvegarde ou d’envoi annoncé sans preuve; pas de perte silencieuse. | À discuter si confirmé |
@@ -55,8 +56,18 @@ Le Product Owner et l’équipe doivent confirmer le périmètre après estimati
 | Tâche | État initial | Responsable |
 | --- | --- | --- |
 | Comparer les chemins de code actuels aux preuves F01–F03, S02 et M01 de l’audit. | À planifier | À affecter |
-| Vérifier les tâches précédemment cochées et les contrôles encore ouverts dans `docs/tasks.md`. | À planifier | À affecter |
+| Vérifier les tâches précédemment cochées et les contrôles encore ouverts dans [Tasks.md](../Analyse%20Conception/Tasks.md). | À planifier | À affecter |
 | Consigner pour chaque constat : confirmé, corrigé, non reproduit ou hors périmètre, avec preuve. | À planifier | À affecter |
+
+### PB-01 — Validation éditoriale
+
+| Tâche | État initial | Responsable |
+| --- | --- | --- |
+| Confirmer la cible, le rôle DevOps et la valeur mise en avant avec le propriétaire. | À planifier | À affecter |
+| Inventorier les compétences et outils puis qualifier chaque élément selon une expérience ou preuve confirmée. | À planifier | À affecter |
+| Sélectionner des projets publiables, confirmer les autorisations et expurger les informations sensibles. | À planifier | À affecter |
+| Définir le gabarit d’étude de cas : contexte, contribution personnelle, approche, outils, résultats vérifiables, limites et enseignements. | À planifier | À affecter |
+| Prévoir la mise à jour cohérente des sources JSON et du HTML statique de repli. | À planifier | À affecter |
 
 ### F01 — Résultat métier du formulaire, si le constat est confirmé
 
@@ -111,9 +122,9 @@ Les sujets suivants restent dans le Product Backlog et ne sont pas automatiqueme
 - S03 — ressources tierces et politiques HTTP;
 - P01 et P02 — images, démarrage et mesures de performance;
 - U03 — mouvement réduit et pause des animations;
-- U04 et TODO-02/03 — présentation, métadonnées de partage et évaluation SEO;
+- U04 et TODO-02 — présentation et métadonnées de partage; les données structurées, le sitemap et le `robots.txt` sont déjà présents dans le dépôt et doivent être vérifiés, non réimplémentés;
 - TODO-01 — décision sur le consentement aux cookies, qui reste non intégré faute de balisage et d’API serveur documentés;
-- TODO-04 — contrôles navigateur récurrents non encore cochés dans `docs/tasks.md`.
+- TODO-04 — contrôles navigateur récurrents non encore cochés dans [Tasks.md](../Analyse%20Conception/Tasks.md).
 
 Le respect du calendrier, les disponibilités des personnes, le service de formulaire et les limites d’en-têtes de GitHub Pages sont des dépendances à clarifier.
 
@@ -125,7 +136,7 @@ Le respect du calendrier, les disponibilités des personnes, le service de formu
 - [ ] Aucun cas ne présente un faux succès, ne perd silencieusement un message ou n’expose les champs dans l’URL.
 - [ ] Brouillon, file, effacement et erreurs de stockage sont vérifiés.
 - [ ] Les six ancres, le menu, les carrousels et les dimensions mobiles n’ont pas régressé.
-- [ ] Les documents liés et `docs/tasks.md` sont actualisés avec les résultats et les tâches restantes.
+- [ ] Les documents liés et [Tasks.md](../Analyse%20Conception/Tasks.md) sont actualisés avec les résultats et les tâches restantes.
 - [ ] Aucun secret, message personnel ou donnée de test sensible n’est ajouté au dépôt.
 
 ## 8. Revue et rétrospective
@@ -145,3 +156,4 @@ Le respect du calendrier, les disponibilités des personnes, le service de formu
 | Version | Date | Modifications |
 | --- | --- | --- |
 | 1.0 | 2026-10-20 | Proposition de sprint issue des priorités P1 de l’audit; statut explicitement non planifié et révision à revalider. |
+| 1.1 | 2026-11-10 | Alignement avec le PRD 1.2; ajout d’un candidat de validation du positionnement DevOps et correction des références aux tâches et ressources SEO. |

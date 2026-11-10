@@ -6,37 +6,38 @@
 | --- | --- |
 | Produit | PGDigital — portfolio statique |
 | Équipes propriétaires répertoriées | Product, Engineering et Design |
-| Date de mise à jour | 2026-10-20 |
-| Version | 1.0 |
-| Références |  [Roadmap](Roadmap.md) |
+| Date de mise à jour | 2026-11-10 |
+| Version | 1.1 |
+| Références | [Roadmap](Roadmap.md), [PRD](../Analyse%20Conception/PRD.md), [Tâches](../Analyse%20Conception/Tasks.md) |
 
-Ce backlog rassemble les travaux issus des tâches déclarées et de l’audit. Les fonctionnalités cochées dans `docs/tasks.md` sont livrées selon l’état de ce suivi; cela ne garantit pas leur validation dans tous les scénarios. Les constats de l’audit concernent la révision `391b302`, tandis que le dépôt courant est `e46117a`. Ils sont donc marqués **À revalider** avant d’être considérés comme encore ouverts ou planifiés.
+Ce backlog rassemble les travaux issus des tâches déclarées, de l’audit et du PRD 1.2. Les fonctionnalités cochées dans [Tasks.md](../Analyse%20Conception/Tasks.md) sont livrées selon l’état de ce suivi; cela ne garantit pas leur validation dans tous les scénarios. Les constats de l’audit concernent la révision `391b302`; ils sont donc marqués **À revalider** avant d’être considérés comme encore ouverts ou planifiés.
 
-Les priorités P1/P2/P3 sont reprises de l’audit et ne représentent pas une échelle CVSS. Les estimations, responsables et dates ne sont pas documentés.
+Le PRD repositionne le produit comme portfolio DevOps, mais le contenu actuel du site demeure généraliste. Les nouvelles tâches de contenu sont des travaux à valider; aucune compétence, réalisation ou expérience ne doit être présumée à partir des technologies citées. Les priorités P1/P2/P3 sont reprises de l’audit et ne représentent pas une échelle CVSS. Les estimations, responsables et dates ne sont pas documentés.
 
 ## 1. Objectif produit
 
-Fournir un portfolio statique simple à déployer et parcourir, dont le contenu reste disponible en repli, et dont le contact est fiable, compréhensible, accessible et respectueux des données saisies.
+Présenter un profil DevOps crédible au moyen de contenus et de preuves validés, dans un portfolio statique simple à déployer et parcourir, dont le contenu reste disponible en repli et dont le contact est fiable, compréhensible, accessible et respectueux des données saisies.
 
 ## 2. Conventions et états
 
 | État | Signification dans ce backlog |
 | --- | --- |
 | À revalider | Constat d’audit à vérifier sur la révision courante avant décision de mise en œuvre. |
-| À faire | Besoin ouvert indiqué dans `docs/tasks.md`, à confirmer sur l’état courant. |
+| À faire | Besoin ouvert indiqué dans [Tasks.md](../Analyse%20Conception/Tasks.md), à confirmer sur l’état courant. |
 | À prioriser | Besoin identifié mais ordre d’exécution non validé par l’équipe. |
 | Planifié | Accepté et sélectionné pour un sprint approuvé. |
 | En cours | Travail commencé et suivi par l’équipe. |
 | Fini | Critères d’acceptation satisfaits avec preuve vérifiable. |
 | Écarté | Décision documentée de ne pas traiter l’élément. |
 
-Les identifiants F01–U04 et M01 correspondent aux constats de l’audit afin de préserver leur traçabilité. Les éléments TODO proviennent des priorités ou contrôles non terminés listés dans `docs/tasks.md`.
+Les identifiants F01–U04 et M01 correspondent aux constats de l’audit afin de préserver leur traçabilité. Les éléments TODO proviennent des priorités ou contrôles non terminés listés dans [Tasks.md](../Analyse%20Conception/Tasks.md).
 
 ## 3. Vue d’ensemble
 
 | ID | Élément | Type | Priorité | État initial | Source |
 | --- | --- | --- | --- | --- | --- |
-| PB-00 | Revalider l’audit sur la révision courante | Story technique | Préalable | À faire | Audit `391b302`, HEAD `e46117a` |
+| PB-00 | Revalider l’audit sur la révision courante | Story technique | Préalable | À faire | Audit `391b302` |
+| PB-01 | Valider le positionnement DevOps et préparer les études de cas | Contenu produit | P1 | À faire | PRD FR-014 à FR-016 |
 | F01 | Vérifier le succès métier avant confirmation | Défaut | P1 | À revalider | Audit |
 | F02 | Rendre le contact sûr pendant le chargement | Défaut | P1 | À revalider | Audit |
 | F03 | Fiabiliser le stockage et la file de messages | Défaut | P1 | À revalider | Audit |
@@ -52,7 +53,7 @@ Les identifiants F01–U04 et M01 correspondent aux constats de l’audit afin d
 | U04 | Renforcer la présentation et le référencement | User story | P3 | À revalider | Audit |
 | TODO-01 | Décider du consentement aux cookies | Story technique / produit | À décider | À faire | Tâches |
 | TODO-02 | Ajouter les métadonnées Open Graph et Twitter Card | Story technique | À prioriser | À faire | Tâches |
-| TODO-03 | Évaluer données structurées, sitemap et robots.txt | Story technique | À prioriser | À faire | Tâches |
+| TODO-03 | Vérifier les ressources SEO et la publication de `robots.txt` | Contrôle récurrent | À vérifier | À vérifier | PRD, README et Tâches |
 | TODO-04 | Réaliser les contrôles navigateur encore non cochés | Story technique / recette | Préalable de livraison | À faire | Tâches |
 
 ## 4. Éléments du backlog
@@ -67,13 +68,34 @@ Les identifiants F01–U04 et M01 correspondent aux constats de l’audit afin d
 | Dépendances | Aucune |
 | Estimation / responsable | À estimer / à affecter |
 
-**Description :** comparer les constats de l’audit, établi sur `391b302`, à l’état du dépôt `e46117a` et aux cases du suivi des tâches.
+**Description :** comparer les constats de l’audit, établi sur `391b302`, à la révision ciblée et aux cases du suivi des tâches.
 
 **Critères d’acceptation :**
 
 - Chaque constat F01–U04 et M01 est marqué confirmé, corrigé, non reproduit ou hors périmètre, avec une preuve ou une justification.
 - Les tâches précédemment déclarées terminées et les contrôles restés ouverts sont distingués.
 - Les éléments confirmés sont conservés dans le backlog; ceux qui sont déjà corrigés sont clos avec référence au changement et à la vérification.
+
+### PB-01 — Valider le positionnement DevOps et préparer les études de cas
+
+| Champ | Valeur |
+| --- | --- |
+| Type | Contenu produit |
+| Priorité | P1 |
+| État | À faire |
+| Dépendances | Validation du propriétaire sur la cible, le profil et les contenus publiables |
+| Estimation / responsable | À estimer / à affecter |
+
+**Description :** faire évoluer le contenu actuel, encore généraliste, vers le positionnement DevOps décrit dans le PRD. Confirmer le rôle visé, les services réellement proposés, les compétences et leur niveau, les projets publiables et les autorisations avant toute rédaction présentant une affirmation comme acquise.
+
+**Critères d’acceptation :**
+
+- Le propriétaire valide la cible, le positionnement, les catégories de compétences et les projets à présenter.
+- Chaque compétence est qualifiée selon des preuves et distinguée, au besoin, entre expérience professionnelle, projet personnel/formation et apprentissage en cours.
+- Chaque étude de cas publiée contient le contexte, le rôle personnel, l’approche et les outils effectivement utilisés, les résultats vérifiables, ainsi que les limites ou enseignements pertinents.
+- Les autorisations sont confirmées et secrets, identifiants, données de tiers et détails opérationnels non autorisés sont retirés.
+- Le contenu approuvé est cohérent entre `json/site-data.json` et le rendu de repli dans `index.html`.
+- Aucun contenu non confirmé n’est publié; les éléments non fournis restent en attente plutôt que d’être inventés.
 
 ### F01 — Vérifier le succès métier avant confirmation
 
@@ -168,7 +190,7 @@ Les identifiants F01–U04 et M01 correspondent aux constats de l’audit afin d
 
 **Type / priorité / état :** Défaut / P2 / À revalider
 
-**Critères d’acceptation :** contenu JSON et HTML de repli cohérents; liens sociaux génériques absents tant que les profils réels ne sont pas configurés; destinataire de secours validé; configuration du formulaire et README à jour; vérifier HTTP, JSON indisponible et `file://`.
+**Critères d’acceptation :** contenu JSON et HTML de repli cohérents; liens sociaux génériques absents tant que les profils réels ne sont pas configurés; destinataire de secours validé; configuration du formulaire et README à jour; vérifier HTTP, JSON indisponible et `file://`. Le PRD et le README indiquent qu’une URL canonique, les données structurées, un sitemap et un `robots.txt` existent; vérifier leur cohérence plutôt que les traiter comme des tâches absentes.
 
 ### U04 — Renforcer la présentation et le référencement
 
@@ -178,25 +200,25 @@ Les identifiants F01–U04 et M01 correspondent aux constats de l’audit afin d
 
 ### TODO-01 — Décider du consentement aux cookies
 
-**Type / état :** Story technique / À faire selon `docs/tasks.md`
+**Type / état :** Story technique / À faire selon [Tasks.md](../Analyse%20Conception/Tasks.md)
 
 **Critères d’acceptation :** décision d’intégrer ou non; ne pas annoncer la fonctionnalité comme active tant que le balisage et l’API `/api/cookie-consent/` ne sont pas disponibles et testés.
 
 ### TODO-02 — Ajouter les métadonnées de partage
 
-**Type / état :** Story technique / À faire selon `docs/tasks.md`
+**Type / état :** Story technique / À faire selon [Tasks.md](../Analyse%20Conception/Tasks.md)
 
 **Critères d’acceptation :** Open Graph et Twitter Card cohérents avec le contenu français; image de partage réelle et accessible; validation après publication.
 
-### TODO-03 — Évaluer les ressources SEO complémentaires
+### TODO-03 — Vérifier les ressources SEO existantes
 
-**Type / état :** Story technique / À faire selon `docs/tasks.md`
+**Type / état :** Contrôle récurrent / À vérifier
 
-**Critères d’acceptation :** décision argumentée sur les données structurées, sitemap et `robots.txt` adaptée au site monopage; ne pas ajouter de données non vérifiées.
+**Critères d’acceptation :** vérifier les données structurées, le sitemap, le canonique et le `robots.txt` déjà présents; confirmer la limite GitHub Pages du fichier robots au niveau du domaine et ne pas annoncer sa publication à la racine sans preuve.
 
 ### TODO-04 — Réaliser les contrôles navigateur ouverts
 
-**Type / état :** Recette / À faire selon `docs/tasks.md`
+**Type / état :** Recette / À faire selon [Tasks.md](../Analyse%20Conception/Tasks.md)
 
 **Critères d’acceptation :** console et ressources; six ancres et état actif; menu et `aria-expanded`; carrousels, icônes et titre Alpine; validation et `mailto:`; HTTP et `file://`; brouillon et file; contact à 390 × 844 et 320 × 568. Ajouter les scénarios d’échec décrits par l’audit.
 
@@ -208,7 +230,7 @@ Avant de planifier un élément :
 - préciser la valeur attendue, les critères observables et les dépendances;
 - estimer l’effort et désigner un responsable lors de la planification;
 - définir des tests qui n’envoient pas de messages réels et n’abusent pas le service externe;
-- conserver une preuve de validation et mettre à jour `docs/tasks.md`.
+- conserver une preuve de validation et mettre à jour [Tasks.md](../Analyse%20Conception/Tasks.md).
 
 **Responsable de l’ordre du backlog et cadence d’affinage :** à confirmer.
 
@@ -219,3 +241,4 @@ Un élément ne peut être marqué Fini que si ses critères sont vérifiés, le
 | Date | Modifications | Motif |
 | --- | --- | --- |
 | 2026-10-20 | Backlog établi à partir du suivi des tâches et des constats de l’audit; constats marqués à revalider en raison de l’écart de révision. | Préserver la traçabilité sans supposer que les défauts sont encore présents. |
+| 2026-11-10 | Ajout des exigences de repositionnement DevOps, de qualification des compétences et d’études de cas; correction des références et du statut des ressources SEO. | Aligner le backlog avec le PRD 1.2 et l’état documenté du produit. |

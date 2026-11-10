@@ -4,11 +4,11 @@
 
 | Information | Valeur |
 | --- | --- |
-| Nom du projet | PGDigital — portfolio |
+| Nom du projet | PGDigital — portfolio personnel DevOps |
 | Client / commanditaire | Patrick G. |
 | Responsable / rédacteur | À confirmer |
-| Date de référence | 2026-09-11 |
-| Version | 1.0 |
+| Date de référence | 2026-11-10 |
+| Version | 1.1 |
 | Statut | Document de cadrage technique; approbation métier à confirmer |
 | Références | [Analyse des besoins](Analyse%20des%20besoins.md), [Architecture](Architecture.md) |
 
@@ -28,14 +28,17 @@ Le commanditaire, les objectifs métier chiffrés et la décision d’approbatio
 - Contenu HTML statique de repli lorsque le chargement JSON n’est pas possible.
 - Menu mobile, thème clair/sombre et formulaire de contact.
 - Brouillon et file locale d’envois échoués, ainsi que la nouvelle tentative documentée.
+- Évolution éditoriale du profil, des compétences et des services vers un positionnement DevOps validé par le propriétaire.
+- Études de cas réelles et autorisées, avec une contribution personnelle et des résultats vérifiables.
 - Mise en page responsive et ressources statiques nécessaires au déploiement GitHub Pages.
 
 ### Exclus / non intégrés
 
 - Backend applicatif, base de données serveur ou authentification.
 - Expérimentation de consentement aux cookies : fichiers présents mais non chargés, API serveur absente.
-- Métadonnées Open Graph ou Twitter Card, données structurées, sitemap et `robots.txt`, absents de l’état documenté.
-- Fournisseur de formulaire spécifique : l’endpoint doit être choisi et configuré séparément.
+- Métadonnées Open Graph et Twitter Card, non encore implémentées selon le suivi des tâches. Une URL canonique, les données structurées, un sitemap et un fichier `robots.txt` sont présents; la publication de `robots.txt` à la racine du domaine GitHub Pages reste à vérifier.
+- Tout fournisseur de formulaire différent de celui actuellement configuré. Le contrat, les conditions, les restrictions et les protections du fournisseur doivent encore être confirmés.
+- Publications de projets, niveaux de compétence ou résultats qui ne sont pas fournis, vérifiés et autorisés par le propriétaire.
 
 ### Hypothèses et contraintes
 
@@ -44,7 +47,7 @@ Le commanditaire, les objectifs métier chiffrés et la décision d’approbatio
 | Déploiement | Le site est publié sous forme de fichiers statiques sur GitHub Pages. | Pas d’étape de build ni de serveur applicatif. |
 | Chargement local | `fetch` peut être bloqué en `file://`. | Maintenir le contenu de repli dans `index.html`. |
 | Contenu | Les contenus existent à la fois dans les JSON et dans le HTML de repli. | Toute modification de contenu doit mettre à jour les deux emplacements. |
-| Formulaire | Aucune clé d’accès n’est fournie par défaut. | Le fonctionnement par défaut utilise `mailto:`; l’envoi distant exige une configuration. |
+| Formulaire | Un endpoint et une clé d’accès sont actuellement configurés dans le fichier JSON côté client. | Vérifier les conditions et restrictions du fournisseur; conserver le repli `mailto:` lorsque la configuration distante est absente ou inutilisable. Ne jamais placer un secret serveur dans les données publiques. |
 | Dépendances | Les bibliothèques utilisées sont locales ou chargées depuis les CDN mentionnés. | Ne pas ajouter de versions dupliquées ni modifier les bibliothèques minifiées vendues. |
 | Budget, délai, réglementation | Non précisés. | À déterminer et valider avec le commanditaire. |
 
@@ -55,13 +58,15 @@ Le commanditaire, les objectifs métier chiffrés et la décision d’approbatio
 | Visiteur | Consulter le portfolio et contacter son propriétaire depuis différents formats d’écran. | Navigation, lisibilité et formulaire utilisables. |
 | Propriétaire du portfolio | Fournir et valider les informations présentées et la configuration de contact. | Validation des contenus et du parcours de contact. |
 | Mainteneurs Product, Engineering et Design | Maintenir les fichiers statiques, les interactions et la cohérence entre contenu JSON et repli. | Contrôles techniques et navigateur. |
-| Fournisseur de formulaire (si configuré) | Recevoir les soumissions du formulaire. | Endpoint et modalités de configuration à confirmer. |
+| Fournisseur de formulaire configuré | Recevoir les soumissions JSON lorsque l’envoi distant est activé. | Web3Forms est configuré dans `json/contact-form.json`; contrat, limites et traitements à confirmer. |
 
 ## 4. Solution attendue et exigences
 
 ### Vue d’ensemble
 
 Le site doit afficher une page unique avec six sections navigables. Le contenu dynamique est chargé depuis les fichiers JSON par `js/data.js`; `js/custom.js` attend que les données soient prêtes avant d’initialiser les carrousels et fullPage.js. Le HTML de `index.html` fournit un repli lorsque les JSON ne peuvent pas être chargés. La solution reste exécutable directement depuis la page et hébergeable comme site statique.
+
+Le produit cible un portfolio DevOps, mais les contenus actuellement affichés restent en majorité généralistes. Leur évolution doit être soumise à la validation du propriétaire; les technologies mentionnées ne prouvent pas une maîtrise. Aucun projet ou résultat ne doit être inventé pour satisfaire le cahier des charges.
 
 ### Exigences fonctionnelles
 
@@ -76,6 +81,8 @@ Le site doit afficher une page unique avec six sections navigables. Le contenu d
 | EF-07 | Le formulaire doit valider les champs requis et l’adresse email et présenter un résultat accessible. | Must | La validation HTML native s’applique et `#form-messages` annonce le résultat comme région de statut. |
 | EF-08 | Le formulaire doit envoyer un POST JSON lorsque endpoint et clé sont configurés; sinon, il doit proposer un `mailto:` prérempli. | Must | Le chemin utilisé dépend de la configuration; le bouton est désactivé pendant l’envoi distant et le formulaire est réinitialisé après succès. |
 | EF-09 | Le formulaire doit restaurer le brouillon et conserver les envois échoués pour une nouvelle tentative. | Should | Brouillon sous `pgdigital:contact:draft`; file sous `pgdigital:contact:outbox`, limitée par `maxQueued`, réémise au chargement et à l’événement `online`, puis vidée après succès. |
+| EF-10 | Le contenu doit exprimer le positionnement DevOps à partir de faits validés et distinguer l’expérience démontrée de l’apprentissage. | Must | Profil, services, compétences et outils sont approuvés par le propriétaire; chaque compétence est qualifiée selon des preuves et aucune affirmation non vérifiée n’est publiée. |
+| EF-11 | Les études de cas doivent démontrer les compétences sans divulguer d’informations non autorisées. | Must | Chaque cas publié décrit contexte, contribution personnelle, approche, outils utilisés, résultats vérifiables et limites; autorisations et risques de divulgation sont revus avant publication. |
 
 ### Exigences non fonctionnelles
 
@@ -96,7 +103,7 @@ Aucune cible chiffrée de performance ou disponibilité n’est spécifiée; ell
 | Donnée / interface | Règle documentée |
 | --- | --- |
 | Contenus du portfolio | Source JSON : `json/site-data.json`; maintenir également la version statique de `index.html`. |
-| Configuration et textes de statut du formulaire | Source : `json/contact-form.json`. La clé d’accès est vide par défaut. |
+| Configuration et textes de statut du formulaire | Source : `json/contact-form.json`. La configuration actuelle contient un endpoint et une clé d’accès côté client; ne pas recopier la valeur dans la documentation. |
 | Endpoint de formulaire | Requête JSON `POST` optionnelle; fournisseur, politique de données et disponibilité à confirmer. |
 | Brouillon et file de messages | Stockés dans le `localStorage` du navigateur; durée de conservation et règles de suppression à définir. |
 | Préférence de thème | Stockée dans `localStorage` sous `dark-mode`. |
@@ -109,6 +116,7 @@ Aucune cible chiffrée de performance ou disponibilité n’est spécifiée; ell
 | LIV-02 | Contenus et configuration JSON | `json/site-data.json` et `json/contact-form.json` cohérents avec les comportements de l’interface. |
 | LIV-03 | Contenu statique de repli | `index.html` conserve une version statique cohérente du contenu utile. |
 | LIV-04 | Documentation technique et de conception | Décrit l’architecture, les contraintes et les vérifications pertinentes. |
+| LIV-05 | Contenu DevOps et études de cas | Contenus validés, autorisés et étayés, cohérents entre les fichiers JSON et le HTML de repli. |
 
 Les responsables de livraison, formats supplémentaires et dates d’échéance sont à confirmer.
 
@@ -128,7 +136,7 @@ node --check js/cookie_consent.js
 npx --yes html-validate@latest index.html
 ```
 
-L’état documenté au 2026-09-11 indique que les contrôles de syntaxe JavaScript et la validation HTML réussissent. Le rendu JSON en HTTP, les six sections, le menu mobile et l’absence de débordement horizontal à 390 × 844 ont également été vérifiés dans un navigateur via un serveur HTTP local.
+Les contrôles JavaScript et HTML sont documentés dans le suivi du projet. Les vérifications navigateur et d’audit sont ponctuelles; leurs résultats ne certifient pas l’état de chaque révision ou de la production. Consulter [Tasks.md](Tasks.md) et [Audit.md](Audit.md), puis revalider les résultats sur la révision livrée.
 
 ### Contrôles manuels à compléter
 
@@ -149,7 +157,8 @@ La réception doit confirmer les critères d’acceptation et documenter les ano
 | --- | --- |
 | Divergence entre contenu JSON et contenu statique de repli. | Mettre à jour et vérifier les deux sources à chaque changement de contenu. |
 | Chargement `fetch` indisponible en `file://`. | Préserver le repli HTML et valider les deux modes de chargement. |
-| Envoi de formulaire impossible faute de configuration ou de service externe. | Garder `mailto:` comme repli et confirmer endpoint et clé avant l’activation de l’envoi distant. |
+| Envoi de formulaire impossible faute de configuration ou de service externe. | Le formulaire est actuellement configuré avec un endpoint externe; vérifier sa réponse, ses restrictions et les conditions applicables, et conserver le repli `mailto:` si la configuration distante est indisponible. |
+| Positionnement DevOps non étayé ou contenu de projet sensible. | Valider chaque affirmation et autorisation avec le propriétaire; ne publier ni secrets, données de tiers ni détails opérationnels non autorisés. |
 | Conservation locale de messages de contact après un échec. | Définir une politique de rétention et de suppression; informer le propriétaire du traitement des données. |
 | Difficulté d’utilisation sur petits écrans. | Vérifier les dimensions 390 × 844 et 320 × 568, ainsi que le mode responsive sous 768 px. |
 
@@ -165,7 +174,7 @@ Toute modification du périmètre, du formulaire, des données conservées ou de
 | --- | --- |
 | [Analyse des besoins](Analyse%20des%20besoins.md) | Objectifs, profils utilisateurs, besoins et exigences. |
 | [Architecture](Architecture.md) | Composants, flux, stockage et décisions architecturales constatées. |
-| [Documentation technique](../documentation.md) | Comportements, dépendances, validation et règles de maintenance. |
+| [README](../../README.md) | Fonctionnalités, validation, déploiement et limitations documentés du dépôt. |
 | [Modélisation](Modélisation.md) | Document associé; contenu non repris ici. |
 | [UX-UI](UX-UI.md) | Document associé; contenu non repris ici. |
 
@@ -176,3 +185,4 @@ L’approbation du commanditaire et la date d’entrée en vigueur sont à confi
 | Version | Date | Auteur | Modifications |
 | --- | --- | --- | --- |
 | 1.0 | 2026-09-11 | Patrick G. |  |
+| 1.1 | 2026-11-10 | Copilot | Alignement avec le PRD 1.2; actualisation de l’état SEO et du formulaire et ajout des exigences DevOps, de preuves et d’autorisations de publication. |

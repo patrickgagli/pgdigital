@@ -1,246 +1,148 @@
-# Conception UX/UI — [Nom du projet]
+# Conception UX/UI — PGDigital
 
 ## Identification
 
-| Information | À compléter |
+| Information | Valeur |
 | --- | --- |
-| Nom du projet / produit | [Nom] |
-| Client / commanditaire | [Nom, organisation] |
-| Concepteur(s) UX/UI | [Noms] |
-| Date | [AAAA-MM-JJ] |
-| Version | [Version] |
-| Documents liés | [Analyse des besoins, modélisation, architecture…] |
-| Plateformes concernées | [Web, mobile, tablette, autre] |
+| Produit | PGDigital — portfolio personnel DevOps |
+| Propriétaire / commanditaire | Patrick G. |
+| Date de mise à jour | 2026-11-10 |
+| Version | 1.0 |
+| Document de référence | [PRD](PRD.md) |
+| Plateformes | Web, ordinateur et mobile |
+| Statut | Synthèse de l’interface existante et cible éditoriale; validation utilisateur à organiser |
+
+Ce document décrit les choix UX/UI observables dans le dépôt et les besoins de conception du repositionnement DevOps. Il ne prétend pas qu’une recherche utilisateur, une maquette ou une validation formelle a déjà eu lieu.
 
 ## 1. Objectifs de l’expérience
 
-### Contexte et problèmes utilisateurs
+### Publics et besoins
 
-[Décrire la situation actuelle, les difficultés observées et les besoins auxquels l’expérience doit répondre.]
-
-### Objectifs UX
-
-| Objectif utilisateur | Résultat attendu | Indicateur de réussite |
+| Profil | Besoin principal | Contexte |
 | --- | --- | --- |
-| [Objectif] | [Résultat] | [Comment mesurer la réussite] |
+| Recruteur ou responsable technique | Comprendre rapidement le rôle visé, les compétences et les contributions pertinentes. | Consultation souvent rapide, sur ordinateur ou téléphone. |
+| Client potentiel | Comprendre les services réellement proposés et savoir comment contacter le propriétaire. | Doit distinguer les offres confirmées des domaines seulement explorés. |
+| Visiteur souhaitant contacter | Envoyer une demande et comprendre si elle a été transmise, mise en attente ou si une autre action est nécessaire. | Formulaire avec validation native et service externe configuré; le résultat doit rester explicite. |
+| Propriétaire / mainteneur | Mettre à jour le profil, les compétences et les projets sans outil de compilation. | Édition de JSON et du contenu HTML statique de repli. |
 
-### Principes de conception retenus
+### Principes de conception
 
-- [Ex. : simplicité, cohérence, feedback immédiat, prévention des erreurs]
-- [Principe et justification]
+- **Preuves avant affirmations :** présenter les compétences par des exemples confirmés; ne pas transformer une liste de technologies en déclaration de maîtrise.
+- **Contribution explicite :** distinguer la contribution personnelle du travail d’équipe et préciser le contexte de chaque étude de cas.
+- **Parcours court :** rendre le rôle, les domaines d’intervention, les preuves et l’action de contact repérables sans devoir parcourir des listes de technologies non contextualisées.
+- **Cohérence et résilience :** conserver les six sections et leurs ancres; garder un contenu utile lorsque les fichiers JSON ne se chargent pas.
+- **Feedback honnête :** annoncer validation, envoi, échec et repli avec des messages accessibles; ne pas promettre la livraison d’un email.
+- **Confidentialité par défaut :** expliquer le destinataire et la sauvegarde locale réelle; n’exposer aucune donnée ou architecture de projet non autorisée.
 
-## 2. Utilisateurs et parcours (UX)
+### Objectifs et mesure
 
-### Profils d’utilisateurs
-
-| Profil | Objectifs / tâches | Contexte d’utilisation | Besoins ou difficultés |
-| --- | --- | --- | --- |
-| [Profil utilisateur] | [Tâches principales] | [Appareil, lieu, fréquence, aisance numérique…] | [Besoins / difficultés] |
-
-### Recherche utilisateur
-
-| Méthode | Participants | Questions / tâches étudiées | Résultats et enseignements |
-| --- | --- | --- | --- |
-| [Entretien, observation, sondage, test…] | [Profils] | [Sujet] | [Constats] |
-
-### Parcours utilisateur (user journey)
-
-| Étape | Objectif de l’utilisateur | Action | Point de contact / écran | Difficulté ou émotion | Amélioration envisagée |
-| --- | --- | --- | --- | --- | --- |
-| [Étape] | [Objectif] | [Action] | [Écran / canal] | [Difficulté / émotion] | [Amélioration] |
-
-### Questions essentielles à rendre évidentes
-
-- **Où suis-je ?** [Repère de navigation, titre, étape…]
-- **Que puis-je faire ici ?** [Actions principales visibles]
-- **Comment revenir en arrière ?** [Retour, annulation, navigation…]
-
-### Architecture de l’information et navigation
-
-[Décrire l’organisation du contenu, les catégories, les menus et les chemins principaux.]
-
-| Écran / section | Contenu | Actions disponibles | Accès depuis / destination |
-| --- | --- | --- | --- |
-| [Écran] | [Contenu] | [Actions] | [Navigation] |
-
-## 3. Interactions et règles UX
-
-### Principes UX
-
-| Principe | Application dans le produit | Écrans / parcours concernés | Vérifié ? |
-| --- | --- | --- | --- |
-| Loi de Hick : limiter les choix simultanés | [Organisation des options] | [Écrans] | [Oui / non] |
-| Loi de Miller : regrouper l’information | [Groupes / sections] | [Écrans] | [Oui / non] |
-| Loi de Fitts : rendre les cibles importantes accessibles | [Taille / position des commandes] | [Écrans] | [Oui / non] |
-| Loi de Jakob : respecter les conventions connues | [Conventions utilisées] | [Écrans] | [Oui / non] |
-
-### Règles d’expérience
-
-Pour chaque règle, préciser l’application concrète ou le motif de non-application.
-
-| Règle UX | Application / décision | Écrans concernés |
+| Objectif | Résultat attendu | Vérification |
 | --- | --- | --- |
-| Feedback immédiat | [Chargement, confirmation, résultat d’action] | [Écrans] |
-| Prévention des erreurs | [Validation, indisponibilité, confirmation destructive] | [Écrans] |
-| Cohérence | [Comportements et termes uniformes] | [Écrans] |
-| Simplicité | [Action principale, éléments à retirer] | [Écrans] |
-| Affordance | [Indices d’interaction pour boutons, liens et champs] | [Écrans] |
-| Hiérarchie des informations | [Priorité visuelle des contenus] | [Écrans] |
-| Flexibilité et efficacité | [Parcours guidés, raccourcis, options avancées] | [Écrans] |
-| Documentation accessible | [Aide, FAQ, infobulles, support] | [Écrans] |
-| Reconnaissance plutôt que rappel | [Suggestions, historique, libellés et icônes] | [Écrans] |
-| Design émotionnel | [Ton, micro-interactions, messages de succès/erreur] | [Écrans] |
+| Comprendre le positionnement | Un visiteur cible peut résumer le rôle et la valeur apportée après une consultation rapide. | Tests de compréhension à définir avec le propriétaire. |
+| Évaluer les compétences | Les compétences principales sont reliées à une expérience ou une preuve publiable. | Revue éditoriale et des preuves avant publication. |
+| Parcourir sur mobile | Pas de débordement horizontal, de titre tronqué ni de chevauchement Contact/pied de page. | Essais documentés à 390 × 844 et 320 × 568. |
+| Contacter en connaissance de cause | Le visiteur comprend l’action entreprise et le résultat. | Scénarios de validation, succès, rejet, échec et repli. |
 
-### États et retours de l’interface
+La recherche utilisateur, les mesures initiales et les seuils de conversion ne sont pas documentés; ils restent à définir.
 
-| Écran / action | État normal | Chargement | Succès | Erreur / cas limite |
-| --- | --- | --- | --- | --- |
-| [Écran ou action] | [Affichage] | [Feedback] | [Confirmation] | [Message et solution proposée] |
+## 2. Architecture de l’information et parcours
 
-## 4. Identité visuelle et interface (UI)
+Le parcours conserve les six sections de la page actuelle :
 
-### Hiérarchie visuelle
-
-| Élément / contenu | Importance | Traitement prévu (taille, couleur, contraste, espacement, position) |
+| Ancre | Section actuelle | Intention UX à préserver / faire évoluer |
 | --- | --- | --- |
-| [Élément] | [Prioritaire / secondaire] | [Traitement] |
+| `slide01` | Accueil | Identifier immédiatement le profil et le positionnement DevOps validé; proposer l’accès aux preuves et au contact. |
+| `slide02` | À propos | Donner le contexte professionnel et les informations biographiques approuvées. |
+| `slide03` | Services | Décrire uniquement les services réellement offerts et validés. |
+| `slide04` | Compétences | Présenter les compétences avec leur niveau ou contexte d’expérience et des preuves associées. |
+| `slide05` | Outils | Qualifier les outils selon leur usage confirmé; éviter une liste interprétable comme une maîtrise uniforme. |
+| `slide06` | Contact | Permettre une demande de contact avec validation et retours compréhensibles. |
 
-**Schéma de lecture attendu :** [F-pattern, Z-pattern ou autre, si pertinent]  
-**Action principale par écran :** [À préciser]
+Les études de cas doivent pouvoir être consultées depuis les sections pertinentes et contenir : contexte et besoin, rôle/contribution personnelle, approche, outils réellement utilisés, résultats vérifiables, limites et enseignements. Leur emplacement et leur format visuel restent à valider avant implémentation.
 
-### Principes de design visuel
+### Parcours prioritaires
 
-| Principe | Règle appliquée | Exemple / écran |
+**Évaluer le profil :** accueil → profil et domaines validés → compétence → étude de cas correspondante → contact.
+
+**Contacter :** section Contact → saisie des champs → validation native → envoi distant si configuré, sinon repli `mailto:` → retour de statut exact. Les défauts d’envoi et de stockage recensés dans l’audit restent à revalider; ce parcours n’est pas présumé fiable dans tous les cas.
+
+**Maintenir le contenu :** mise à jour de `json/site-data.json` et du contenu de repli de `index.html` → vérification de leur cohérence en HTTP et `file://` → revue de contenu, preuves et autorisations avant publication.
+
+## 3. Interactions et états
+
+| Composant / action | État attendu | Règle UX et accessibilité |
 | --- | --- | --- |
-| Alignement | [Grille et alignements communs] | [Référence] |
-| Proximité | [Éléments liés regroupés, éléments distincts séparés] | [Référence] |
-| Répétition | [Styles, formes et composants réutilisés] | [Référence] |
-| Contraste | [Différences visuelles claires, sans « presque pareil »] | [Référence] |
+| Navigation de section | Section active clairement identifiable. | Ancres, liens de navigation et configuration fullPage.js restent synchronisés; clavier utilisable. |
+| Menu mobile | Ouvert ou fermé. | `aria-expanded` reflète l’état; la sélection d’un lien ferme le menu. |
+| Thème | Clair ou sombre, préférence conservée. | Le contrôle expose son état accessible et respecte les contrastes dans les deux thèmes. |
+| Carrousels | Contenu consultable et navigation compréhensible. | Les contrôles doivent être nommés, utilisables au clavier et ne pas masquer l’information. |
+| Formulaire | Prêt, validation invalide, envoi, succès métier, échec, mise en attente ou repli. | Les messages sont annoncés dans la région de statut; la saisie n’est perdue qu’après un résultat sûr. |
+| Chargement du contenu | JSON chargé ou contenu HTML de repli. | Le contenu utile reste disponible si `fetch` échoue, notamment en ouverture `file://`. |
+| Étude de cas (cible) | Résumé consultable puis détails. | La contribution personnelle, le contexte et les limites sont visibles sans dépendre d’un survol. |
 
-### Typographie
+## 4. Direction visuelle et UI existante
 
-| Usage | Police | Taille prévue | Notes |
-| --- | --- | --- | --- |
-| Titres | [Police] | [H1 : 32–48 px ; H2 : 24–32 px ; H3 : 20–24 px] | [À préciser] |
-| Corps de texte | [Police] | [16–18 px ; minimum recommandé : 16 px] | [À préciser] |
-| Accentuation (optionnelle) | [Police] | [À préciser] | Limiter à 2–3 familles de polices au total. |
+### Interface observée
 
-**Longueur de ligne visée :** 50–75 caractères.  
-**Interlignage visé :** au moins 1,5 fois la taille de police.
+- Une page monopage à six sections, navigation fullPage.js sur grand écran et comportement responsive sur petit écran.
+- Un thème clair/sombre avec préférence conservée dans le navigateur.
+- Des carrousels pour faits, services, compétences et outils; animations et titre animé.
+- Une identité visuelle issue des styles existants : typographie Raleway documentée, fonds sombres/éclaircis selon le thème et accents en dégradé bleu/cyan (`#4096ee` vers `#39ced6`).
+- Les styles de base se trouvent dans `css/style.css`; les ajustements de viewport dans `css/responsive.css`.
+- Les valeurs de contraste de toutes les combinaisons et états n’ont pas été certifiées; les couleurs existantes ne constituent pas une garantie WCAG.
 
-### Couleurs
+### Évolution recommandée
 
-Limiter la palette à 3–5 couleurs et vérifier les contrastes.
+Conserver les composants existants lorsque leur comportement est adapté; faire évoluer la hiérarchie et le contenu avant d’introduire une refonte visuelle. Donner la priorité au rôle, aux preuves et à la contribution. Une étude de cas doit être lisible dans le flux normal de la page et ne pas dépendre exclusivement d’un carrousel, d’une animation ou d’un effet au survol.
 
-| Rôle | Couleur / valeur | Usage | Contraste vérifié ? |
-| --- | --- | --- | --- |
-| Primaire (1) | [Valeur] | [Identité / actions principales] | [Oui / non] |
-| Secondaire (1–2) | [Valeur] | [Usage] | [Oui / non] |
-| Neutre (1–2) | [Valeur] | [Fonds / textes] | [Oui / non] |
-| Accent | [Valeur] | [Mise en évidence] | [Oui / non] |
+La palette, les tailles typographiques, la grille des études de cas, les maquettes et les variantes exactes mobile/desktop restent à valider avec le propriétaire. Ne pas introduire de nouvelles couleurs ou composants comme s’ils avaient été approuvés.
 
-**Répartition indicative 60-30-10 :** 60 % dominante, 30 % secondaire, 10 % accent.  
-**Signification ou justification des couleurs :** [À préciser selon le public et le contexte.]
+## 5. Accessibilité et responsive
 
-## 5. Accessibilité
+### Cibles de conception
 
-### Principes WCAG
-
-| Principe | Comment la conception le respecte | Vérification prévue |
+| Domaine | Cible | Vérification |
 | --- | --- | --- |
-| Perceptible | [Information disponible par plusieurs moyens adaptés] | [Test / contrôle] |
-| Utilisable | [Navigation et commandes utilisables, notamment au clavier] | [Test / contrôle] |
-| Compréhensible | [Contenus, navigation et retours clairs] | [Test / contrôle] |
-| Robuste | [Structure interprétable par diverses technologies] | [Test / contrôle] |
+| Contraste | WCAG AA visé : 4,5:1 pour texte courant; 3:1 pour grand texte et composants graphiques concernés. | Mesurer les états normaux, focus, erreur et désactivé dans les deux thèmes. |
+| Clavier | Tous les liens, boutons, menus et contrôles sont accessibles et visibles au focus. | Parcours clavier complet, sans focus masqué ni piège. |
+| Structure | Repères et titres hiérarchisés; labels associés aux champs. | Inspection HTML et lecteur d’écran. |
+| Mouvement | Respecter `prefers-reduced-motion`; proposer une pause si les animations automatiques restent actives. | Essai avec préférence système réduite. |
+| Mobile | Cibles tactiles et contenu restent consultables sans débordement. | 390 × 844 et 320 × 568, portrait et contrôle du Contact. |
+| Images et icônes | Texte alternatif utile pour les images informatives; éléments décoratifs ignorés par les technologies d’assistance. | Vérification des `alt`, noms et états accessibles. |
 
-**Niveau de conformité visé :** [A / AA / AAA]  
-**Outils de vérification :** [Ex. : WebAIM Contrast Checker, lecteur d’écran…]
+Les éléments ci-dessus sont des exigences et contrôles à réaliser, pas une déclaration de conformité certifiée. Les constats d’audit U01–U03 doivent être revalidés.
 
-### Vérifications pratiques
+## 6. Confidentialité et sécurité perçues
 
-| Point de contrôle | Cible / règle | Résultat / action |
-| --- | --- | --- |
-| Contraste — texte normal | Ratio minimum 4.5:1 | [À vérifier] |
-| Contraste — texte large | Ratio minimum 3:1 (18 pt+ ou 14 pt+ gras) | [À vérifier] |
-| Taille du texte | Minimum 16 px | [À vérifier] |
-| Cibles tactiles (mobile) | Minimum 44 × 44 px | [À vérifier] |
-| Navigation clavier | Ordre logique, aucun piège clavier | [À vérifier] |
-| Focus | Indicateurs de focus visibles | [À vérifier] |
-| Images | Texte alternatif descriptif ; `alt=""` pour les images décoratives | [À vérifier] |
-| Structure HTML | Balises sémantiques, un H1, hiérarchie logique | [À vérifier] |
-| Formulaires | Labels, consignes et erreurs reliés aux champs | [À vérifier] |
-| Champs obligatoires | Identification compréhensible | [À vérifier] |
+- Le formulaire collecte nom, prénom, email et message et est configuré pour un endpoint externe; le fournisseur et le destinataire doivent être décrits correctement.
+- Le brouillon et la file d’attente utilisent actuellement `localStorage`. Leur durée, l’information fournie au visiteur et les moyens d’effacement/annulation doivent être décidés avant de considérer la persistance comme acceptable.
+- L’interface ne doit jamais affirmer qu’un message est sauvegardé lorsque l’écriture locale a échoué, ni qu’un email est livré après l’acceptation du fournisseur.
+- Les études de cas sont des contenus publics : faire approuver les autorisations et retirer secrets, identifiants, informations client et détails opérationnels non destinés à la publication.
+- Les fichiers `js/cookie_consent.js` et `css/cookie_consent.css` ne sont pas intégrés à l’expérience active; ne pas afficher de promesse de consentement aux cookies.
 
-## 6. Sécurité, vie privée et RGPD
+La base légale, les durées de conservation et les textes d’information relèvent d’une décision à valider par le propriétaire et les responsables compétents; ce document ne constitue pas un avis juridique.
 
-### Données et finalités
+## 7. Recherche, prototypes et validation
 
-| Donnée collectée | Finalité | Sensibilité | Base légale envisagée | Conservation |
-| --- | --- | --- | --- | --- |
-| [Donnée] | [Pourquoi elle est nécessaire] | [Ordinaire / sensible] | [Consentement, contrat, obligation légale, intérêt vital, intérêt public, intérêt légitime] | [Durée / règle] |
-
-### Protection intégrée à l’expérience
-
-| Sujet | Décision de conception | Écran / parcours concerné |
-| --- | --- | --- |
-| Minimisation des données | [Ne demander que les données nécessaires] | [Écran] |
-| Transparence | [Expliquer clairement l’usage des données] | [Écran] |
-| Consentement | [Libre, spécifique, éclairé et univoque si requis] | [Écran] |
-| Retrait du consentement | [Moyen simple de retrait, si applicable] | [Écran] |
-| Exercice des droits | [Accès, rectification, effacement, limitation, portabilité, opposition, décisions automatisées] | [Parcours] |
-| Authentification | [Facteurs utilisés : savoir, avoir, être] | [Connexion] |
-| Authentification renforcée | [2FA/MFA et méthode retenue, si applicable] | [Connexion / actions sensibles] |
-| Communications | [HTTPS pour toutes les pages et échanges] | [Parcours] |
-
-### Principes de sécurité à considérer
-
-- [ ] Défense en profondeur : prévoir plusieurs couches de protection.
-- [ ] Moindre privilège : limiter chaque accès au strict nécessaire.
-- [ ] Sécurité par défaut : paramètres sécurisés dès l’installation.
-- [ ] Fail secure : en cas d’erreur, bloquer l’accès plutôt que l’ouvrir.
-- [ ] Protection des données sensibles au repos et en transit.
-
-## 7. Écrans, prototypes et tests utilisateurs
-
-### Inventaire des écrans / composants
-
-| Écran / composant | Objectif | Profil utilisateur | Maquette / lien | État |
-| --- | --- | --- | --- | --- |
-| [Écran] | [Objectif] | [Profil] | [Lien ou référence] | [À concevoir / à tester / validé] |
-
-### Prototypes et décisions
-
-- **Lien vers les maquettes / prototype :** [À compléter]
-- **Hypothèses à tester :** [À compléter]
-- **Retours utilisateurs et modifications :** [À compléter]
-
-### Tests d’utilisabilité
-
-| Participant / profil | Tâche à accomplir | Difficulté observée | Résultat | Modification décidée |
-| --- | --- | --- | --- | --- |
-| [Profil] | [Tâche] | [Observation] | [Réussite / difficulté] | [Action] |
+| Activité | État |
+| --- | --- |
+| Entretiens, sondages ou observations | Aucun résultat utilisateur n’est consigné; méthode et participants à définir. |
+| Maquettes / prototype | Aucun lien ou prototype validé n’est documenté. |
+| Tests de compréhension du positionnement DevOps | À réaliser après validation des contenus de référence. |
+| Tests d’utilisabilité mobile et contact | Parcours manuels à conserver et compléter selon le PRD et le suivi des tâches. |
+| Validation éditoriale | Propriétaire à confirmer pour le rôle, les compétences, les projets, les résultats et les autorisations. |
 
 ## 8. Synthèse et validation
 
-### Synthèse des choix UX/UI
+La direction UX consiste à conserver la simplicité d’un portfolio statique à six sections tout en rendant le profil DevOps compréhensible et étayé. Le travail de contenu dépend de la validation des faits et des projets par le propriétaire. Les comportements de contact, l’accessibilité, la confidentialité et les deux modes de rendu doivent être vérifiés avant de considérer les parcours comme terminés.
 
-[Résumer les utilisateurs visés, les parcours prioritaires, les choix visuels, le niveau d’accessibilité et les décisions relatives à la vie privée.]
-
-### Checklist avant validation
-
-- [ ] Les profils et parcours principaux sont documentés.
-- [ ] Les règles UX et les états de l’interface sont définis.
-- [ ] La hiérarchie, la typographie et la palette de couleurs sont spécifiées.
-- [ ] Les critères d’accessibilité ont été vérifiés.
-- [ ] Les données, finalités et choix de confidentialité sont documentés.
-- [ ] Des utilisateurs représentatifs ont essayé les parcours prioritaires.
-
-| Validateur | Rôle | Date | Remarques / approbation |
+| Validateur | Rôle | Date | Décision |
 | --- | --- | --- | --- |
-| [Nom] | [Client / utilisateurs / équipe projet] | [AAAA-MM-JJ] | [À compléter] |
+| À confirmer | Propriétaire / commanditaire | À confirmer | À valider |
+| À confirmer | Représentant UX/UI ou accessibilité | À confirmer | À valider |
 
 ## 9. Historique des versions
 
 | Version | Date | Auteur | Modifications |
 | --- | --- | --- | --- |
-| 0.1 | [AAAA-MM-JJ] | [Nom] | Création du document |
+| 1.0 | 2026-11-10 | Copilot | Remplacement du modèle générique par une synthèse UX/UI liée au produit, à l’état observé et au repositionnement DevOps décrit dans le PRD. |
